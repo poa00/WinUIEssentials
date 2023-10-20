@@ -226,6 +226,14 @@
       <DependentUpon>SettingsCommandEx.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="SettingsExpander.h">
+      <DependentUpon>SettingsExpander.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="SettingsExpanderItemStyleSelector.h">
+      <DependentUpon>SettingsExpanderItemStyleSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="SettingsPaneEx.h">
       <DependentUpon>SettingsPaneEx.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -294,6 +302,14 @@
       <DependentUpon>SettingsCommandEx.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="SettingsExpander.cpp">
+      <DependentUpon>SettingsExpander.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="SettingsExpanderItemStyleSelector.cpp">
+      <DependentUpon>SettingsExpanderItemStyleSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="SettingsPaneEx.cpp">
       <DependentUpon>SettingsPaneEx.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -353,6 +369,12 @@
     <Midl Include="SettingsCommandEx.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="SettingsExpander.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="SettingsExpanderItemStyleSelector.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="SettingsPaneEx.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -369,6 +391,9 @@
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml" />
     <Page Include="SettingsCard_Resource.xaml">
+      <DeploymentContent>true</DeploymentContent>
+    </Page>
+    <Page Include="SettingsExpander_Resource.xaml">
       <DeploymentContent>true</DeploymentContent>
     </Page>
   </ItemGroup>

@@ -91,6 +91,9 @@ namespace winrt::UWPPackage::implementation
                 {
                     winrt::get_self<SettingsCard>(d.as<UWPPackage::SettingsCard>())->onActionIconChanged();
                 }
+
+
+
             }
     );
 

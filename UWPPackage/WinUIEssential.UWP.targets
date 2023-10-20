@@ -19,6 +19,9 @@
         <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsCard_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
         <!--<CopyFileToFolders Include="$(MSBuildThisFileDirectory)..\..\lib\native\UserControl.xaml"/>-->
     </ItemGroup>
     <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -8,7 +8,7 @@
     xmlns:essential="using:UWPPackage"
     mc:Ignorable="d">
 
-    <StackPanel Spacing="4">
+    <StackPanel Spacing="4" Margin="5">
         <ToggleSwitch Header="Is Enabled" x:Name="IsCardEnabled"/>
         <essential:SettingsCard x:Name="settingsCard"
                                Description="This is a default card, with the Header, HeaderIcon, Description and Content set."

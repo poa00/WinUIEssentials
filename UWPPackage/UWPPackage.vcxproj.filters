@@ -109,6 +109,12 @@
     <Midl Include="SettingsCard.idl">
       <Filter>Controls\SettingsCard</Filter>
     </Midl>
+    <Midl Include="SettingsExpanderItemStyleSelector.idl">
+      <Filter>Controls\SettingsExpander</Filter>
+    </Midl>
+    <Midl Include="SettingsExpander.idl">
+      <Filter>Controls\SettingsExpander</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">
@@ -116,6 +122,9 @@
     </Page>
     <Page Include="SettingsCard_Resource.xaml">
       <Filter>Controls\SettingsCard</Filter>
+    </Page>
+    <Page Include="SettingsExpander_Resource.xaml">
+      <Filter>Controls\SettingsExpander</Filter>
     </Page>
   </ItemGroup>
 </Project>

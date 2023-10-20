@@ -8,6 +8,7 @@
         <owners></owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Essential helpers for developing WinUI(UWP)</description>
+        <icon>assets\MainLogo.png</icon>
         <dependencies>
             <group targetFramework="native"/>
         </dependencies>
@@ -22,5 +23,7 @@
         <!--lib/native-->
         <file src="..\x64\Debug\WinUI3Package\WinUI3Package.winmd" target="lib/native"/>
         <file src="..\x64\Debug\WinUI3Package\WinUI3Package.dll" target="lib/native"/>
+
+        <file src="..\MainLogo.png" target="assets\"/>
     </files>
 </package>

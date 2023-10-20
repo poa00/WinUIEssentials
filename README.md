@@ -1,3 +1,4 @@
+![](MainLogo.png) 
 # WinUI Essentials
 A repo dedicated for simplifying C++ development with WinUI2 (Universal Windows Platform) and WinUI3 (Windows App SDK).
 
@@ -29,7 +30,6 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |BadgeGlyphs| :white_check_mark: | :white_check_mark: | Header only
 |ToastTemplates| :white_check_mark: | :white_check_mark: | Header only
 |ToastBuilder | :white_check_mark: | :white_check_mark: | Header only
-|SettingsExpander |  |  | WinRT component
 |CursorController | :white_check_mark: | :white_check_mark: | WinRT component
 |PropertyChangeHelper | :white_check_mark: | :white_check_mark: | Header only
 |NegateBoolConverter | :white_check_mark: | :white_check_mark: | WinRT component
@@ -43,6 +43,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |ControlSizeTrigger | :white_check_mark: | :white_check_mark: | WinRT component
 |GroupBox | :white_check_mark: | :white_check_mark: | Control
 |SettingsCard | :white_check_mark: | :white_check_mark: | Control
+|SettingsExpander | :white_check_mark: | :white_check_mark: | Control
 
 *means additional settings required, see the sections for info
 
@@ -82,14 +83,14 @@ winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier
 
 |Type|Template|Sample|
 |--|--|--|
-|`BodyTextOnly`|ToastText01|
-|`SingleLineHeaderWithBody`|ToastText02|
-|`TwoLineHeaderWithBody`|ToastText03|
-|`HeaderWithTwoSingleLineBody`|ToastText04|
-|`ImageWithBodyOnly`|ToastImageAndText01|
-|`ImageWithHeaderAndBody`|ToastImageAndText02|
-|`ImageWithTwoLineHeaderAndBody`|ToastImageAndText03|
-|`ImageWithHeaderAndTwoSingleLineBody`|ToastImageAndText04|
+|`BodyTextOnly`|ToastText01| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_1.png?view=winrt-22621)
+|`SingleLineHeaderWithBody`|ToastText02| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_2.png?view=winrt-22621)
+|`TwoLineHeaderWithBody`|ToastText03| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_4.png?view=winrt-22621)
+|`HeaderWithTwoSingleLineBody`|ToastText04| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_5.png?view=winrt-22621)
+|`ImageWithBodyOnly`|ToastImageAndText01| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_6.png?view=winrt-22621)
+|`ImageWithHeaderAndBody`|ToastImageAndText02| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_7.png?view=winrt-22621)
+|`ImageWithTwoLineHeaderAndBody`|ToastImageAndText03| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_8.png?view=winrt-22621)
+|`ImageWithHeaderAndTwoSingleLineBody`|ToastImageAndText04| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toastimageandtext04.png?view=winrt-22621)
 
 ### ToastBuilder --- *namespace `ToastBuilder`*
 Strongly-typed, declarative toast notification elements to quickly build toast notifications, as if you are writing XAML. [Schema here.](https://learn.microsoft.com/en-us/uwp/schemas/tiles/toastschema/root-elements) 
@@ -166,7 +167,11 @@ Toast().Duration(Long).Scenario(Reminder).UseButtonStyle(true)
 <table>
 
 ## Glphys --- *namespace `Glyphs`*
-Font glyphs value for Segoe MDL2 Assets fonts.
+Font glyphs value for Segoe MDL2 Assets fonts. Usage:
+```cpp
+#include <Glyphs.hpp>
+FontIcon().Glyph(Glyphs::GlobalNavButton);
+```
 
 ## CursorController --- *namespace `CursorController`*
 Xaml helper for controlling the cursor type when mouse enters. 
@@ -246,4 +251,7 @@ See the same class in [Community Toolkit](https://github.com/CommunityToolkit/Wi
 ### IsNullOrEmptyStateTrigger --- *namespace `IsNullOrEmptyStateTrigger`*
 
 ## SettingsCard
+See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.
+
+## SettingsExpander
 See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.

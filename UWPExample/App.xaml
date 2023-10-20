@@ -94,6 +94,7 @@
             <controls:XamlControlsResources.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///GroupBox_Resource.xaml"/>
                 <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///SettingsExpander_Resource.xaml"/>
                 <!-- Other app resources here -->
             </controls:XamlControlsResources.MergedDictionaries>
         </controls:XamlControlsResources>
