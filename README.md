@@ -41,6 +41,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |IsEqualStateTrigger| :white_check_mark: | :white_check_mark: | WinRT component
 |IsNullOrEmptyStateTrigger | :white_check_mark: | :white_check_mark: | WinRT component
 |ControlSizeTrigger | :white_check_mark: | :white_check_mark: | WinRT component
+|CharmBar | :white_check_mark: | :x: | WinRT component
 |GroupBox | :white_check_mark: | :white_check_mark: | Control
 |SettingsCard | :white_check_mark: | :white_check_mark: | Control
 |SettingsExpander | :white_check_mark: | :white_check_mark: | Control
@@ -250,8 +251,56 @@ See the same class in [Community Toolkit](https://github.com/CommunityToolkit/Wi
 ### IsEqualStateTrigger --- *namespace `IsEqualStateTrigger`*
 ### IsNullOrEmptyStateTrigger --- *namespace `IsNullOrEmptyStateTrigger`*
 
-## SettingsCard
+## SettingsCard --- *namespace `SettingsCard`*
 See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.
 
-## SettingsExpander
+## SettingsExpander --- *namespace `SettingsExpander`*
 See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.
+
+## CharmBar
+Installing this nuget will automatically add `Desktop Extension` to your UWP project, so  you can use the good-ol Windows 8 style charm bar. This package further simplifies it's usage by allowing you to directly define local and global settings, directly in XAML containing UI element.
+
+- Define a global setting in resource section, with `SettingsPaneEx.Settings`
+```xml
+<Application.Resources>
+    <ResourceDictionary>
+        <essential:SettingsPaneEx.Settings>
+            <!--SettingsCommandEx items-->
+            <essential:SettingsCommandEx Id="Item1" Label="Item123">
+                <StackPanel>
+                    <TextBlock Text="Text1 in item1"/>
+                    <TextBlock Text="Text2 in item1"/>
+                </StackPanel>
+            </essential:SettingsCommandEx>=
+            <essential:SettingsCommandEx Id="Item2" Label="Item456">
+                <StackPanel>
+                    <TextBlock Text="Text3 in item2"/>
+                    <TextBlock Text="Text4 in item2"/>
+                </StackPanel>
+            </essential:SettingsCommandEx>
+        </essential:SettingsPaneEx.Settings>
+    </ResourceDictionary>
+</Application.Resources>
+```
+![](assets/global-settings.png)
+- Define local settings, where you put instance of `SettingsPaneEx` directly in UI as any other xaml controls.
+```xml
+<Page
+    ...
+>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <essential:SettingsPaneEx x:Name="LocalSettings">
+            <!--SettingsCommandEx items-->
+            ...
+        </essential:SettingsPaneEx>
+    </StackPanel>
+</Page>
+```
+![](assets/local-settings.png)
+
+Define keyboard shortcuts with `SettingsPaneEx.KeyboardAccelerator` property.
+```
+<essential:SettingsPaneEx.KeyboardAccelerator>
+    <KeyboardAccelerator Modifiers="Control" Key="s"/> <!-- Ctrl+S to open settings -->
+</essential:SettingsPaneEx.KeyboardAccelerator>
+```

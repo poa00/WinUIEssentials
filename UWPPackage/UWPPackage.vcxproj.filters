@@ -115,6 +115,7 @@
     <Midl Include="SettingsExpander.idl">
       <Filter>Controls\SettingsExpander</Filter>
     </Midl>
+    <Midl Include="DependentValue.idl" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">

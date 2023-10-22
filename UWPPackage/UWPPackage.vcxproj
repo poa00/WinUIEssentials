@@ -190,6 +190,10 @@
       <DependentUpon>CursorController.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="DependentValue.h">
+      <DependentUpon>DependentValue.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Export.h" />
     <ClInclude Include="GroupBox.h">
       <DependentUpon>GroupBox.idl</DependentUpon>
@@ -272,6 +276,10 @@
       <DependentUpon>CursorController.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="DependentValue.cpp">
+      <DependentUpon>DependentValue.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="GroupBox.cpp">
       <DependentUpon>GroupBox.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -349,6 +357,9 @@
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="CursorController.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="DependentValue.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="GroupBox.idl">
