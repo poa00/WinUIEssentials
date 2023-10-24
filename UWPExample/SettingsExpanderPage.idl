@@ -1,3 +1,4 @@
+import "MyDataModel.idl";
 namespace UWPExample
 {
     [default_interface]
@@ -7,5 +8,7 @@ namespace UWPExample
 
         Windows.UI.Xaml.Controls.ToggleSwitch IsCardExpanded{ get; };
         Windows.UI.Xaml.Controls.ToggleSwitch IsCardEnabled{ get; };
+
+        Windows.Foundation.Collections.IVector<Object> MyDataSet{ get; };
     }
 }

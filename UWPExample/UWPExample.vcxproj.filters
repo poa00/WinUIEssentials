@@ -33,12 +33,18 @@
     <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsCard_Resource.xaml" />
     <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml" />
     <Page Include="SettingsExpanderPage.xaml">
-      <Filter>Pages</Filter>
+      <Filter>Pages\SettingsExpanderPage</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
     <Midl Include="MainPage.idl" />
+    <Midl Include="MyDataModel.idl">
+      <Filter>Pages\SettingsExpanderPage</Filter>
+    </Midl>
+    <Midl Include="MyDataModelTemplateSelector.idl">
+      <Filter>Pages\SettingsExpanderPage</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -213,6 +219,9 @@
     </Filter>
     <Filter Include="Pages">
       <UniqueIdentifier>{5f937adf-92ea-4e21-afdd-815cccc01321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\SettingsExpanderPage">
+      <UniqueIdentifier>{659a379c-9ddf-4c1d-8eb8-843aa8acd39c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

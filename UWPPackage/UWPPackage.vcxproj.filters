@@ -22,6 +22,9 @@
     <Filter Include="Controls\SettingsExpander">
       <UniqueIdentifier>{87ccb50b-6d50-446a-a638-27eac1a5aa15}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MarkupExtensions">
+      <UniqueIdentifier>{1e4a702c-c96e-4162-ad75-929772ca9eda}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

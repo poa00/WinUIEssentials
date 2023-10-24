@@ -256,6 +256,7 @@ See the same class in [Community Tookit](https://github.com/CommunityToolkit/Win
 
 ## SettingsExpander --- *namespace `SettingsExpander`*
 See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.
+![](assets/settings-expander.png)
 
 ## CharmBar
 Installing this nuget will automatically add `Desktop Extension` to your UWP project, so  you can use the good-ol Windows 8 style charm bar. This package further simplifies it's usage by allowing you to directly define local and global settings, directly in XAML containing UI element.

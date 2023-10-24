@@ -14,6 +14,9 @@
                                Description="This is a default card, with the Header, HeaderIcon, Description and Content set."
                                Header="This is the Header"
                                IsEnabled="{x:Bind IsCardEnabled.IsOn, Mode=OneWay}">
+            <essential:SettingsCard.HeaderIcon>
+                <FontIcon Glyph="&#xE799;"/>
+            </essential:SettingsCard.HeaderIcon>
             <ComboBox SelectedIndex="0">
                 <ComboBoxItem>Option 1</ComboBoxItem>
                 <ComboBoxItem>Option 2</ComboBoxItem>
@@ -24,6 +27,9 @@
         <essential:SettingsCard Description="You can use a FontIcon, SymbolIcon or BitmapIcon to set the cards HeaderIcon."
                                Header="Icon options"
                                IsEnabled="{x:Bind IsCardEnabled.IsOn, Mode=OneWay}">
+            <essential:SettingsCard.HeaderIcon>
+                <BitmapIcon UriSource="ms-appx:///Assets/Square44x44Logo.scale-100.png"/>
+            </essential:SettingsCard.HeaderIcon>
             <ToggleSwitch />
         </essential:SettingsCard>
 
@@ -43,9 +49,46 @@
                 <x:Double x:Key="SettingsCardWrapThreshold">800</x:Double>
                 <x:Double x:Key="SettingsCardWrapNoIconThreshold">600</x:Double>
             </essential:SettingsCard.Resources>
+            <essential:SettingsCard.HeaderIcon>
+                <FontIcon Glyph="&#xE745;"/>
+            </essential:SettingsCard.HeaderIcon>
             <Button Content="This control will wrap vertically!"
                     Style="{StaticResource AccentButtonStyle}" />
         </essential:SettingsCard>
+
+        <essential:SettingsCard
+                               Description="A SettingsCard can be made clickable and you can leverage the Command property or Click event."
+                               Header="A clickable SettingsCard"
+                               IsClickEnabled="True"
+                               IsEnabled="{x:Bind IsCardEnabled.IsOn, Mode=OneWay}">
+            <essential:SettingsCard.HeaderIcon>
+                <FontIcon Glyph="&#xE799;"/>
+            </essential:SettingsCard.HeaderIcon>
+        </essential:SettingsCard>
+
+        <essential:SettingsCard
+                               ActionIconToolTip="Open in new window"
+                               Description="You can customize the ActionIcon and ActionIconToolTip."
+                               Header="Customizing the ActionIcon"
+                               IsClickEnabled="True"
+                               IsEnabled="{x:Bind IsCardEnabled.IsOn, Mode=OneWay}">
+            <essential:SettingsCard.ActionIcon>
+                <FontIcon Glyph="&#xE8A7;"/>
+            </essential:SettingsCard.ActionIcon>
+            <essential:SettingsCard.HeaderIcon>
+                <FontIcon Glyph="&#xE774;"/>
+            </essential:SettingsCard.HeaderIcon>
+        </essential:SettingsCard>
+
+        <essential:SettingsCard Header="Hiding the ActionIcon"
+                               IsActionIconVisible="False"
+                               IsClickEnabled="True"
+                               IsEnabled="{x:Bind IsCardEnabled.IsOn, Mode=OneWay}">
+            <essential:SettingsCard.HeaderIcon>
+                <FontIcon Glyph="&#xE72E;"/>
+            </essential:SettingsCard.HeaderIcon>
+        </essential:SettingsCard>
+
     </StackPanel>
 
 </Page>

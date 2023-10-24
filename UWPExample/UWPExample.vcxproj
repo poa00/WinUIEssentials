@@ -181,6 +181,14 @@
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="MyDataModel.h">
+      <DependentUpon>MyDataModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="MyDataModelTemplateSelector.h">
+      <DependentUpon>MyDataModelTemplateSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.h">
       <DependentUpon>App.xaml</DependentUpon>
@@ -326,6 +334,14 @@
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="MyDataModel.cpp">
+      <DependentUpon>MyDataModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="MyDataModelTemplateSelector.cpp">
+      <DependentUpon>MyDataModelTemplateSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -383,6 +399,12 @@
     </Midl>
     <Midl Include="MainPage.idl">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Midl>
+    <Midl Include="MyDataModel.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="MyDataModelTemplateSelector.idl">
+      <SubType>Designer</SubType>
     </Midl>
     <Midl Include="SettingsCardPage.idl">
       <DependentUpon>SettingsCardPage.xaml</DependentUpon>
