@@ -195,6 +195,10 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="Export.h" />
+    <ClInclude Include="FontIconExtension.h">
+      <DependentUpon>FontIconExtension.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="GroupBox.h">
       <DependentUpon>GroupBox.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -280,6 +284,10 @@
       <DependentUpon>DependentValue.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="FontIconExtension.cpp">
+      <DependentUpon>FontIconExtension.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="GroupBox.cpp">
       <DependentUpon>GroupBox.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -360,6 +368,9 @@
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="DependentValue.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="FontIconExtension.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="GroupBox.idl">

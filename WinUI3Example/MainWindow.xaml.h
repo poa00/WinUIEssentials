@@ -30,7 +30,15 @@ namespace winrt::WinUI3Example::implementation
         static inline std::unordered_map<winrt::hstring, winrt::Windows::UI::Xaml::Interop::TypeName> s_page
         {
             {L"ToastPage", winrt::xaml_typename<WinUI3Example::ToastPage>()},
-            {L"CursorControllerPage", winrt::xaml_typename<WinUI3Example::CursorControllerPage>()}
+            {L"CursorControllerPage", winrt::xaml_typename<WinUI3Example::CursorControllerPage>()},
+            {L"ConvertersPage", winrt::xaml_typename<WinUI3Example::ConvertersPage>()},
+            {L"BadgePage", winrt::xaml_typename<WinUI3Example::BadgePage>()},
+            {L"TaskbarPage", winrt::xaml_typename<WinUI3Example::TaskbarPage>()},
+            {L"TriggersPage", winrt::xaml_typename<WinUI3Example::TriggersPage>()},
+            {L"GroupBoxPage", winrt::xaml_typename<WinUI3Example::GroupBoxPage>()},
+            /*{L"CharmBarPage", winrt::xaml_typename<WinUI3Example::CharmBarPage>()},*/
+            {L"SettingsCardPage", winrt::xaml_typename<WinUI3Example::SettingsCardPage>()},
+            {L"SettingsExpanderPage", winrt::xaml_typename<WinUI3Example::SettingsExpanderPage>()}
         };
     };
 }

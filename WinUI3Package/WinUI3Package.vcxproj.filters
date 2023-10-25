@@ -15,6 +15,9 @@
     <ClInclude Include="include\ToastBuilder.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="ReverseConverterBase.hpp">
+      <Filter>Converters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="WinUI3Package.def" />
@@ -25,6 +28,12 @@
     <Filter Include="include">
       <UniqueIdentifier>{f8d8d370-4f18-4c11-a8c6-6145dcde80da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Converters">
+      <UniqueIdentifier>{705ed3e6-dfae-492b-ae3c-1b4f2e9acecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Triggers">
+      <UniqueIdentifier>{3cc9cab8-b17a-4fce-806e-769d99c0084d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
@@ -32,5 +41,32 @@
   <ItemGroup>
     <Midl Include="Placeholder.idl" />
     <Midl Include="CursorController.idl" />
+    <Midl Include="BoolToVisibilityConverter.idl">
+      <Filter>Converters</Filter>
+    </Midl>
+    <Midl Include="ContainerToBoolConverter.idl">
+      <Filter>Converters</Filter>
+    </Midl>
+    <Midl Include="ConverterGroup.idl">
+      <Filter>Converters</Filter>
+    </Midl>
+    <Midl Include="NegateBoolConverter.idl">
+      <Filter>Converters</Filter>
+    </Midl>
+    <Midl Include="ReferenceToBoolConverter.idl">
+      <Filter>Converters</Filter>
+    </Midl>
+    <Midl Include="StringToBoolConverter.idl">
+      <Filter>Converters</Filter>
+    </Midl>
+    <Midl Include="ControlSizeTrigger.idl">
+      <Filter>Triggers</Filter>
+    </Midl>
+    <Midl Include="IsEqualStateTrigger.idl">
+      <Filter>Triggers</Filter>
+    </Midl>
+    <Midl Include="IsNullOrEmptyStateTrigger.idl">
+      <Filter>Triggers</Filter>
+    </Midl>
   </ItemGroup>
 </Project>

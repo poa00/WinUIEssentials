@@ -13,9 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinUI3Example", "WinUI3Example\WinUI3Example.vcxproj", "{68226A70-C3CD-4205-93AA-95F3EBB8BE34}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E006BDA6-4CC1-4EC4-A1CF-807E16BCBF58} = {E006BDA6-4CC1-4EC4-A1CF-807E16BCBF58}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinUI3Package", "WinUI3Package\WinUI3Package.vcxproj", "{E006BDA6-4CC1-4EC4-A1CF-807E16BCBF58}"
 EndProject

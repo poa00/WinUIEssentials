@@ -119,6 +119,9 @@
       <Filter>Controls\SettingsExpander</Filter>
     </Midl>
     <Midl Include="DependentValue.idl" />
+    <Midl Include="FontIconExtension.idl">
+      <Filter>MarkupExtensions</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">

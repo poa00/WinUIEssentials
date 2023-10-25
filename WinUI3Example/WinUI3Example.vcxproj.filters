@@ -11,6 +11,27 @@
     <Page Include="CursorControllerPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="BadgePage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="ConvertersPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="GroupBoxPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="SettingsCardPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="TaskbarPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="TriggersPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="SettingsExpanderPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -194,5 +215,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
   </ItemGroup>
 </Project>

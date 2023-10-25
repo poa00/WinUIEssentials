@@ -45,6 +45,8 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |GroupBox | :white_check_mark: | :white_check_mark: | Control
 |SettingsCard | :white_check_mark: | :white_check_mark: | Control
 |SettingsExpander | :white_check_mark: | :white_check_mark: | Control
+|FontIconExtension | :white_check_mark: | :white_check_mark: | WinRT component
+|DependentValue| :white_check_mark: | :white_check_mark: | WinRT component
 
 *means additional settings required, see the sections for info
 
@@ -305,3 +307,5 @@ Define keyboard shortcuts with `SettingsPaneEx.KeyboardAccelerator` property.
     <KeyboardAccelerator Modifiers="Control" Key="s"/> <!-- Ctrl+S to open settings -->
 </essential:SettingsPaneEx.KeyboardAccelerator>
 ```
+## DependentValue ---*namespace `DependentValue`*
+A wrapper around a `double` which you can target to with a `Storyboard` `DoubleAnimation`, and get value out of it.
