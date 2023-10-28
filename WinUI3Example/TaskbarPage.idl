@@ -7,6 +7,5 @@ namespace WinUI3Example
     runtimeclass TaskbarPage : Microsoft.UI.Xaml.Controls.Page
     {
         TaskbarPage();
-        Int32 MyProperty;
     }
 }

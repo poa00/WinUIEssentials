@@ -38,7 +38,8 @@ namespace winrt::WinUI3Example::implementation
             {L"GroupBoxPage", winrt::xaml_typename<WinUI3Example::GroupBoxPage>()},
             /*{L"CharmBarPage", winrt::xaml_typename<WinUI3Example::CharmBarPage>()},*/
             {L"SettingsCardPage", winrt::xaml_typename<WinUI3Example::SettingsCardPage>()},
-            {L"SettingsExpanderPage", winrt::xaml_typename<WinUI3Example::SettingsExpanderPage>()}
+            {L"SettingsExpanderPage", winrt::xaml_typename<WinUI3Example::SettingsExpanderPage>()},
+            {L"DependentValuePage", winrt::xaml_typename<WinUI3Example::DependentValuePage>()}
         };
     };
 }

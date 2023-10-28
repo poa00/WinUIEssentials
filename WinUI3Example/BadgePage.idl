@@ -7,6 +7,5 @@ namespace WinUI3Example
     runtimeclass BadgePage : Microsoft.UI.Xaml.Controls.Page
     {
         BadgePage();
-        Int32 MyProperty;
     }
 }

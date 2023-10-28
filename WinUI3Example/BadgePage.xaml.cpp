@@ -6,6 +6,8 @@
 #if __has_include("BadgePage.g.cpp")
 #include "BadgePage.g.cpp"
 #endif
+#include <winrt/Windows.UI.Notifications.h>
+#include <BadgeGlyphs.hpp>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -15,23 +17,29 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::WinUI3Example::implementation
 {
-    BadgePage::BadgePage()
-    {
-        InitializeComponent();
-    }
+	void BadgePage::ComboBox_SelectionChanged(
+		winrt::Windows::Foundation::IInspectable const& sender,
+		winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& e)
+	{
+		winrt::Windows::UI::Notifications::BadgeUpdateManager::CreateBadgeUpdaterForApplication()
+			.Update(BadgeGlyphs::MakeBadgeNotification(sender.as<winrt::Microsoft::UI::Xaml::Controls::ComboBox>().SelectedItem().as<winrt::hstring>().data()));
+	}
 
-    int32_t BadgePage::MyProperty()
-    {
-        throw hresult_not_implemented();
-    }
 
-    void BadgePage::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
 
-    void BadgePage::myButton_Click(IInspectable const&, RoutedEventArgs const&)
-    {
-        myButton().Content(box_value(L"Clicked"));
-    }
+
+	void BadgePage::Button_Click(
+		winrt::Windows::Foundation::IInspectable const& sender,
+		winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
+	{
+		try
+		{
+			winrt::Windows::UI::Notifications::BadgeUpdateManager::CreateBadgeUpdaterForApplication()
+				.Update(BadgeGlyphs::MakeBadgeNotification(std::stoi(NumberValue().Text().data())));
+		}
+		catch (...)
+		{
+
+		}
+	}
 }

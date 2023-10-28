@@ -7,6 +7,5 @@ namespace WinUI3Example
     runtimeclass GroupBoxPage : Microsoft.UI.Xaml.Controls.Page
     {
         GroupBoxPage();
-        Int32 MyProperty;
     }
 }

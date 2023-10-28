@@ -29,20 +29,31 @@
     <Page Include="TriggersPage.xaml">
       <Filter>Pages</Filter>
     </Page>
-    <Page Include="SettingsExpanderPage.xaml">
+    <Page Include="DependentValuePage.xaml">
       <Filter>Pages</Filter>
+    </Page>
+    <Page Include="SettingsExpanderPage.xaml">
+      <Filter>Pages\SettingsExpanderPage</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
     <Midl Include="MainWindow.idl" />
+    <Midl Include="MyDataModel.idl">
+      <Filter>Pages\SettingsExpanderPage</Filter>
+    </Midl>
+    <Midl Include="MyDataModelTemplateSelector.idl">
+      <Filter>Pages\SettingsExpanderPage</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="Global.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Global.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -205,6 +216,9 @@
     </Filter>
     <Filter Include="Pages">
       <UniqueIdentifier>{c4ed0077-ab1a-424c-8d69-cfe5eca219e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\SettingsExpanderPage">
+      <UniqueIdentifier>{74b6dc55-d6d8-4db0-b6c4-38f4c301e3f1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

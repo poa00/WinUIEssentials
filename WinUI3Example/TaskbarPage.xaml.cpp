@@ -6,6 +6,8 @@
 #if __has_include("TaskbarPage.g.cpp")
 #include "TaskbarPage.g.cpp"
 #endif
+#include <Taskbar.hpp>
+#include "Global.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -20,18 +22,28 @@ namespace winrt::WinUI3Example::implementation
         InitializeComponent();
     }
 
-    int32_t TaskbarPage::MyProperty()
-    {
-        throw hresult_not_implemented();
-    }
+	void TaskbarPage::ComboBox_SelectionChanged(
+		winrt::Windows::Foundation::IInspectable const& sender,
+		winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& e)
+	{
+		auto const index = sender.as<winrt::Microsoft::UI::Xaml::Controls::ComboBox>().SelectedIndex();
 
-    void TaskbarPage::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
+		Taskbar::ProgressState state{};
+		switch (index)
+		{
+		case 0: state = Taskbar::ProgressState::NoProgress; break;
+		case 1: state = Taskbar::ProgressState::Indeterminate; break;
+		case 2: state = Taskbar::ProgressState::Normal; break;
+		case 3: state = Taskbar::ProgressState::Error; break;
+		default: state = Taskbar::ProgressState::Paused; break;
+		}
+		Taskbar::SetProgressState(MainHwnd(), state);
+		
+	}
 
-    void TaskbarPage::myButton_Click(IInspectable const&, RoutedEventArgs const&)
-    {
-        myButton().Content(box_value(L"Clicked"));
-    }
+
+	void TaskbarPage::Slider_ValueChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& e)
+	{
+		Taskbar::SetProgressValue(MainHwnd(), ProgressSlider().Value());
+	}
 }

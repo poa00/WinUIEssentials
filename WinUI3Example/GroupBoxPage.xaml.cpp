@@ -19,19 +19,4 @@ namespace winrt::WinUI3Example::implementation
     {
         InitializeComponent();
     }
-
-    int32_t GroupBoxPage::MyProperty()
-    {
-        throw hresult_not_implemented();
-    }
-
-    void GroupBoxPage::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
-
-    void GroupBoxPage::myButton_Click(IInspectable const&, RoutedEventArgs const&)
-    {
-        myButton().Content(box_value(L"Clicked"));
-    }
 }

@@ -13,6 +13,15 @@
             <Implementation>WinUI3Package.dll</Implementation>
         </Reference>
 
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\GroupBox_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsCard_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
         <!--<CopyFileToFolders Include="$(MSBuildThisFileDirectory)..\..\lib\native\UserControl.xaml"/>-->
     </ItemGroup>
 

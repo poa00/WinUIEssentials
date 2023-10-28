@@ -16,14 +16,17 @@ namespace winrt::UWPExample::implementation
 		winrt::Windows::Foundation::IInspectable const& sender, 
 		winrt::Windows::UI::Xaml::Controls::SelectionChangedEventArgs const& e)
 	{
-		auto stateStr = winrt::unbox_value<winrt::hstring>(sender.as<winrt::Windows::UI::Xaml::Controls::ComboBox>().SelectedItem());
-		Taskbar::ProgressState state;
-		if (stateStr == L"NoProgress") state = Taskbar::ProgressState::NoProgress;
-		else if (stateStr == L"Indeterminate") state = Taskbar::ProgressState::Indeterminate;
-		else if (stateStr == L"Normal") state = Taskbar::ProgressState::Normal;
-		else if (stateStr == L"Error") state = Taskbar::ProgressState::Error;
-		else if (stateStr == L"Paused") state = Taskbar::ProgressState::Paused;
+		auto const index = sender.as<winrt::Windows::UI::Xaml::Controls::ComboBox>().SelectedIndex();
 
+		Taskbar::ProgressState state{};
+		switch (index)
+		{
+		case 0: state = Taskbar::ProgressState::NoProgress; break;
+		case 1: state = Taskbar::ProgressState::Indeterminate; break;
+		case 2: state = Taskbar::ProgressState::Normal; break;
+		case 3: state = Taskbar::ProgressState::Error; break;
+		default: state = Taskbar::ProgressState::Paused; break;
+		}
 		auto hwnd = GetHwnd(winrt::Windows::UI::Core::CoreWindow::GetForCurrentThread());
 		Taskbar::SetProgressState(hwnd, state);
 		Taskbar::SetProgressValue(hwnd, 50);

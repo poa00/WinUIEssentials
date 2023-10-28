@@ -16,7 +16,7 @@ namespace winrt::UWPExample::implementation
         return winrt::single_threaded_vector(std::move(copy));
     }
 
-    void winrt::UWPExample::implementation::SettingsExpanderPage::Button_Click(
+    void SettingsExpanderPage::Button_Click(
         winrt::Windows::Foundation::IInspectable const& sender, 
         winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
     {

@@ -9,6 +9,6 @@
     mc:Ignorable="d">
 
     <essential:GroupBox Header="Me">
-        <Button>Button inside GroupBox</Button>
+        <!--<Button>Button inside GroupBox</Button>-->
     </essential:GroupBox>
 </Page>

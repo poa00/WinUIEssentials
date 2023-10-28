@@ -7,6 +7,5 @@ namespace WinUI3Example
     runtimeclass TriggersPage : Microsoft.UI.Xaml.Controls.Page
     {
         TriggersPage();
-        Int32 MyProperty;
     }
 }

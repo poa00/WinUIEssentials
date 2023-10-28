@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>WinUIEssential.UWP</id>
-        <version>1.1.4</version>
+        <version>1.1.5</version>
         <title>WinUIEssential(UWP)</title>
         <authors>Peter</authors>
         <owners></owners>
@@ -20,8 +20,6 @@
         <file src="include/ToastTemplates.hpp" target="build/native/include"/>
         <file src="include/PropertyChangeHelper.hpp" target="build/native/include"/>
         <file src="include/BadgeGlyphs.hpp" target="build/native/include"/>
-        <file src="include/WinUIIncludes.hpp" target="build/native/include"/>
-        <file src="include/Taskbar.h" target="build/native/include"/>
         <file src="include/TemplateControlHelper.hpp" target="build/native/include"/>
         <file src="Export.h" target="build/native/include"/>
         <file src="include/WindowHelper.hpp" target="build/native/include"/>

@@ -39,7 +39,8 @@ namespace winrt::UWPExample::implementation
             {L"GroupBoxPage", winrt::xaml_typename<UWPExample::GroupBoxPage>()},
             {L"CharmBarPage", winrt::xaml_typename<UWPExample::CharmBarPage>()},
             {L"SettingsCardPage", winrt::xaml_typename<UWPExample::SettingsCardPage>()},
-            {L"SettingsExpanderPage", winrt::xaml_typename<UWPExample::SettingsExpanderPage>()}
+            {L"SettingsExpanderPage", winrt::xaml_typename<UWPExample::SettingsExpanderPage>()},
+            {L"DependentValuePage", winrt::xaml_typename<UWPExample::DependentValuePage>()}
         };
     };
 }

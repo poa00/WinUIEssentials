@@ -206,7 +206,6 @@
     <ClInclude Include="include\BadgeGlyphs.hpp" />
     <ClInclude Include="include\Glyphs.hpp" />
     <ClInclude Include="include\PropertyChangeHelper.hpp" />
-    <ClInclude Include="include\Taskbar.h" />
     <ClInclude Include="include\TemplateControlHelper.hpp" />
     <ClInclude Include="include\ToastBuilder.hpp" />
     <ClInclude Include="include\ToastTemplates.hpp" />
@@ -292,7 +291,6 @@
       <DependentUpon>GroupBox.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
-    <ClCompile Include="include\Taskbar.cpp" />
     <ClCompile Include="include\WindowHelper.cpp" />
     <ClCompile Include="NegateBoolConverter.cpp">
       <DependentUpon>NegateBoolConverter.idl</DependentUpon>

@@ -38,6 +38,7 @@ namespace winrt::UWPPackage::implementation
 	}
 
 	void IsNullOrEmptyStateTrigger::onValuePropertyChanged(winrt::Windows::UI::Xaml::DependencyObject d, winrt::Windows::UI::Xaml::DependencyPropertyChangedEventArgs const e)
+
 	{
 		winrt::get_self<IsNullOrEmptyStateTrigger>(d.as<UWPPackage::IsNullOrEmptyStateTrigger>())->updateTrigger();
 	}

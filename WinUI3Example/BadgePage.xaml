@@ -9,6 +9,23 @@
     mc:Ignorable="d">
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
+        <ComboBox PlaceholderText="Select badge" SelectionChanged="ComboBox_SelectionChanged" Header="Glyph badge:">
+            <x:String>none</x:String>
+            <x:String>activity</x:String>
+            <x:String>alarm</x:String>
+            <x:String>alert</x:String>
+            <x:String>attention</x:String>
+            <x:String>available</x:String>
+            <x:String>away</x:String>
+            <x:String>busy</x:String>
+            <x:String>error</x:String>
+            <x:String>newMessage</x:String>
+            <x:String>paused</x:String>
+            <x:String>playing</x:String>
+            <x:String>unavailable</x:String>
+        </ComboBox>
+
+        <TextBox x:Name="NumberValue" Header="Number badge:" Width="100"/>
+        <Button Click="Button_Click">Set</Button>
     </StackPanel>
 </Page>

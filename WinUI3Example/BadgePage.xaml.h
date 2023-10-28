@@ -9,12 +9,10 @@ namespace winrt::WinUI3Example::implementation
 {
     struct BadgePage : BadgePageT<BadgePage>
     {
-        BadgePage();
+        BadgePage() = default;
 
-        int32_t MyProperty();
-        void MyProperty(int32_t value);
-
-        void myButton_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args);
+        void ComboBox_SelectionChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& e);
+        void Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e);
     };
 }
 

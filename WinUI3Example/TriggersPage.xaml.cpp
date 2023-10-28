@@ -20,18 +20,20 @@ namespace winrt::WinUI3Example::implementation
         InitializeComponent();
     }
 
-    int32_t TriggersPage::MyProperty()
-    {
-        throw hresult_not_implemented();
-    }
+	void TriggersPage::AddButton_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
+	{
+		if (OurList())
+		{
+			OurList().Items().Append(winrt::box_value(L"Item"));
+		}
+	}
 
-    void TriggersPage::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
 
-    void TriggersPage::myButton_Click(IInspectable const&, RoutedEventArgs const&)
-    {
-        myButton().Content(box_value(L"Clicked"));
-    }
+	void TriggersPage::RemoveButton_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
+	{
+		if (OurList())
+		{
+			OurList().Items().RemoveAt(0);
+		}
+	}
 }

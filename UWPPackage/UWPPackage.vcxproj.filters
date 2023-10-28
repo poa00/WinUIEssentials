@@ -29,7 +29,6 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
-    <ClCompile Include="include\Taskbar.cpp" />
     <ClCompile Include="include\WindowHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -53,9 +52,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\BadgeGlyphs.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Taskbar.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\WindowHelper.hpp">

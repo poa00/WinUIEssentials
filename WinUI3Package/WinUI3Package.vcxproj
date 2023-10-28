@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.WindowsAppSDK.1.3.230602002\build\native\Microsoft.WindowsAppSDK.props" Condition="Exists('..\packages\Microsoft.WindowsAppSDK.1.3.230602002\build\native\Microsoft.WindowsAppSDK.props')" />
   <Import Project="..\packages\Microsoft.Windows.SDK.BuildTools.10.0.22621.755\build\Microsoft.Windows.SDK.BuildTools.props" Condition="Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.22621.755\build\Microsoft.Windows.SDK.BuildTools.props')" />
@@ -91,7 +91,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
     <ClCompile>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BuildWinUIEssential;_DEBUG;_WINRT_DLL;WIN32_LEAN_AND_MEAN;WINRT_LEAN_AND_MEAN;_WINDLL;_UNICODE;UNICODE;__WRL_NO_DEFAULT_LIB__</PreprocessorDefinitions>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">stdcpp20</LanguageStandard>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp20</LanguageStandard>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp20</LanguageStandard>
@@ -108,7 +108,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BuildWinUIEssential;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">stdcpp20</LanguageStandard>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdcpp20</LanguageStandard>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp20</LanguageStandard>
@@ -148,7 +148,24 @@
       <DependentUpon>CursorController.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="FontIconExtension.h">
+      <DependentUpon>FontIconExtension.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="GroupBox.h">
+      <DependentUpon>GroupBox.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="include\BadgeGlyphs.hpp" />
+    <ClInclude Include="include\DependentValue.h">
+      <DependentUpon>include\DependentValue.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="include\Export.h" />
     <ClInclude Include="include\Glyphs.hpp" />
+    <ClInclude Include="include\PropertyChangeHelper.hpp" />
+    <ClInclude Include="include\Taskbar.hpp" />
+    <ClInclude Include="include\TemplateControlHelper.hpp" />
     <ClInclude Include="include\ToastBuilder.hpp" />
     <ClInclude Include="include\ToastTemplates.hpp" />
     <ClInclude Include="IsEqualStateTrigger.h">
@@ -173,6 +190,18 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="ReverseConverterBase.hpp" />
+    <ClInclude Include="SettingsCard.h">
+      <DependentUpon>SettingsCard.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="SettingsExpander.h">
+      <DependentUpon>SettingsExpander.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="SettingsExpanderItemStyleSelector.h">
+      <DependentUpon>SettingsExpanderItemStyleSelector.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="StringToBoolConverter.h">
       <DependentUpon>StringToBoolConverter.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -199,6 +228,18 @@
       <DependentUpon>CursorController.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="FontIconExtension.cpp">
+      <DependentUpon>FontIconExtension.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="GroupBox.cpp">
+      <DependentUpon>GroupBox.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="include\DependentValue.cpp">
+      <DependentUpon>include\DependentValue.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="IsEqualStateTrigger.cpp">
       <DependentUpon>IsEqualStateTrigger.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -221,6 +262,18 @@
     </ClCompile>
     <ClCompile Include="ReferenceToBoolConverter.cpp">
       <DependentUpon>ReferenceToBoolConverter.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="SettingsCard.cpp">
+      <DependentUpon>SettingsCard.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="SettingsExpander.cpp">
+      <DependentUpon>SettingsExpander.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="SettingsExpanderItemStyleSelector.cpp">
+      <DependentUpon>SettingsExpanderItemStyleSelector.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="StringToBoolConverter.cpp">
@@ -249,6 +302,15 @@
     <Midl Include="CursorController.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="FontIconExtension.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="GroupBox.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="include\DependentValue.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="IsEqualStateTrigger.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -264,9 +326,23 @@
     <Midl Include="ReferenceToBoolConverter.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="SettingsCard.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="SettingsExpander.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="SettingsExpanderItemStyleSelector.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="StringToBoolConverter.idl">
       <SubType>Designer</SubType>
     </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="GroupBox_Resource.xaml" />
+    <Page Include="SettingsCard_Resource.xaml" />
+    <Page Include="SettingsExpander_Resource.xaml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

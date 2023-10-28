@@ -6,6 +6,7 @@
 #if __has_include("SettingsExpanderPage.g.cpp")
 #include "SettingsExpanderPage.g.cpp"
 #endif
+#include <winrt/Windows.System.h>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -20,18 +21,16 @@ namespace winrt::WinUI3Example::implementation
         InitializeComponent();
     }
 
-    int32_t SettingsExpanderPage::MyProperty()
+    winrt::Windows::Foundation::Collections::IVector<winrt::Windows::Foundation::IInspectable> SettingsExpanderPage::MyDataSet()
     {
-        throw hresult_not_implemented();
+        auto copy = m_myDataSet;
+        return winrt::single_threaded_vector(std::move(copy));
     }
 
-    void SettingsExpanderPage::MyProperty(int32_t /* value */)
+    void SettingsExpanderPage::Button_Click(
+        winrt::Windows::Foundation::IInspectable const& sender,
+        winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
     {
-        throw hresult_not_implemented();
-    }
-
-    void SettingsExpanderPage::myButton_Click(IInspectable const&, RoutedEventArgs const&)
-    {
-        myButton().Content(box_value(L"Clicked"));
+        winrt::Windows::System::Launcher::LaunchUriAsync(winrt::Windows::Foundation::Uri{ L"https://microsoft.com/" });
     }
 }

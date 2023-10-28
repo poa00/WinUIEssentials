@@ -47,6 +47,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |SettingsExpander | :white_check_mark: | :white_check_mark: | Control
 |FontIconExtension | :white_check_mark: | :white_check_mark: | WinRT component
 |DependentValue| :white_check_mark: | :white_check_mark: | WinRT component
+|Taskbar| :x: | :white_check_mark: | Header only
 
 *means additional settings required, see the sections for info
 
@@ -308,4 +309,36 @@ Define keyboard shortcuts with `SettingsPaneEx.KeyboardAccelerator` property.
 </essential:SettingsPaneEx.KeyboardAccelerator>
 ```
 ## DependentValue ---*namespace `DependentValue`*
-A wrapper around a `double` which you can target to with a `Storyboard` `DoubleAnimation`, and get value out of it.
+A wrapper around a `double` which you can target to with a `Storyboard` and `DoubleAnimation`, and get value out of it. Value is accessed by `.Value` property, which is a `DependencyProperty`, so you can do a `OneWay` binding to it or listen for value change notification.
+
+> [!NOTE]
+> Remember to set `EnableDependentAnimation="True"` to make it work!
+
+Usage:
+```xml
+<Page.Resources>
+    <essential:DependentValue x:Name="MyDoubleValue"/>
+    <Storyboard x:Name="DoubleValueAnimation">
+        <DoubleAnimation  
+            From="0"
+            To="100"
+            Storyboard.TargetName="MyDoubleValue"
+            Storyboard.TargetProperty="Value"
+            EnableDependentAnimation="True"/>
+    </Storyboard>
+</Page.Resources>
+
+<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Button Click="ClickHandler">Click to start storyboard</Button>
+    <TextBlock Text="{x:Bind MyDoubleValue.Value, Mode=OneWay}"/>
+</StackPanel>
+```
+
+## Taskbar --- *namespace `Taskbar`*
+Helper for setting taskbar status and progress. Usage:
+```cpp
+//Set taskbar status
+Taskbar::SetProgressState(hwnd, Taskbar::ProgressState::Normal);
+//Set taskbar progress value 
+Taskbar::SetProgressValue(hwnd, 50); //a third optional parameter for total, default -> 100
+```
