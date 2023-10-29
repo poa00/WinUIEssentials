@@ -1,3 +1,4 @@
+#pragma once
 #include <winrt/Windows.UI.Notifications.h>
 #include <winrt/Windows.Data.Xml.Dom.h>
 #include <format>

@@ -35,6 +35,9 @@
     <Page Include="DependentValuePage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\GroupBox_Resource.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsCard_Resource.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

@@ -69,6 +69,8 @@ namespace winrt::UWPExample::implementation
 	void ToastPage::ToastBuilderBtn_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 	{
 		using namespace ToastBuilder;
+
+		auto const audio = getAudioSelection();
 		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
 			.Show(
 				Toast().Duration(Long).Scenario(Reminder).UseButtonStyle(true)
@@ -77,6 +79,7 @@ namespace winrt::UWPExample::implementation
 					(
 						Binding().Template(L"ToastText04")
 						(
+
 							Text().Id(1)(L"headline"),
 							Text().Id(2)(L"body text1"),
 							Text().Id(3)(L"body text2")
@@ -91,8 +94,15 @@ namespace winrt::UWPExample::implementation
 							dialog.Content(winrt::box_value(L"Accept clicked"));
 							dialog.ShowAsync();
 						})
-					)
+					),
+					Audio().Src(audio.data()).Loop(LoopingToggle().IsOn())
 				)
 			);
+	}
+	winrt::hstring ToastPage::getAudioSelection()
+	{
+		if (auto selectedItem = AudioComboBox().SelectedItem())
+			return winrt::unbox_value<winrt::hstring>(selectedItem).data();
+		return {};
 	}
 }

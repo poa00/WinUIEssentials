@@ -1,3 +1,4 @@
+#pragma once
 #include <optional>
 #include <type_traits>
 #include <vector>
@@ -699,6 +700,39 @@ namespace ToastBuilder
         {
             return internals::MakeElement(L"audio", root, m_src, m_loop, m_silent);
         }
+
+        //Built-in non-looping sound, set Loop to false or leave it as default
+        //https://learn.microsoft.com/en-us/uwp/schemas/tiles/toastschema/element-audio
+        constexpr static auto Default = L"ms-winsoundevent:Notification.Default";
+        constexpr static auto IM = L"ms-winsoundevent:Notification.IM";
+        constexpr static auto Mail = L"ms-winsoundevent:Notification.Mail";
+        constexpr static auto Reminder = L"ms-winsoundevent:Notification.Reminder";
+        constexpr static auto SMS = L"ms-winsoundevent:Notification.SMS";
+
+        //Built-in looping sound, set Loop to true
+        struct Looping
+        {
+            constexpr static auto Alarm = L"ms-winsoundevent:Notification.Alarm";
+            constexpr static auto Alarm2 = L"ms-winsoundevent:Notification.Looping.Alarm2";
+            constexpr static auto Alarm3 = L"ms-winsoundevent:Notification.Looping.Alarm3";
+            constexpr static auto Alarm4 = L"ms-winsoundevent:Notification.Looping.Alarm4";
+            constexpr static auto Alarm5 = L"ms-winsoundevent:Notification.Looping.Alarm5";
+            constexpr static auto Alarm6 = L"ms-winsoundevent:Notification.Looping.Alarm6";
+            constexpr static auto Alarm7 = L"ms-winsoundevent:Notification.Looping.Alarm7";
+            constexpr static auto Alarm8 = L"ms-winsoundevent:Notification.Looping.Alarm8";
+            constexpr static auto Alarm9 = L"ms-winsoundevent:Notification.Looping.Alarm9";
+            constexpr static auto Alarm10 = L"ms-winsoundevent:Notification.Looping.Alarm10";
+            constexpr static auto Call = L"ms-winsoundevent:Notification.Looping.Call";
+            constexpr static auto Call2 = L"ms-winsoundevent:Notification.Looping.Call2";
+            constexpr static auto Call3 = L"ms-winsoundevent:Notification.Looping.Call3";
+            constexpr static auto Call4 = L"ms-winsoundevent:Notification.Looping.Call4";
+            constexpr static auto Call5 = L"ms-winsoundevent:Notification.Looping.Call5";
+            constexpr static auto Call6 = L"ms-winsoundevent:Notification.Looping.Call6";
+            constexpr static auto Call7 = L"ms-winsoundevent:Notification.Looping.Call7";
+            constexpr static auto Call8 = L"ms-winsoundevent:Notification.Looping.Call8";
+            constexpr static auto Call9 = L"ms-winsoundevent:Notification.Looping.Call9";
+            constexpr static auto Call10 = L"ms-winsoundevent:Notification.Looping.Call10";
+        };
     };
 
     class Commands : public IToastNode<Toast>

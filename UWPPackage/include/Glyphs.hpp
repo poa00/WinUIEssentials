@@ -1,3 +1,4 @@
+#pragma once
 namespace Glyphs
 {
 	constexpr static auto GlobalNavButton = L"\uE700";
