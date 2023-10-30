@@ -1,7 +1,6 @@
 #pragma once
 
 #include <winrt/base.h>
-#include "Export.h"
 #include <ShObjIdl_core.h>
 
 struct ITaskbarList3;
@@ -10,7 +9,7 @@ struct ITaskbarList3;
 /**
  * @brief Wrapper for controlling taskbar icon progress
  */
-class DLLEXPORT Taskbar
+class Taskbar
 {
 	static ITaskbarList3* getPtr()
 	{

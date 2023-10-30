@@ -1,9 +1,42 @@
+#pragma once
 #include <optional>
 #include <type_traits>
 #include <vector>
+#include <string_view>
+#include <winrt/Windows.Data.Xml.Dom.h>
+#include <winrt/Windows.UI.Notifications.h>
+#include <winrt/Windows.ApplicationModel.Activation.h>
+#include <unordered_map>
+#include <functional>
 
 namespace ToastBuilder
 {
+    class ToastNotificationHandler
+    {
+        std::unordered_map<winrt::hstring, std::function<void(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs)>> m_actionHandler;
+    public:
+        static ToastNotificationHandler& GetInstance()
+        {
+            static ToastNotificationHandler s_instance;
+            return s_instance;
+        }
+
+        template<typename Handler>
+        void HandleAction(winrt::hstring arg, Handler&& handler)
+        {
+            m_actionHandler.emplace(arg, std::forward<Handler>(handler));
+        }
+
+        void OnActivated(winrt::Windows::ApplicationModel::Activation::IActivatedEventArgs const& args)
+        {
+            if (args.Kind() != winrt::Windows::ApplicationModel::Activation::ActivationKind::ToastNotification)
+                return;
+
+            auto toastArgs = args.as<winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs>();
+            if (auto iter = m_actionHandler.find(toastArgs.Argument()); iter != m_actionHandler.end())
+                iter->second(toastArgs);
+        }
+    };
 #pragma region ForwardDeclaration
 	class Toast;
 	class Visual;
@@ -242,6 +275,25 @@ namespace ToastBuilder
         }
         return element;
     }
+
+    inline winrt::Windows::Data::Xml::Dom::XmlElement& operator<<(winrt::Windows::Data::Xml::Dom::XmlElement& element, PropertyValue<ToastDuration> const& value)
+    {
+        if (value)
+        {
+            switch (*value.value)
+            {
+            case ToastDuration::Long:
+                element.SetAttribute(value.name, L"long");
+                break;
+            case ToastDuration::Short:
+                element.SetAttribute(value.name, L"short");
+                break;
+            default:
+                break;
+            }
+        }
+        return element;
+    }
 #pragma endregion
 
     template<typename Parent>
@@ -318,7 +370,10 @@ namespace ToastBuilder
 
             toastElement
                 << m_launch
-                << m_displayTimeStamp;
+                << m_duration
+                << m_displayTimeStamp
+                << m_scenario
+                << m_useButtonStyle;
 
             m_doc.AppendChild(toastElement);
 
@@ -645,6 +700,39 @@ namespace ToastBuilder
         {
             return internals::MakeElement(L"audio", root, m_src, m_loop, m_silent);
         }
+
+        //Built-in non-looping sound, set Loop to false or leave it as default
+        //https://learn.microsoft.com/en-us/uwp/schemas/tiles/toastschema/element-audio
+        constexpr static auto Default = L"ms-winsoundevent:Notification.Default";
+        constexpr static auto IM = L"ms-winsoundevent:Notification.IM";
+        constexpr static auto Mail = L"ms-winsoundevent:Notification.Mail";
+        constexpr static auto Reminder = L"ms-winsoundevent:Notification.Reminder";
+        constexpr static auto SMS = L"ms-winsoundevent:Notification.SMS";
+
+        //Built-in looping sound, set Loop to true
+        struct Looping
+        {
+            constexpr static auto Alarm = L"ms-winsoundevent:Notification.Alarm";
+            constexpr static auto Alarm2 = L"ms-winsoundevent:Notification.Looping.Alarm2";
+            constexpr static auto Alarm3 = L"ms-winsoundevent:Notification.Looping.Alarm3";
+            constexpr static auto Alarm4 = L"ms-winsoundevent:Notification.Looping.Alarm4";
+            constexpr static auto Alarm5 = L"ms-winsoundevent:Notification.Looping.Alarm5";
+            constexpr static auto Alarm6 = L"ms-winsoundevent:Notification.Looping.Alarm6";
+            constexpr static auto Alarm7 = L"ms-winsoundevent:Notification.Looping.Alarm7";
+            constexpr static auto Alarm8 = L"ms-winsoundevent:Notification.Looping.Alarm8";
+            constexpr static auto Alarm9 = L"ms-winsoundevent:Notification.Looping.Alarm9";
+            constexpr static auto Alarm10 = L"ms-winsoundevent:Notification.Looping.Alarm10";
+            constexpr static auto Call = L"ms-winsoundevent:Notification.Looping.Call";
+            constexpr static auto Call2 = L"ms-winsoundevent:Notification.Looping.Call2";
+            constexpr static auto Call3 = L"ms-winsoundevent:Notification.Looping.Call3";
+            constexpr static auto Call4 = L"ms-winsoundevent:Notification.Looping.Call4";
+            constexpr static auto Call5 = L"ms-winsoundevent:Notification.Looping.Call5";
+            constexpr static auto Call6 = L"ms-winsoundevent:Notification.Looping.Call6";
+            constexpr static auto Call7 = L"ms-winsoundevent:Notification.Looping.Call7";
+            constexpr static auto Call8 = L"ms-winsoundevent:Notification.Looping.Call8";
+            constexpr static auto Call9 = L"ms-winsoundevent:Notification.Looping.Call9";
+            constexpr static auto Call10 = L"ms-winsoundevent:Notification.Looping.Call10";
+        };
     };
 
     class Commands : public IToastNode<Toast>
@@ -720,6 +808,7 @@ namespace ToastBuilder
         PropertyValue<std::wstring> m_hintInputId{ L"hint-inputid" };
         PropertyValue<std::wstring> m_hintButtonStyle{ L"hint-buttonStyle" };
         PropertyValue<std::wstring> m_hintToolTip{ L"hint-toolTip" };
+        std::function<void(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs)> m_handler;
     public:
         Action& Content(std::wstring content)
         {
@@ -769,6 +858,13 @@ namespace ToastBuilder
             return *this;
         }
 
+        template<typename Handler>
+        Action& Click(Handler&& handler)
+        {
+            m_handler = std::forward<Handler>(handler);
+            return *this;
+        }
+
         winrt::Windows::Data::Xml::Dom::XmlElement Get(winrt::Windows::Data::Xml::Dom::XmlDocument& root) override
         {
             return internals::MakeElement(
@@ -783,6 +879,11 @@ namespace ToastBuilder
                 m_hintButtonStyle,
                 m_hintToolTip
             );
+        }
+
+        ~Action()
+        {
+            ToastNotificationHandler::GetInstance().HandleAction(m_arguments.value->data(), std::move(m_handler));
         }
     };
 
@@ -882,4 +983,5 @@ namespace ToastBuilder
             return internals::MakeElement(L"header", root, m_id, m_title, m_arguments, m_activationType);
         }
     };
+
 }
