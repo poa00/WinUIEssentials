@@ -96,6 +96,7 @@
                 <ResourceDictionary Source="ms-appx:///GroupBox_Resource.xaml"/>
                 <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
                 <ResourceDictionary Source="ms-appx:///SettingsExpander_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Glyphs.xaml"/>
                 <!-- Other app resources here -->
 
                 <ResourceDictionary>
@@ -196,8 +197,6 @@
                     </Style>
                 </ResourceDictionary>
             </controls:XamlControlsResources.MergedDictionaries>
-
-            
         </controls:XamlControlsResources>
     </Application.Resources>
 </Application>

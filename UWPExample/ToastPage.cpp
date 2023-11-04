@@ -79,7 +79,6 @@ namespace winrt::UWPExample::implementation
 					(
 						Binding().Template(L"ToastText04")
 						(
-
 							Text().Id(1)(L"headline"),
 							Text().Id(2)(L"body text1"),
 							Text().Id(3)(L"body text2")
@@ -88,11 +87,16 @@ namespace winrt::UWPExample::implementation
 					Actions()
 					(
 						Action().Content(L"Accept").Arguments(L"accept")
-						.Click([](auto)
+						.Click([this](winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs args)
 						{
-							winrt::Windows::UI::Xaml::Controls::ContentDialog dialog;
-							dialog.Content(winrt::box_value(L"Accept clicked"));
-							dialog.ShowAsync();
+							ArgumentText().Text(args.Argument());
+							ActivationDialog().ShowAsync();
+						}),
+						Action().Content(L"Cancel").Arguments(L"cancel")
+						.Click([this](winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs args)
+						{
+							ArgumentText().Text(args.Argument());
+							ActivationDialog().ShowAsync();
 						})
 					),
 					Audio().Src(audio.data()).Loop(LoopingToggle().IsOn())

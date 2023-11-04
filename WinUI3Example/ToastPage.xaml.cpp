@@ -7,7 +7,6 @@
 #include "ToastPage.g.cpp"
 #endif
 #include <ToastTemplates.hpp>
-#include <ToastBuilder.hpp>
 #include <winrt/Microsoft.Windows.AppNotifications.Builder.h>
 
 using namespace winrt;
@@ -80,6 +79,12 @@ namespace winrt::WinUI3Example::implementation
 
 	void ToastPage::ToastBuilderBtn_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
 	{
+		//winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationBuilder builder;
+		//winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationButton button{ L"Content" };
+		//button.AddArgument(L"arg1", L"value1");
+		//button.AddArgument(L"arg2", L"value2");
+		//builder.AddButton(button);
+		//auto xml = builder.BuildNotification().Payload();
 		using namespace ToastBuilder;
 
 		auto const audio = getAudioSelection();
@@ -91,24 +96,51 @@ namespace winrt::WinUI3Example::implementation
 					(
 						Binding().Template(L"ToastText04")
 						(
-
 							Text().Id(1)(L"headline"),
 							Text().Id(2)(L"body text1"),
 							Text().Id(3)(L"body text2")
-							)
-						),
+						)
+					),
 					Actions()
 					(
-						Action().Content(L"Accept").Arguments(L"accept")
+						Action().Content(L"Single Argument").Arguments(L"singleArgument")
+						.Click([this](winrt::Microsoft::Windows::AppNotifications::AppNotificationActivatedEventArgs const& args)
+						{
+							DispatcherQueue().TryEnqueue([this, args] {
+								showArgumentToDialog(args);
+							});
+						}),
+						Action().Content(L"Cancel").Arguments(L"arg1=value1;arg2=value2")
+						.Click([this](winrt::Microsoft::Windows::AppNotifications::AppNotificationActivatedEventArgs const& args)
+						{
+							DispatcherQueue().TryEnqueue([this, args] {
+								showArgumentToDialog(args);
+							});
+						})
 					),
 					Audio().Src(audio.data()).Loop(LoopingToggle().IsOn())
 				)
 			);
 	}
+
 	winrt::hstring ToastPage::getAudioSelection()
 	{
 		if (auto selectedItem = AudioComboBox().SelectedItem())
 			return winrt::unbox_value<winrt::hstring>(selectedItem).data();
 		return {};
+	}
+
+	void ToastPage::showArgumentToDialog(winrt::Microsoft::Windows::AppNotifications::AppNotificationActivatedEventArgs const& args)
+	{
+		ArgumentText().Text(args.Argument());
+
+		auto items = ArgumentsList().Items();
+		items.Clear();
+		for (auto pair : args.Arguments())
+		{
+			items.Append(winrt::box_value(std::format(L"arg: {}, value: {}", pair.Key(), pair.Value())));
+		}
+
+		ActivationDialog().ShowAsync();
 	}
 }

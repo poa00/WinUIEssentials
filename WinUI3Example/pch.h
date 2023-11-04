@@ -30,3 +30,4 @@
 #include <winrt/WinUI3Package.h>
 #include <winrt/Microsoft.UI.Xaml.Media.Animation.h>
 #include <winrt/Microsoft.UI.Xaml.Controls.AnimatedVisuals.h>
+#include <winrt/Microsoft.UI.Xaml.Documents.h>

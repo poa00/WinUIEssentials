@@ -128,5 +128,8 @@
     <Page Include="SettingsExpander_Resource.xaml">
       <Filter>Controls\SettingsExpander</Filter>
     </Page>
+    <Page Include="Glyphs.xaml">
+      <Filter>include</Filter>
+    </Page>
   </ItemGroup>
 </Project>

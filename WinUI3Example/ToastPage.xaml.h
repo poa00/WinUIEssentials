@@ -4,6 +4,7 @@
 #pragma once
 
 #include "ToastPage.g.h"
+#include <ToastBuilder.hpp>
 
 namespace winrt::WinUI3Example::implementation
 {
@@ -23,6 +24,7 @@ namespace winrt::WinUI3Example::implementation
 
     private:
         winrt::hstring getAudioSelection();
+        void showArgumentToDialog(winrt::Microsoft::Windows::AppNotifications::AppNotificationActivatedEventArgs const& args);
     };
 }
 

@@ -11,6 +11,35 @@
 
 namespace ToastBuilder
 {
+    /**
+     * @brief A class for handling toast notification activator, where instances of `Action` automatically add handlers to.
+     * @details See documentation of `class Action` to see how to add a handler. Then you can either handle toast activation by inheriting your `App` class from this class 
+       (if you are only handling toast activation event), then add a `using` statement, like this
+     * @code{.cpp}
+     *  //App.h
+     *  struct App : AppT<App>, ToastBuilder::ToastNotificationHandler
+     *  {
+     *      //...
+     *      using ToastBuilder::ToastNotificationHandler::OnActivated;
+     *  };
+     * @endcode
+     * 
+     * Or you can have other handlers, then you check whether the activation is handled by this toast notification handler
+     * @code{.cpp}
+     *  struct App : AppT<App>
+     *  {
+     *      void OnActivated(winrt::Windows::ApplicationModel::Activation::IActivatedEventArgs const& args)
+            {
+                if (ToastNotificationHandler::OnActivated(args))
+                    return;
+                else
+                {
+                    //pass the args to other handlers
+                }
+            }
+     *  };
+     * @endcode
+    */
     class ToastNotificationHandler
     {
         std::unordered_map<winrt::hstring, std::function<void(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs)>> m_actionHandler;
@@ -21,90 +50,105 @@ namespace ToastBuilder
             return s_instance;
         }
 
+        /**
+         * @brief Called by the destructor of `class Action`, so it automatically add a handler if there is one.
+         * @tparam Handler Should be in the form of `void(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs)`
+         * @param arg Argument of `Action`, used as a unique id to the ToastNotificationActivatedEventArgs
+         * @param handler The handler
+        */
         template<typename Handler>
         void HandleAction(winrt::hstring arg, Handler&& handler)
         {
             m_actionHandler.emplace(arg, std::forward<Handler>(handler));
         }
 
-        void OnActivated(winrt::Windows::ApplicationModel::Activation::IActivatedEventArgs const& args)
+        /**
+         * @brief See documentation of this class
+         * @retval true if the Activation is handled
+         * @retval false if the Activation is not handled 
+        */
+        static bool OnActivated(winrt::Windows::ApplicationModel::Activation::IActivatedEventArgs const& args)
         {
             if (args.Kind() != winrt::Windows::ApplicationModel::Activation::ActivationKind::ToastNotification)
-                return;
+                return false;
 
             auto toastArgs = args.as<winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs>();
-            if (auto iter = m_actionHandler.find(toastArgs.Argument()); iter != m_actionHandler.end())
+            if (auto iter = GetInstance().m_actionHandler.find(toastArgs.Argument()); iter != GetInstance().m_actionHandler.end())
+            {
                 iter->second(toastArgs);
+                return true;
+            }
+            return false;
         }
     };
 #pragma region ForwardDeclaration
-	class Toast;
-	class Visual;
-	class Binding;
-	class Image;
-	class Text;
-	class Progress;
-	class Group;
-	class Subgroup;
-	class Audio;
-	class Commands;
-	class Command;
-	class Actions;
-	class Action;
-	class Input;
-	class Selection;
-	class Header;
+    class Toast;
+    class Visual;
+    class Binding;
+    class Image;
+    class Text;
+    class Progress;
+    class Group;
+    class Subgroup;
+    class Audio;
+    class Commands;
+    class Command;
+    class Actions;
+    class Action;
+    class Input;
+    class Selection;
+    class Header;
 #pragma endregion
 
 #pragma region Enums
-	enum Placement
-	{
-		Attribution,
-		ContextMenu,
-		AppLogoOverride,
-		Hero
-	};
-	enum ToastDuration
-	{
-		Long,
-		Short
-	};
-	enum ToastScenario
-	{
-		Reminder,
-		Alarm,
-		IncomingCall,
-		Urgent
-	};
-	enum Crop
-	{
-		Circle
-	};
-	enum CommandId
-	{
-		Snooze,
-		Dismiss,
-		Video,
-		Voice,
-		Decline,
-	};
-	enum ActivationType
-	{
-		Foreground,
-		Background,
-		Protocol
-	};
+    enum Placement
+    {
+        Attribution,
+        ContextMenu,
+        AppLogoOverride,
+        Hero
+    };
+    enum ToastDuration
+    {
+        Long,
+        Short
+    };
+    enum ToastScenario
+    {
+        Reminder,
+        Alarm,
+        IncomingCall,
+        Urgent
+    };
+    enum Crop
+    {
+        Circle
+    };
+    enum CommandId
+    {
+        Snooze,
+        Dismiss,
+        Video,
+        Voice,
+        Decline,
+    };
+    enum ActivationType
+    {
+        Foreground,
+        Background,
+        Protocol
+    };
 
-	enum ButtonStyle
-	{
-		Success,
-		Critical
-	};
-	enum InputType
-	{
-		text,
-		Selection
-	};
+    enum ButtonStyle
+    {
+        Success,
+        Critical
+    };
+    enum InputType
+    {
+        text,
+        Selection
+    };
 #pragma endregion
 
     template<typename ValueType>
@@ -296,6 +340,11 @@ namespace ToastBuilder
     }
 #pragma endregion
 
+    /**
+     * @brief Base class for a toast node, child class need to override the `Get()` method which should create its `XmlElement` representing this node
+     * @tparam Parent For limiting child type. That is the `Parent` type only accepts `IToastNode<Parent>` child in its `operator()(auto&&...)`
+     *      
+    */
     template<typename Parent>
     struct IToastNode
     {
@@ -304,6 +353,13 @@ namespace ToastBuilder
 
     namespace internals
     {
+        /**
+         * @brief Create `XmlElement` for node that does not have children
+         * @param name Name of this node
+         * @param root The root `XmlDocument`
+         * @param ...properties Properties of this node
+         * @return XML representation of this toast node
+        */
         winrt::Windows::Data::Xml::Dom::XmlElement MakeElement(std::wstring_view name, winrt::Windows::Data::Xml::Dom::XmlDocument& root, auto&&... properties)
         {
             auto element = root.CreateElement(name);
@@ -311,7 +367,15 @@ namespace ToastBuilder
             return element;
         }
 
-
+        /**
+         * @brief Create `XmlElement` for node that does have children
+         * @tparam Node Type of child nodes
+         * @param name Name of this node
+         * @param root The root `XmlDocument`
+         * @param nodes vector of child nodes
+         * @param ...properties Properties of this node
+         * @return XML representation of this toast nodes with all its child nodes
+        */
         template<typename Node>
         winrt::Windows::Data::Xml::Dom::XmlElement MakeElement(std::wstring_view name, winrt::Windows::Data::Xml::Dom::XmlDocument& root, std::vector<Node*>& nodes, auto&&... properties)
         {
@@ -322,6 +386,7 @@ namespace ToastBuilder
         }
     }
 
+#pragma region NodesType
     class Toast
     {
         PropertyValue<std::wstring> m_launch{ L"launch" };
@@ -674,13 +739,14 @@ namespace ToastBuilder
 
     class Audio : public IToastNode<Toast>
     {
-        PropertyValue<std::wstring> m_src{ L"src" };
+        PropertyValue<std::wstring> m_src{ L"src", L"ms-winsoundevent:Notification.Default" };
         PropertyValue<bool> m_loop{ L"loop" };
         PropertyValue<bool> m_silent{ L"silent" };
     public:
         Audio& Src(std::wstring src)
         {
-            m_src = src;
+            if (!src.empty())
+                m_src = src;
             return *this;
         }
 
@@ -858,6 +924,12 @@ namespace ToastBuilder
             return *this;
         }
 
+        /**
+         * @brief Handles the click action
+         * @tparam Handler Type of the handler function, should be `void(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs)`
+         * @param handler The handler, should be a function that convertible to `void(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs)`
+         * @see Documentation of `class ToastActivationHandler`
+        */
         template<typename Handler>
         Action& Click(Handler&& handler)
         {
@@ -983,5 +1055,5 @@ namespace ToastBuilder
             return internals::MakeElement(L"header", root, m_id, m_title, m_arguments, m_activationType);
         }
     };
-
+#pragma endregion
 }

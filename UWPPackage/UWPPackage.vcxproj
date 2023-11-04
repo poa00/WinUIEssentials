@@ -409,6 +409,7 @@
     </Midl>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Glyphs.xaml" />
     <Page Include="GroupBox_Resource.xaml" />
     <Page Include="SettingsCard_Resource.xaml">
       <DeploymentContent>true</DeploymentContent>

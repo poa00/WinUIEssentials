@@ -41,7 +41,8 @@ namespace winrt::UWPExample::implementation
             {L"SettingsCardPage", winrt::xaml_typename<UWPExample::SettingsCardPage>()},
             {L"SettingsExpanderPage", winrt::xaml_typename<UWPExample::SettingsExpanderPage>()},
             {L"DependentValuePage", winrt::xaml_typename<UWPExample::DependentValuePage>()},
-            {L"MarqueeContainerPage", winrt::xaml_typename<UWPExample::MarqueeContainerPage>()}
+            {L"MarqueeContainerPage", winrt::xaml_typename<UWPExample::MarqueeContainerPage>()},
+            {L"GlyphsPage", winrt::xaml_typename<UWPExample::GlyphsPage>()}
         };
     };
 }

@@ -56,5 +56,11 @@
             </essential:SettingsExpander.Items>
         </essential:SettingsExpander>
 
+        <ContentDialog x:Name="ActivationDialog" PrimaryButtonText="OK">
+            <TextBlock>
+                <Run Text="Argument:" FontSize="20"/>
+                <Run x:Name="ArgumentText"/>
+            </TextBlock>
+        </ContentDialog>
     </StackPanel>
 </Page>

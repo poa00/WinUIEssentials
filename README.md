@@ -43,8 +43,8 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |ControlSizeTrigger | :white_check_mark: | :white_check_mark: | WinRT component
 |CharmBar | :white_check_mark: | :x: | WinRT component
 |GroupBox | :white_check_mark: | :white_check_mark: | Control
-|SettingsCard | :white_check_mark: | :white_check_mark: | Control
-|SettingsExpander | :white_check_mark: | :white_check_mark: | Control
+|SettingsCard | :white_check_mark: | :white_check_mark:* | Control
+|SettingsExpander | :white_check_mark: | :white_check_mark:* | Control
 |FontIconExtension | :white_check_mark: | :white_check_mark: | WinRT component
 |DependentValue| :white_check_mark: | :white_check_mark: | WinRT component
 |Taskbar| :x: | :white_check_mark: | Header only
@@ -170,6 +170,23 @@ Toast().Duration(Long).Scenario(Reminder).UseButtonStyle(true)
 </tr>
 <table>
 
+Optionally add a handler to `Action` so you can handle toast notification button click right on site. For more info, see the comment documentation.
+```cpp
+Actions()
+(
+	Action().Content(L"Accept").Arguments(L"accept")
+	.Click([this(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs args)
+	{
+        //Handle Accept button
+	}),
+	Action().Content(L"Cancel").Arguments(L"cancel")
+	.Click([this(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs args)
+	{
+        //Handle Cancel button
+	})
+)
+```
+
 ## Glphys --- *namespace `Glyphs`*
 Font glyphs value for Segoe MDL2 Assets fonts. Usage:
 ```cpp
@@ -256,10 +273,38 @@ See the same class in [Community Toolkit](https://github.com/CommunityToolkit/Wi
 
 ## SettingsCard --- *namespace `SettingsCard`*
 See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.
+Add this to `App.xaml`
+```xml
+<Application.Resources>
+    <controls:XamlControlsResources>
+        <controls:XamlControlsResources.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
+            ...
+        </controls:XamlControlsResources.MergedDictionaries>
+    </controls:XamlControlsResources>
+</Application.Resources>
+```
+> [!NOTE]
+> For WinUI3, add `#include #include <winrt/Microsoft.UI.Xaml.Controls.AnimatedVisuals.h>` to your `pch.h`
 
 ## SettingsExpander --- *namespace `SettingsExpander`*
 See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.
 ![](assets/settings-expander.png)
+Add this to `App.xaml`
+```xml
+<Application.Resources>
+    <controls:XamlControlsResources>
+        <controls:XamlControlsResources.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
+            <ResourceDictionary Source="ms-appx:///SettingsExpander_Resource.xaml"/>
+            ...
+        </controls:XamlControlsResources.MergedDictionaries>
+    </controls:XamlControlsResources>
+</Application.Resources>
+```
+
+> [!NOTE]
+> For WinUI3, add `#include #include <winrt/Microsoft.UI.Xaml.Controls.AnimatedVisuals.h>` to your `pch.h`
 
 ## CharmBar
 Installing this nuget will automatically add `Desktop Extension` to your UWP project, so  you can use the good-ol Windows 8 style charm bar. This package further simplifies it's usage by allowing you to directly define local and global settings, directly in XAML containing UI element.

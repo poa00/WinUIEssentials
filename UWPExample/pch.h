@@ -17,3 +17,4 @@
 #include <winrt/Windows.UI.Xaml.Shapes.h>
 #include <winrt/Windows.UI.Popups.h>
 #include <WinUIIncludes.hpp>
+#include <winrt/Windows.UI.Xaml.Documents.h>

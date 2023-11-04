@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Page Include="MainPage.xaml" />
-    <Page Include="ToastPage.xaml">
-      <Filter>Pages</Filter>
-    </Page>
     <Page Include="CursorControllerPage.xaml">
       <Filter>Pages</Filter>
     </Page>
@@ -39,6 +36,12 @@
     <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsCard_Resource.xaml" />
     <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml" />
     <Page Include="MarqueeContainerPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="ToastPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="GlyphsPage.xaml">
       <Filter>Pages</Filter>
     </Page>
   </ItemGroup>

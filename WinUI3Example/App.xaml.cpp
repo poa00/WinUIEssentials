@@ -59,14 +59,7 @@ namespace winrt::WinUI3Example::implementation
         window = make<MainWindow>();
         window.Activate();
         MainHwnd() = GetHWNDFromWindow(window);
-        auto manager = winrt::Microsoft::Windows::AppNotifications::AppNotificationManager::Default();
-        manager.NotificationInvoked(
-            [](auto sender, winrt::Microsoft::Windows::AppNotifications::AppNotificationActivatedEventArgs const& args)
-            {
-                OutputDebugString(args.Argument().data());
-            }
-        );
-        manager.Register();
+
 
     }
 }
