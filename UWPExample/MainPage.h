@@ -40,7 +40,8 @@ namespace winrt::UWPExample::implementation
             {L"CharmBarPage", winrt::xaml_typename<UWPExample::CharmBarPage>()},
             {L"SettingsCardPage", winrt::xaml_typename<UWPExample::SettingsCardPage>()},
             {L"SettingsExpanderPage", winrt::xaml_typename<UWPExample::SettingsExpanderPage>()},
-            {L"DependentValuePage", winrt::xaml_typename<UWPExample::DependentValuePage>()}
+            {L"DependentValuePage", winrt::xaml_typename<UWPExample::DependentValuePage>()},
+            {L"MarqueeContainerPage", winrt::xaml_typename<UWPExample::MarqueeContainerPage>()}
         };
     };
 }

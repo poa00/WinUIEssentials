@@ -185,6 +185,14 @@
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="MarqueeContainer.h">
+      <DependentUpon>MarqueeContainer.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="MarqueeContainerPage.h">
+      <DependentUpon>MarqueeContainerPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="MyDataModel.h">
       <DependentUpon>MyDataModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -244,6 +252,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MarqueeContainerPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SettingsCardPage.xaml">
@@ -345,6 +356,14 @@
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="MarqueeContainer.cpp">
+      <DependentUpon>MarqueeContainer.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="MarqueeContainerPage.cpp">
+      <DependentUpon>MarqueeContainerPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="MyDataModel.cpp">
       <DependentUpon>MyDataModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -414,6 +433,13 @@
     </Midl>
     <Midl Include="MainPage.idl">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Midl>
+    <Midl Include="MarqueeContainer.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="MarqueeContainerPage.idl">
+      <DependentUpon>MarqueeContainerPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Midl>
     <Midl Include="MyDataModel.idl">
       <SubType>Designer</SubType>

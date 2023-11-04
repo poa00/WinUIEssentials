@@ -1,0 +1,19 @@
+import "MarqueeContainer.idl";
+namespace UWPExample
+{
+    [default_interface]
+    runtimeclass MarqueeContainerPage : Windows.UI.Xaml.Controls.Page
+    {
+        MarqueeContainerPage();
+
+        Windows.UI.Xaml.Controls.Slider MarqueeSpeedSlider{ get; };
+        Windows.UI.Xaml.Controls.Slider FontSizeSlider{ get; };
+        Windows.UI.Xaml.Controls.Slider SpaceIntervalSlider{ get; };
+        Windows.UI.Xaml.Controls.ToggleSwitch PauseOnHoverToggle{ get; };
+        Windows.UI.Xaml.Controls.ComboBox MarqueeDirectionComboBox{ get; };
+        Windows.UI.Xaml.Controls.ComboBox MarqueeBehaviorComboBox{ get; };
+
+        static UWPExample.MarqueeBehavior GetBehaviorFromIndex(Int32 value);
+        static UWPExample.MarqueeDirection GetDirectionFromIndex(Int32 value);
+    }
+}

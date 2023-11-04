@@ -8,7 +8,7 @@
     xmlns:essential="using:UWPPackage"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Center" Spacing="5">
         <Button x:Name="BodyTextOnlyBtn" Click="BodyTextOnlyBtn_Click">BodyTextOnly</Button>
         <Button x:Name="SingleLineHeaderWithBodyBtn" Click="SingleLineHeaderWithBodyBtn_Click">SingleLineHeaderWithBody</Button>
         <Button x:Name="TwoLineHeaderWithBodyBtn" Click="TwoLineHeaderWithBodyBtn_Click">TwoLineHeaderWithBody</Button>
@@ -22,38 +22,36 @@
             <Button x:Name="ToastBuilderBtn" Click="ToastBuilderBtn_Click">ToastBuilder API</Button>
             <essential:SettingsExpander.Items>
                 <essential:SettingsCard Header="Audio">
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <ComboBox x:Name="AudioComboBox" PlaceholderText="Select audio">
-                            <x:String>ms-winsoundevent:Notification.Default</x:String>
-                            <x:String>ms-winsoundevent:Notification.IM</x:String>
-                            <x:String>ms-winsoundevent:Notification.Mail</x:String>
-                            <x:String>ms-winsoundevent:Notification.Reminder</x:String>
-                            <x:String>ms-winsoundevent:Notification.SMS</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm2</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm3</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm4</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm5</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm6</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm7</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm8</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm9</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Alarm10</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call2</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call3</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call4</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call5</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call6</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call7</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call8</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call9</x:String>
-                            <x:String>ms-winsoundevent:Notification.Looping.Call10</x:String>
-                        </ComboBox>
-
-                        <ToggleSwitch x:Name="LoopingToggle" Header="Loop"/>
-                    </StackPanel>
-
+                    <ComboBox x:Name="AudioComboBox" PlaceholderText="Select audio">
+                        <x:String>ms-winsoundevent:Notification.Default</x:String>
+                        <x:String>ms-winsoundevent:Notification.IM</x:String>
+                        <x:String>ms-winsoundevent:Notification.Mail</x:String>
+                        <x:String>ms-winsoundevent:Notification.Reminder</x:String>
+                        <x:String>ms-winsoundevent:Notification.SMS</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm2</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm3</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm4</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm5</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm6</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm7</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm8</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm9</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Alarm10</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call2</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call3</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call4</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call5</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call6</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call7</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call8</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call9</x:String>
+                        <x:String>ms-winsoundevent:Notification.Looping.Call10</x:String>
+                    </ComboBox>
+                </essential:SettingsCard>
+                <essential:SettingsCard Header="Loop">
+                    <ToggleSwitch x:Name="LoopingToggle"/>
                 </essential:SettingsCard>
             </essential:SettingsExpander.Items>
         </essential:SettingsExpander>
