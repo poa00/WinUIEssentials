@@ -1,4 +1,12 @@
 #pragma once
+#include <winrt/Windows.UI.Xaml.Interop.h>
+/**
+ * @brief Helper class for calling `DefaultStyleKey` for your templated control
+ * @tparam Self Should be the implementation type
+ * @code{.cpp}
+ *		struct MyControl : MyControlT<MyControl>, TemplateControlHelper<MyControl>
+ * @endcode
+*/
 template<typename Self>
 struct TemplateControlHelper
 {

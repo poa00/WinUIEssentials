@@ -123,5 +123,8 @@
     <Page Include="SettingsCard_Resource.xaml">
       <Filter>Controls\SettingsCard</Filter>
     </Page>
+    <Page Include="Glyphs.xaml">
+      <Filter>include</Filter>
+    </Page>
   </ItemGroup>
 </Project>

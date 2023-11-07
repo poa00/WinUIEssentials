@@ -194,6 +194,23 @@ Font glyphs value for Segoe MDL2 Assets fonts. Usage:
 FontIcon().Glyph(Glyphs::GlobalNavButton);
 ```
 
+There is also a `Glyph` xaml resource dictionary, so you can use name instead of glyph. Usage:
+1. First add a reference to your `App.xaml` `MergedDictionaries`
+```xml
+<Application.Resources>
+    <controls:XamlControlsResources>
+        <controls:XamlControlsResources.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///Glyphs.xaml"/>
+            ...
+        </controls:XamlControlsResources.MergedDictionaries>
+    </controls:XamlControlsResources>
+</Application.Resources>
+```
+2. Then use `StaticResource` with name to reference the glyph
+```xml
+<FontIcon Glyph="{StaticResource Send}"/>
+```
+
 ## CursorController --- *namespace `CursorController`*
 Xaml helper for controlling the cursor type when mouse enters. 
 Value for `Type` is [CoreCursorType enum](https://learn.microsoft.com/en-us/uwp/api/windows.ui.core.corecursortype?view=winrt-22621). Usage:

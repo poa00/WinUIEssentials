@@ -18,6 +18,11 @@ namespace BadgeGlyphs
 	constexpr static auto Playing = L"playing";
 	constexpr static auto Unavilable = L"unavilable";
 
+	/**
+	 * @brief Make a number badge notification xml, which will show on both start menu tiles and taskbar icon
+	 * @param value The number value
+	 * @return The XML representation of the badge notification, which should then be used as argument to `winrt::Windows::UI::Notifications::BadgeUpdateManager::CreateBadgeUpdaterForApplication().Update()` call
+	*/
 	inline auto MakeBadgeNotification(int value)
 	{
 		auto xml = winrt::Windows::UI::Notifications::BadgeUpdateManager::GetTemplateContent(
@@ -28,7 +33,12 @@ namespace BadgeGlyphs
 			.SetAttribute(L"value", winrt::to_hstring(value));
 		return winrt::Windows::UI::Notifications::BadgeNotification{ xml };
 	}
-
+	
+	/**
+	 * @brief Make a glyph badge notification xml, which will show on both start menu tiles and taskbar icon
+	 * @param glyph Which should be a predefined string value from the `BadgeGlyph` namespace, like `BadgeGlyph::Alert`
+	 * @return The XML representation of the badge notification, which should then be used as argument to `winrt::Windows::UI::Notifications::BadgeUpdateManager::CreateBadgeUpdaterForApplication().Update()` call
+	*/
 	inline auto MakeBadgeNotification(wchar_t const* glyph)
 	{
 		auto xml = winrt::Windows::UI::Notifications::BadgeUpdateManager::GetTemplateContent(
