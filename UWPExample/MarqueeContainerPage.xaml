@@ -5,6 +5,7 @@
     xmlns:local="using:UWPExample"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:essential="using:UWPPackage"
     mc:Ignorable="d">
 
         <!--<local:MarqueeContainer Behavior="Looping" RepeatBehavior="Forever">
@@ -31,7 +32,13 @@
 
         <ToggleSwitch Header="PauseOnHover" x:Name="PauseOnHoverToggle"/>
 
-        <local:MarqueeContainer x:Name="Test" Speed="{x:Bind MarqueeSpeedSlider.Value, Mode=OneWay}" PauseOnHover="{x:Bind PauseOnHoverToggle.IsOn, Mode=OneWay}" 
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Click="{x:Bind Test.Resume}">Play</Button>
+            <Button Click="{x:Bind Test.Pause}">Pause</Button>
+            <Button Click="{x:Bind Test.Reset}">Reset</Button>
+        </StackPanel>
+
+        <essential:MarqueeText x:Name="Test" Speed="{x:Bind MarqueeSpeedSlider.Value, Mode=OneWay}" PauseOnHover="{x:Bind PauseOnHoverToggle.IsOn, Mode=OneWay}" 
                                 Direction="{x:Bind local:MarqueeContainerPage.GetDirectionFromIndex(MarqueeDirectionComboBox.SelectedIndex), Mode=OneWay}"
                                 Behavior="{x:Bind local:MarqueeContainerPage.GetBehaviorFromIndex(MarqueeBehaviorComboBox.SelectedIndex), Mode=OneWay}"
                                 FontSize="{x:Bind FontSizeSlider.Value, Mode=OneWay}" IntervalSpace="{x:Bind SpaceIntervalSlider.Value, Mode=OneWay}"

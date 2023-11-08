@@ -11,8 +11,8 @@ namespace winrt::UWPExample::implementation
             // Xaml objects should not call InitializeComponent during construction.
             // See https://github.com/microsoft/cppwinrt/tree/master/nuget#initializecomponent
         }
-        static MarqueeBehavior GetBehaviorFromIndex(int value);
-        static MarqueeDirection GetDirectionFromIndex(int value);
+        static UWPPackage::MarqueeBehavior GetBehaviorFromIndex(int value);
+        static UWPPackage::MarqueeDirection GetDirectionFromIndex(int value);
     };
 }
 

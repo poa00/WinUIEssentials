@@ -212,6 +212,10 @@
     <ClInclude Include="include\ToastTemplates.hpp" />
     <ClInclude Include="include\WindowHelper.hpp" />
     <ClInclude Include="include\WinUIIncludes.hpp" />
+    <ClInclude Include="MarqueeText.h">
+      <DependentUpon>MarqueeText.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="NegateBoolConverter.h">
       <DependentUpon>NegateBoolConverter.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -290,6 +294,10 @@
     </ClCompile>
     <ClCompile Include="GroupBox.cpp">
       <DependentUpon>GroupBox.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="MarqueeText.cpp">
+      <DependentUpon>MarqueeText.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="NegateBoolConverter.cpp">
@@ -374,6 +382,9 @@
     <Midl Include="GroupBox.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="MarqueeText.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="NegateBoolConverter.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -411,6 +422,7 @@
   <ItemGroup>
     <Page Include="Glyphs.xaml" />
     <Page Include="GroupBox_Resource.xaml" />
+    <Page Include="MarqueeText_Resource.xaml" />
     <Page Include="SettingsCard_Resource.xaml">
       <DeploymentContent>true</DeploymentContent>
     </Page>

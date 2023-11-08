@@ -25,6 +25,9 @@
     <Filter Include="MarkupExtensions">
       <UniqueIdentifier>{1e4a702c-c96e-4162-ad75-929772ca9eda}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controls\MarqueeText">
+      <UniqueIdentifier>{f1a74a3a-dc24-4185-9aaa-86e8cdaf5c89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -117,6 +120,9 @@
     <Midl Include="FontIconExtension.idl">
       <Filter>MarkupExtensions</Filter>
     </Midl>
+    <Midl Include="MarqueeText.idl">
+      <Filter>Controls\MarqueeText</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">
@@ -130,6 +136,9 @@
     </Page>
     <Page Include="Glyphs.xaml">
       <Filter>include</Filter>
+    </Page>
+    <Page Include="MarqueeText_Resource.xaml">
+      <Filter>Controls\MarqueeText</Filter>
     </Page>
   </ItemGroup>
 </Project>

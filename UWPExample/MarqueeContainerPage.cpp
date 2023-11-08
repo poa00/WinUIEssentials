@@ -9,24 +9,24 @@ using namespace Windows::UI::Xaml;
 
 namespace winrt::UWPExample::implementation
 {
-	MarqueeBehavior MarqueeContainerPage::GetBehaviorFromIndex(int value)
+	UWPPackage::MarqueeBehavior MarqueeContainerPage::GetBehaviorFromIndex(int value)
 	{
 		switch (value)
 		{
-		case 0: return MarqueeBehavior::Ticker;
-		case 1: return MarqueeBehavior::Looping;
-		case 2: return MarqueeBehavior::Bouncing;
+		case 0: return UWPPackage::MarqueeBehavior::Ticker;
+		case 1: return UWPPackage::MarqueeBehavior::Looping;
+		case 2: return UWPPackage::MarqueeBehavior::Bouncing;
 		}
 	}
 
-	MarqueeDirection MarqueeContainerPage::GetDirectionFromIndex(int value)
+	UWPPackage::MarqueeDirection MarqueeContainerPage::GetDirectionFromIndex(int value)
 	{
 		switch (value)
 		{
-		case 0: return MarqueeDirection::Left;
-		case 1: return MarqueeDirection::Right;
-		case 2: return MarqueeDirection::Up;
-		case 3: return MarqueeDirection::Down;
+		case 0: return UWPPackage::MarqueeDirection::Left;
+		case 1: return UWPPackage::MarqueeDirection::Right;
+		case 2: return UWPPackage::MarqueeDirection::Up;
+		case 3: return UWPPackage::MarqueeDirection::Down;
 		}
 	}
 

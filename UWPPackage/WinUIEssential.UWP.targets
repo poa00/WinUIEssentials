@@ -22,6 +22,9 @@
         <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\MarqueeText_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
         <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Glyphs.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>

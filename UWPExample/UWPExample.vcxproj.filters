@@ -44,6 +44,7 @@
     <Page Include="GlyphsPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Glyphs.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

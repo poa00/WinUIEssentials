@@ -97,6 +97,7 @@
                 <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
                 <ResourceDictionary Source="ms-appx:///SettingsExpander_Resource.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Glyphs.xaml"/>
+                <ResourceDictionary Source="ms-appx:///MarqueeText_Resource.xaml"/>
                 <!-- Other app resources here -->
 
                 <ResourceDictionary>
