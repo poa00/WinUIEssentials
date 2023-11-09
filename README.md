@@ -48,7 +48,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |FontIconExtension | :white_check_mark: | :white_check_mark: | WinRT component
 |DependentValue| :white_check_mark: | :white_check_mark: | WinRT component
 |Taskbar| :x: | :white_check_mark: | Header only
-|MarqueeText| :x: | :white_check_mark: | :white_check_mark: | Control
+|MarqueeText | :white_check_mark: | :white_check_mark: | Control
 
 *means additional settings required, see the sections for info
 
