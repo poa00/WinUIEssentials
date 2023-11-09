@@ -35,9 +35,9 @@
     <Page Include="SettingsExpanderPage.xaml">
       <Filter>Pages\SettingsExpanderPage</Filter>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\GroupBox_Resource.xaml" />
-    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsCard_Resource.xaml" />
-    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml" />
+    <Page Include="MarqueeTextPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

@@ -62,9 +62,9 @@
     <Filter Include="Controls\SettingsExpander">
       <UniqueIdentifier>{7f4c5d5f-7657-42e8-ab4c-28ffd4afc61d}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
+    <Filter Include="Controls\MarqueeText">
+      <UniqueIdentifier>{342a38f3-e345-43bb-8be2-ad8634e7b7bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Placeholder.idl" />
@@ -112,6 +112,9 @@
     <Midl Include="SettingsExpanderItemStyleSelector.idl">
       <Filter>Controls\SettingsExpander</Filter>
     </Midl>
+    <Midl Include="MarqueeText.idl">
+      <Filter>Controls\MarqueeText</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">
@@ -125,6 +128,9 @@
     </Page>
     <Page Include="Glyphs.xaml">
       <Filter>include</Filter>
+    </Page>
+    <Page Include="MarqueeText_Resource.xaml">
+      <Filter>Controls\MarqueeText</Filter>
     </Page>
   </ItemGroup>
 </Project>

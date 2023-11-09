@@ -48,6 +48,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |FontIconExtension | :white_check_mark: | :white_check_mark: | WinRT component
 |DependentValue| :white_check_mark: | :white_check_mark: | WinRT component
 |Taskbar| :x: | :white_check_mark: | Header only
+|MarqueeText| :x: | :white_check_mark: | :white_check_mark: | Control
 
 *means additional settings required, see the sections for info
 
@@ -404,3 +405,7 @@ Taskbar::SetProgressState(hwnd, Taskbar::ProgressState::Normal);
 //Set taskbar progress value 
 Taskbar::SetProgressValue(hwnd, 50); //a third optional parameter for total, default -> 100
 ```
+
+## MarqueeText --- *namespace `MarqueeText`*
+Enhanced version of `MarqueeText` in the community toolkit.
+![](assets/marquee-text.png)
