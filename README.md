@@ -176,12 +176,12 @@ Optionally add a handler to `Action` so you can handle toast notification button
 Actions()
 (
 	Action().Content(L"Accept").Arguments(L"accept")
-	.Click([this(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs args)
+	.Click([this](winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs args)
 	{
         //Handle Accept button
 	}),
 	Action().Content(L"Cancel").Arguments(L"cancel")
-	.Click([this(winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs args)
+	.Click([this](winrt::Windows::ApplicationModel::Activation::ToastNotificationActivatedEventArgs args)
 	{
         //Handle Cancel button
 	})

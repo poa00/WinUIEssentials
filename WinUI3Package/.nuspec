@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>WinUIEssential.WinUI3</id>
-        <version>1.0.16</version>
+        <version>1.1.0</version>
         <title>WinUIEssential(WinUI3)</title>
         <authors>Peter</authors>
         <owners></owners>
@@ -24,13 +24,17 @@
         <file src="include/TemplateControlHelper.hpp" target="build/native/include"/>
         <file src="WinUIEssential.WinUI3.targets" target="build/native"/>
         
-        <!--lib/native-->
-        <file src="..\x64\Debug\WinUI3Package\WinUI3Package.winmd" target="lib/native"/>
-        <file src="..\x64\Debug\WinUI3Package\WinUI3Package.dll" target="lib/native"/>
+        <!--lib/native(The last item in each group is control resource)-->
+        <file src="..\x64\Debug\WinUI3Package\WinUI3Package.winmd" target="lib/native/Debug/x64"/>
+        <file src="..\x64\Debug\WinUI3Package\WinUI3Package.dll" target="lib/native/Debug/x64"/>
+        <file src="..\x64\Debug\WinUI3Package\WinUI3Package\*.*" target="lib/native/Debug/x64"/>
 
-        <!--control resources-->
-        <file src="..\x64\Debug\WinUI3Package\WinUI3Package\*.*" target="lib/native"/>
+        <file src="..\x64\Release\WinUI3Package\WinUI3Package.winmd" target="lib/native/Release/x64"/>
+        <file src="..\x64\Release\WinUI3Package\WinUI3Package.dll" target="lib/native/Release/x64"/>
+        <file src="..\x64\Release\WinUI3Package\WinUI3Package\*.*" target="lib/native/Release/x64"/>
 
+
+        <!-- Meta -->
         <file src="..\MainLogo.png" target="assets\"/>
     </files>
 </package>

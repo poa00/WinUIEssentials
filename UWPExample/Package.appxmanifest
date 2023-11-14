@@ -28,6 +28,9 @@
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.search"/>
+        <Extension Category="windows.backgroundTasks">
+          <BackgroundTasks/>
+        </Extension>
       </Extensions>
 
     </Application>

@@ -90,7 +90,7 @@ namespace winrt::WinUI3Example::implementation
 		auto const audio = getAudioSelection();
 		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
 			.Show(
-				Toast().Duration(Long).Scenario(Reminder).UseButtonStyle(true)
+				Toast().Duration(Long).Scenario(Reminder).UseButtonStyle(true).Launch(L"launch arg")
 				(
 					Visual()
 					(

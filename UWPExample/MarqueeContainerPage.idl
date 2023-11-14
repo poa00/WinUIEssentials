@@ -1,4 +1,3 @@
-import "MarqueeContainer.idl";
 namespace UWPExample
 {
     [default_interface]

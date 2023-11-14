@@ -189,10 +189,6 @@
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
-    <ClInclude Include="MarqueeContainer.h">
-      <DependentUpon>MarqueeContainer.idl</DependentUpon>
-      <SubType>Code</SubType>
-    </ClInclude>
     <ClInclude Include="MarqueeContainerPage.h">
       <DependentUpon>MarqueeContainerPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -222,6 +218,11 @@
     </ClInclude>
     <ClInclude Include="TaskbarPage.h">
       <DependentUpon>TaskbarPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="TilesBuilder.hpp" />
+    <ClInclude Include="TilesPage.h">
+      <DependentUpon>TilesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="ToastPage.h">
@@ -271,6 +272,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TaskbarPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TilesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ToastPage.xaml">
@@ -367,10 +371,6 @@
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
-    <ClCompile Include="MarqueeContainer.cpp">
-      <DependentUpon>MarqueeContainer.idl</DependentUpon>
-      <SubType>Code</SubType>
-    </ClCompile>
     <ClCompile Include="MarqueeContainerPage.cpp">
       <DependentUpon>MarqueeContainerPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -403,6 +403,10 @@
     </ClCompile>
     <ClCompile Include="TaskbarPage.cpp">
       <DependentUpon>TaskbarPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="TilesPage.cpp">
+      <DependentUpon>TilesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="ToastPage.cpp">
@@ -449,9 +453,6 @@
     <Midl Include="MainPage.idl">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Midl>
-    <Midl Include="MarqueeContainer.idl">
-      <SubType>Designer</SubType>
-    </Midl>
     <Midl Include="MarqueeContainerPage.idl">
       <DependentUpon>MarqueeContainerPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -474,6 +475,10 @@
       <DependentUpon>TaskbarPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
+    <Midl Include="TilesPage.idl">
+      <DependentUpon>TilesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="ToastPage.idl">
       <DependentUpon>ToastPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -494,7 +499,7 @@
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets')" />
     <Import Project="..\packages\Microsoft.UI.Xaml.2.7.0\build\native\Microsoft.UI.Xaml.targets" Condition="Exists('..\packages\Microsoft.UI.Xaml.2.7.0\build\native\Microsoft.UI.Xaml.targets')" />
-    <Import Project="..\packages\WinUIEssential.UWP.1.1.10\build\native\WinUIEssential.UWP.targets" Condition="Exists('..\packages\WinUIEssential.UWP.1.1.10\build\native\WinUIEssential.UWP.targets')" />
+    <Import Project="..\packages\WinUIEssential.UWP.1.1.11\build\native\WinUIEssential.UWP.targets" Condition="Exists('..\packages\WinUIEssential.UWP.1.1.11\build\native\WinUIEssential.UWP.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -503,7 +508,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.UI.Xaml.2.7.0\build\native\Microsoft.UI.Xaml.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.UI.Xaml.2.7.0\build\native\Microsoft.UI.Xaml.targets'))" />
-    <Error Condition="!Exists('..\packages\WinUIEssential.UWP.1.1.10\build\native\WinUIEssential.UWP.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinUIEssential.UWP.1.1.10\build\native\WinUIEssential.UWP.targets'))" />
+    <Error Condition="!Exists('..\packages\WinUIEssential.UWP.1.1.11\build\native\WinUIEssential.UWP.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinUIEssential.UWP.1.1.11\build\native\WinUIEssential.UWP.targets'))" />
   </Target>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$([Microsoft.Build.Utilities.ToolLocationHelper]::GetPlatformExtensionSDKLocation(`WindowsDesktop, Version=10.0.22621.0`, $(TargetPlatformIdentifier), $(TargetPlatformVersion),  $(SDKReferenceDirectoryRoot), $(SDKExtensionDirectoryRoot), $(SDKReferenceRegistryRoot)))\DesignTime\CommonConfiguration\Neutral\WindowsDesktop.props" Condition="exists('$([Microsoft.Build.Utilities.ToolLocationHelper]::GetPlatformExtensionSDKLocation(`WindowsDesktop, Version=10.0.22621.0`, $(TargetPlatformIdentifier), $(TargetPlatformVersion),  $(SDKReferenceDirectoryRoot), $(SDKExtensionDirectoryRoot), $(SDKReferenceRegistryRoot)))\DesignTime\CommonConfiguration\Neutral\WindowsDesktop.props')" />

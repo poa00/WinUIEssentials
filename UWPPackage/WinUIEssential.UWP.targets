@@ -7,34 +7,58 @@
     </ItemDefinitionGroup>
     
     <!--Add dll and xaml here-->
-    <ItemGroup>
-        <Reference Include="$(MSBuildThisFileDirectory)..\..\lib\native\UWPPackage.winmd">
+    <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        <Reference Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\UWPPackage.winmd">
             <IsWinMDFile>true</IsWinMDFile>
             <Implementation>UWPPackage.dll</Implementation>
         </Reference>
         
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\GroupBox_Resource.xaml">
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\GroupBox_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsCard_Resource.xaml">
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsCard_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml">
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsExpander_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\MarqueeText_Resource.xaml">
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\MarqueeText_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Glyphs.xaml">
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\Glyphs.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <!--<CopyFileToFolders Include="$(MSBuildThisFileDirectory)..\..\lib\native\UserControl.xaml"/>-->
     </ItemGroup>
-    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+
+    <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        <Reference Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\UWPPackage.winmd">
+            <IsWinMDFile>true</IsWinMDFile>
+            <Implementation>UWPPackage.dll</Implementation>
+        </Reference>
+        
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\GroupBox_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsCard_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsExpander_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\MarqueeText_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\Glyphs.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+    </ItemGroup>
+
+    <!-- lib -->
+    <!-- <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
         <Link>
             <AdditionalDependencies>$(MSBuildThisFileDirectory)..\..\lib\native\$(Configuration)\$(Platform)\UWPPackage.lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
-    </ItemDefinitionGroup>
+    </ItemDefinitionGroup> -->
 
     <PropertyGroup>
         <BeforeMidlCompileTargets>

@@ -7,26 +7,50 @@
     </ItemDefinitionGroup>
     
     <!--Add dll and xaml here-->
-    <ItemGroup>
-        <Reference Include="$(MSBuildThisFileDirectory)..\..\lib\native\WinUI3Package.winmd">
+    <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        <Reference Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\WinUI3Package.winmd">
             <IsWinMDFile>true</IsWinMDFile>
             <Implementation>WinUI3Package.dll</Implementation>
         </Reference>
-
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\GroupBox_Resource.xaml">
+        
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\GroupBox_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsCard_Resource.xaml">
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsCard_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\SettingsExpander_Resource.xaml">
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsExpander_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\MarqueeText_Resource.xaml">
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\MarqueeText_Resource.xaml">
             <DeploymentContent>true</DeploymentContent>
         </Page>
-        <!--<CopyFileToFolders Include="$(MSBuildThisFileDirectory)..\..\lib\native\UserControl.xaml"/>-->
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\Glyphs.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
     </ItemGroup>
 
+    <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        <Reference Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\WinUI3Package.winmd">
+            <IsWinMDFile>true</IsWinMDFile>
+            <Implementation>WinUI3Package.dll</Implementation>
+        </Reference>
+        
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\GroupBox_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsCard_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsExpander_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\MarqueeText_Resource.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\Glyphs.xaml">
+            <DeploymentContent>true</DeploymentContent>
+        </Page>
+    </ItemGroup>
 
 </Project>
