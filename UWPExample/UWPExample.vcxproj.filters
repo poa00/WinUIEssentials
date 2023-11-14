@@ -44,11 +44,11 @@
     <Page Include="TilesPage.xaml">
       <Filter>Pages</Filter>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\GroupBox_Resource.xaml" />
-    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsCard_Resource.xaml" />
-    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsExpander_Resource.xaml" />
-    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\MarqueeText_Resource.xaml" />
-    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\Glyphs.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\GroupBox_Resource.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsCard_Resource.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsExpander_Resource.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\MarqueeText_Resource.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\Glyphs.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -242,6 +242,7 @@
   <ItemGroup>
     <None Include="PropertySheet.props" />
     <None Include="packages.config" />
+    <None Include="licenses\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />

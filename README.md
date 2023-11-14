@@ -294,17 +294,18 @@ See the same class in [Community Toolkit](https://github.com/CommunityToolkit/Wi
 
 ## SettingsCard --- *namespace `SettingsCard`*
 See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.
-Add this to `App.xaml`
+- Add this to `App.xaml` (UWP)
 ```xml
 <Application.Resources>
     <controls:XamlControlsResources>
         <controls:XamlControlsResources.MergedDictionaries>
-            <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
+            <ResourceDictionary Source="ms-appx:///UWPPackage/SettingsCard_Resource.xaml"/>
             ...
         </controls:XamlControlsResources.MergedDictionaries>
     </controls:XamlControlsResources>
 </Application.Resources>
 ```
+
 > [!NOTE]
 > For WinUI3, add `#include #include <winrt/Microsoft.UI.Xaml.Controls.AnimatedVisuals.h>` to your `pch.h`
 
@@ -316,8 +317,8 @@ Add this to `App.xaml`
 <Application.Resources>
     <controls:XamlControlsResources>
         <controls:XamlControlsResources.MergedDictionaries>
-            <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
-            <ResourceDictionary Source="ms-appx:///SettingsExpander_Resource.xaml"/>
+            <ResourceDictionary Source="ms-appx:///UWPPackage/SettingsCard_Resource.xaml"/>
+            <ResourceDictionary Source="ms-appx:///UWPPackage/SettingsExpander_Resource.xaml"/>
             ...
         </controls:XamlControlsResources.MergedDictionaries>
     </controls:XamlControlsResources>

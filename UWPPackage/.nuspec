@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>WinUIEssential.UWP</id>
-        <version>1.1.11</version>
+        <version>1.1.18</version>
         <title>WinUIEssential(UWP)</title>
         <authors>Peter</authors>
         <owners></owners>
@@ -12,6 +12,11 @@
         <dependencies>
             <dependency id="Microsoft.UI.Xaml" version="2.7.0"/>
         </dependencies>
+        <license type="expression">MIT</license>
+        <readme>docs\README.md</readme>
+        <projectUrl>https://github.com/HO-COOH/WinUIEssentials</projectUrl>
+        <tags>c++ cpp uwp winui2 winui cpp20</tags>
+        <repository type="git" url="https://github.com/HO-COOH/WinUIEssentials"/>
     </metadata>
     <files>
         <!--build/native-->
@@ -29,14 +34,18 @@
         <!--lib/native(The last item in each group is control resource)-->
         <file src="..\x64\Debug\UWPPackage\UWPPackage.winmd" target="lib/native/Debug/x64"/>
         <file src="..\x64\Debug\UWPPackage\UWPPackage.dll" target="lib/native/Debug/x64"/>
-        <file src="..\x64\Debug\UWPPackage\UWPPackage\*.*" target="lib/native/Debug/x64"/>
+        <file src="..\x64\Debug\UWPPackage\UWPPackage.pri" target="lib/native/Debug/x64"/>
+        <file src="..\x64\Debug\UWPPackage\UWPPackage\*.*" target="lib/native/Debug/x64/UWPPackage"/>
 
         <file src="..\x64\Release\UWPPackage\UWPPackage.winmd" target="lib/native/Release/x64"/>
         <file src="..\x64\Release\UWPPackage\UWPPackage.dll" target="lib/native/Release/x64"/>
-        <file src="..\x64\Release\UWPPackage\UWPPackage\*.*" target="lib/native/Release/x64"/>
+        <file src="..\x64\Release\UWPPackage\UWPPackage.pri" target="lib/native/Release/x64"/>
+        <file src="..\x64\Release\UWPPackage\UWPPackage\*.*" target="lib/native/Release/x64/UWPPackage"/>
 
 
         <!-- Meta -->
         <file src="..\MainLogo.png" target="assets\"/>
+        <file src="..\LICENSE.txt" target="licenses\"/>
+        <file src="..\README.md" target="docs\"/>
     </files>
 </package>
