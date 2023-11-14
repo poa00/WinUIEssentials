@@ -39,6 +39,7 @@ namespace ToastTemplates
 </toast>)";
         friend class IToastBase<BodyTextOnly>;
     };
+    using ToastText01 = BodyTextOnly;
 
     class SingleLineHeaderWithBody : 
         internal::IToastBase<SingleLineHeaderWithBody>, 
@@ -60,6 +61,7 @@ namespace ToastTemplates
 </toast>)";
         friend class internal::IToastBase<SingleLineHeaderWithBody>;
     };
+    using ToastText02 = SingleLineHeaderWithBody;
 
     class TwoLineHeaderWithBody : 
         internal::IToastBase<TwoLineHeaderWithBody>,
@@ -81,6 +83,7 @@ namespace ToastTemplates
 </toast>)";
         friend class internal::IToastBase<TwoLineHeaderWithBody>;
     };
+    using ToastText03 = TwoLineHeaderWithBody;
 
     class HeaderWithTwoSingleLineBody : 
         internal::IToastBase<HeaderWithTwoSingleLineBody>,
@@ -103,6 +106,7 @@ namespace ToastTemplates
 </toast>)";
         friend class internal::IToastBase<HeaderWithTwoSingleLineBody>;
     };
+    using ToastText04 = HeaderWithTwoSingleLineBody;
 
     class ImageWithBodyOnly : 
         internal::IToastBase<ImageWithBodyOnly>,
@@ -124,6 +128,7 @@ namespace ToastTemplates
 </toast>)";
         friend class internal::IToastBase<ImageWithBodyOnly>;
     };
+    using ToastImageAndText01 = ImageWithBodyOnly;
 
     class ImageWithHeaderAndBody : 
         internal::IToastBase<ImageWithHeaderAndBody>,
@@ -146,6 +151,7 @@ namespace ToastTemplates
 </toast>)";
         friend class internal::IToastBase<ImageWithHeaderAndBody>;
     };
+    using ToastImageAndText02 = ImageWithHeaderAndBody;
 
     class ImageWithTwoLineHeaderAndBody : 
         internal::IToastBase<ImageWithTwoLineHeaderAndBody>,
@@ -168,6 +174,7 @@ namespace ToastTemplates
 </toast>)";
         friend class internal::IToastBase<ImageWithTwoLineHeaderAndBody>;
     };
+    using ToastImageAndText03 = ImageWithTwoLineHeaderAndBody;
 
     class ImageWithHeaderAndTwoSingleLineBody : 
         internal::IToastBase<ImageWithHeaderAndTwoSingleLineBody>,
@@ -191,4 +198,5 @@ namespace ToastTemplates
 </toast>)";
         friend class internal::IToastBase<ImageWithHeaderAndTwoSingleLineBody>;
     };
+    using ToastImageAndText04 = ImageWithHeaderAndTwoSingleLineBody;
 }

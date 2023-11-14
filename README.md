@@ -84,18 +84,21 @@ The [built-in templates](https://learn.microsoft.com/en-us/uwp/api/windows.ui.no
 #include <ToastTemplates.hpp>
 winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
     .Show(ToastTemplates::ImageWithHeaderAndBody{ L"ms-appx:///Assets/Windows 11.png", L"Header", L"body" });
+//alternatively use Microsoft's template name
+winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
+    .Show(ToastTemplates::ToastImageAndText02{ L"ms-appx:///Assets/Windows 11.png", L"Header", L"body" });
 ```
 
-|Type|Template|Sample|
+|Type|Template Name(which can also be used as type)|Sample|
 |--|--|--|
-|`BodyTextOnly`|ToastText01| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_1.png?view=winrt-22621)
-|`SingleLineHeaderWithBody`|ToastText02| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_2.png?view=winrt-22621)
-|`TwoLineHeaderWithBody`|ToastText03| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_4.png?view=winrt-22621)
-|`HeaderWithTwoSingleLineBody`|ToastText04| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_5.png?view=winrt-22621)
-|`ImageWithBodyOnly`|ToastImageAndText01| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_6.png?view=winrt-22621)
-|`ImageWithHeaderAndBody`|ToastImageAndText02| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_7.png?view=winrt-22621)
-|`ImageWithTwoLineHeaderAndBody`|ToastImageAndText03| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_8.png?view=winrt-22621)
-|`ImageWithHeaderAndTwoSingleLineBody`|ToastImageAndText04| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toastimageandtext04.png?view=winrt-22621)
+|`BodyTextOnly`| `ToastText01` | ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_1.png?view=winrt-22621)
+|`SingleLineHeaderWithBody`| `ToastText02`| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_2.png?view=winrt-22621)
+|`TwoLineHeaderWithBody`| `ToastText03`| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_4.png?view=winrt-22621)
+|`HeaderWithTwoSingleLineBody`| `ToastText04`| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_5.png?view=winrt-22621)
+|`ImageWithBodyOnly`| `ToastImageAndText01`| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_6.png?view=winrt-22621)
+|`ImageWithHeaderAndBody`| `ToastImageAndText02`| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_7.png?view=winrt-22621)
+|`ImageWithTwoLineHeaderAndBody`| `ToastImageAndText03`| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toast_8.png?view=winrt-22621)
+|`ImageWithHeaderAndTwoSingleLineBody`| `ToastImageAndText04`| ![](https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications/images/toastimageandtext04.png?view=winrt-22621)
 
 ### ToastBuilder --- *namespace `ToastBuilder`*
 Strongly-typed, declarative toast notification elements to quickly build toast notifications, as if you are writing XAML. [Schema here.](https://learn.microsoft.com/en-us/uwp/schemas/tiles/toastschema/root-elements) 
