@@ -19,50 +19,50 @@ namespace winrt::UWPExample::implementation
 
 	void ToastPage::SingleLineHeaderWithBodyBtn_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 	{
-		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
-			.Show(ToastTemplates::SingleLineHeaderWithBody{ L"Header", L"Body" });
+		//winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
+		//	.Show(ToastTemplates::SingleLineHeaderWithBody{ L"Header", L"Body" });
 	}
 
 
 	void ToastPage::TwoLineHeaderWithBodyBtn_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 	{
-		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
-			.Show(ToastTemplates::TwoLineHeaderWithBody{ L"Very looooooooooooooooooooooooooong two line header", L"Body" });
+		//winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
+		//	.Show(ToastTemplates::TwoLineHeaderWithBody{ L"Very looooooooooooooooooooooooooong two line header", L"Body" });
 	}
 
 
 	void ToastPage::HeaderWithTwoSingleLineBody_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 	{
-		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
-			.Show(ToastTemplates::HeaderWithTwoSingleLineBody{ L"Header", L"body#1", L"body#2" });
+		//winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
+		//	.Show(ToastTemplates::HeaderWithTwoSingleLineBody{ L"Header", L"body#1", L"body#2" });
 	}
 
 
 	void ToastPage::ImageWithBodyOnly_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 	{
-		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
-			.Show(ToastTemplates::ImageWithBodyOnly{ L"ms-appx:///Assets/Windows 11.png", L"Header" });
+		//winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
+		//	.Show(ToastTemplates::ImageWithBodyOnly{ L"ms-appx:///Assets/Windows 11.png", L"Header" });
 	}
 
 
 	void ToastPage::ImageWithHeaderAndBodyBtn_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 	{
-		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
-			.Show(ToastTemplates::ImageWithHeaderAndBody{ L"ms-appx:///Assets/Windows 11.png", L"Header", L"body" });
+		//winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
+		//	.Show(ToastTemplates::ImageWithHeaderAndBody{ L"ms-appx:///Assets/Windows 11.png", L"Header", L"body" });
 	}
 
 
 	void ToastPage::ImageWithTwoLineHeaderAndBody_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 	{
-		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
-			.Show(ToastTemplates::ImageWithTwoLineHeaderAndBody{ L"ms-appx:///Assets/Windows 11.png", L"Very looooooooooooooooooooooooooong two line header", L"body" });
+		//winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
+		//	.Show(ToastTemplates::ImageWithTwoLineHeaderAndBody{ L"ms-appx:///Assets/Windows 11.png", L"Very looooooooooooooooooooooooooong two line header", L"body" });
 	}
 
 
 	void ToastPage::ImageWithHeaderAndTwoSingleLineBody_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 	{
-		winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
-			.Show(ToastTemplates::ImageWithHeaderAndTwoSingleLineBody{ L"ms-appx:///Assets/Windows 11.png", L"Header", L"body#1", L"body#2" });
+		//winrt::Windows::UI::Notifications::ToastNotificationManager::CreateToastNotifier()
+		//	.Show(ToastTemplates::ImageWithHeaderAndTwoSingleLineBody{ L"ms-appx:///Assets/Windows 11.png", L"Header", L"body#1", L"body#2" });
 	}
 
 

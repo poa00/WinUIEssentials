@@ -93,11 +93,11 @@
     <Application.Resources>
         <controls:XamlControlsResources>
             <controls:XamlControlsResources.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///GroupBox_Resource.xaml"/>
-                <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
-                <ResourceDictionary Source="ms-appx:///SettingsExpander_Resource.xaml"/>
-                <ResourceDictionary Source="ms-appx:///Glyphs.xaml"/>
-                <ResourceDictionary Source="ms-appx:///MarqueeText_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///UWPPackage/GroupBox_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///UWPPackage/SettingsCard_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///UWPPackage/SettingsExpander_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///UWPPackage/Glyphs.xaml"/>
+                <ResourceDictionary Source="ms-appx:///UWPPackage/MarqueeText_Resource.xaml"/>
                 <!-- Other app resources here -->
 
             </controls:XamlControlsResources.MergedDictionaries>

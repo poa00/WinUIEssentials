@@ -10,10 +10,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
-                <ResourceDictionary Source="ms-appx:///GroupBox_Resource.xaml"/>
-                <ResourceDictionary Source="ms-appx:///SettingsCard_Resource.xaml"/>
-                <ResourceDictionary Source="ms-appx:///SettingsExpander_Resource.xaml"/>
-                <ResourceDictionary Source="ms-appx:///MarqueeText_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///WinUI3Package/GroupBox_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///WinUI3Package/SettingsCard_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///WinUI3Package/SettingsExpander_Resource.xaml"/>
+                <ResourceDictionary Source="ms-appx:///WinUI3Package/Glyphs.xaml"/>
+                <ResourceDictionary Source="ms-appx:///WinUI3Package/MarqueeText_Resource.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

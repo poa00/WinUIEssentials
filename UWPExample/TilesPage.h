@@ -21,10 +21,10 @@ namespace winrt::UWPExample::implementation
     private:
         winrt::Windows::UI::Notifications::TileUpdater m_updater = winrt::Windows::UI::Notifications::TileUpdateManager::CreateTileUpdaterForApplication();
     public:
-        void Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+        winrt::Windows::Foundation::IAsyncAction Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
 
 
-
+        static winrt::hstring GetXml(int selection);
 
     };
 }

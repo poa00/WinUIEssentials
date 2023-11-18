@@ -3,7 +3,7 @@
 #if __has_include("TilesPage.g.cpp")
 #include "TilesPage.g.cpp"
 #endif
-
+#include <fstream>
 
 
 
@@ -36,11 +36,19 @@ namespace winrt::UWPExample::implementation
     }
 }
 
-void winrt::UWPExample::implementation::TilesPage::Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
+#include <filesystem>
+#include <winrt/Windows.Storage.h>
+#include <winrt/Windows.ApplicationModel.h>
+winrt::Windows::Foundation::IAsyncAction winrt::UWPExample::implementation::TilesPage::Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
 {
-    //auto t = winrt::Windows::UI::Notifications::TileUpdateManager::GetTemplateContent(winrt::Windows::UI::Notifications::TileTemplateType::TileSquareText03);
-    //t.set
+    std::vector<winrt::Windows::Foundation::IAsyncAction> tasks;
+    for (auto i = 0; i < 80; ++i)
+    {
+        auto t = winrt::Windows::UI::Notifications::TileUpdateManager::GetTemplateContent(static_cast<winrt::Windows::UI::Notifications::TileTemplateType>(i));
 
+        auto file = co_await winrt::Windows::Storage::ApplicationData::Current().LocalFolder().CreateFileAsync(winrt::to_hstring(i), winrt::Windows::Storage::CreationCollisionOption::ReplaceExisting);
+        co_await winrt::Windows::Storage::FileIO::WriteTextAsync(file, t.GetXml());
+    }
 //    winrt::Windows::Data::Xml::Dom::XmlDocument doc;
 //    doc.LoadXml(LR"(<tile>
 //    <visual version="2">
@@ -51,23 +59,28 @@ void winrt::UWPExample::implementation::TilesPage::Button_Click(winrt::Windows::
 //    </visual>
 //</tile>)");
 
+    for (auto& task : tasks)
+    {
+        co_await task;
+    }
+    OutputDebugString(L"Finished\n");
     //auto str = t.GetXml();
-            m_updater.Clear();
-            m_updater.Update(
-                Tile()
-                (
-                    Visual()
-                    (
-                        Binding().Template(TileTemplateNameV3::TileMedium).Branding(Branding::Name)
-                        (
-                            Text()(L"Snowboarding Medium")
-                            ),
-                        Binding().Template(TileTemplateNameV3::TileWide).Branding(Branding::NameAndLogo)
-                        (
-                            Text()(L"Snowboarding Wide")
-                            )
-                        )
-                    ));
+            //m_updater.Clear();
+            //m_updater.Update(
+            //    Tile()
+            //    (
+            //        Visual()
+            //        (
+            //            Binding().Template(TileTemplateNameV3::TileMedium).Branding(Branding::Name)
+            //            (
+            //                Text()(L"Snowboarding Medium")
+            //                ),
+            //            Binding().Template(TileTemplateNameV3::TileWide).Branding(Branding::NameAndLogo)
+            //            (
+            //                Text()(L"Snowboarding Wide")
+            //                )
+            //            )
+            //        ));
 
 //    winrt::Windows::UI::Xaml::DispatcherTimer timer;
 //    timer.Interval(std::chrono::seconds{ 1 });
@@ -141,4 +154,11 @@ void winrt::UWPExample::implementation::TilesPage::Button_Click(winrt::Windows::
 //        }
 //    );
 //    timer.Start();
+}
+
+winrt::hstring winrt::UWPExample::implementation::TilesPage::GetXml(int selection)
+{
+    if(selection >= 0 && selection < 80)
+        return winrt::Windows::UI::Notifications::TileUpdateManager::GetTemplateContent(static_cast<winrt::Windows::UI::Notifications::TileTemplateType>(selection)).GetXml();
+    return L"";
 }

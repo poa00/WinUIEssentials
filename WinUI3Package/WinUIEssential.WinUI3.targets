@@ -13,21 +13,26 @@
             <Implementation>WinUI3Package.dll</Implementation>
         </Reference>
         
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\GroupBox_Resource.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsCard_Resource.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsExpander_Resource.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\MarqueeText_Resource.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\Glyphs.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
+        <!-- <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\WinUI3Package\Glyphs.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/Glyphs.xbf</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\WinUI3Package\GroupBox_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/GroupBox_Resource.xbf</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\WinUI3Package\SettingsCard_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/SettingsCard_Resource.xbf</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\WinUI3Package\SettingsExpander_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/SettingsExpander_Resource.xbf</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\WinUI3Package\MarqueeText_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/MarqueeText_Resource.xbf</TargetPath>
+        </ContentWithTargetPath> -->
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -35,22 +40,28 @@
             <IsWinMDFile>true</IsWinMDFile>
             <Implementation>WinUI3Package.dll</Implementation>
         </Reference>
-        
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\GroupBox_Resource.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsCard_Resource.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsExpander_Resource.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\MarqueeText_Resource.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
-        <Page Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\Glyphs.xaml">
-            <DeploymentContent>true</DeploymentContent>
-        </Page>
+
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\WinUI3Package\Glyphs.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/Glyphs.xbf</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\WinUI3Package\GroupBox_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/GroupBox_Resource.xbf</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\WinUI3Package\SettingsCard_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/SettingsCard_Resource.xbf</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\WinUI3Package\SettingsExpander_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/SettingsExpander_Resource.xbf</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\WinUI3Package\MarqueeText_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/MarqueeText_Resource.xbf</TargetPath>
+        </ContentWithTargetPath>
+
     </ItemGroup>
 
 </Project>

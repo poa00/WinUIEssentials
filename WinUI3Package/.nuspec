@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>WinUIEssential.WinUI3</id>
-        <version>1.1.0</version>
+        <version>1.1.12</version>
         <title>WinUIEssential(WinUI3)</title>
         <authors>Peter</authors>
         <owners></owners>
@@ -12,6 +12,11 @@
         <dependencies>
             <group targetFramework="native"/>
         </dependencies>
+        <license type="expression">MIT</license>
+        <readme>docs\README.md</readme>
+        <projectUrl>https://github.com/HO-COOH/WinUIEssentials</projectUrl>
+        <tags>c++ cpp was winui3 winui cpp20</tags>
+        <repository type="git" url="https://github.com/HO-COOH/WinUIEssentials"/>
     </metadata>
     <files>
         <!--build/native-->
@@ -27,14 +32,18 @@
         <!--lib/native(The last item in each group is control resource)-->
         <file src="..\x64\Debug\WinUI3Package\WinUI3Package.winmd" target="lib/native/Debug/x64"/>
         <file src="..\x64\Debug\WinUI3Package\WinUI3Package.dll" target="lib/native/Debug/x64"/>
-        <file src="..\x64\Debug\WinUI3Package\WinUI3Package\*.*" target="lib/native/Debug/x64"/>
+        <file src="..\x64\Debug\WinUI3Package\WinUI3Package.pri" target="lib/native/Debug/x64"/>
+        <file src="..\x64\Debug\WinUI3Package\WinUI3Package\*.*" target="lib/native/Debug/x64/WinUI3Package"/>
 
         <file src="..\x64\Release\WinUI3Package\WinUI3Package.winmd" target="lib/native/Release/x64"/>
         <file src="..\x64\Release\WinUI3Package\WinUI3Package.dll" target="lib/native/Release/x64"/>
-        <file src="..\x64\Release\WinUI3Package\WinUI3Package\*.*" target="lib/native/Release/x64"/>
+        <file src="..\x64\Release\WinUI3Package\WinUI3Package.pri" target="lib/native/Release/x64"/>
+        <file src="..\x64\Release\WinUI3Package\WinUI3Package\*.*" target="lib/native/Release/x64/WinUI3Package"/>
 
 
         <!-- Meta -->
         <file src="..\MainLogo.png" target="assets\"/>
+        <file src="..\LICENSE.txt" target="licenses\"/>
+        <file src="..\README.md" target="docs\"/>
     </files>
 </package>

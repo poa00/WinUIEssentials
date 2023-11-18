@@ -40,7 +40,8 @@ namespace winrt::WinUI3Example::implementation
             {L"SettingsCardPage", winrt::xaml_typename<WinUI3Example::SettingsCardPage>()},
             {L"SettingsExpanderPage", winrt::xaml_typename<WinUI3Example::SettingsExpanderPage>()},
             {L"DependentValuePage", winrt::xaml_typename<WinUI3Example::DependentValuePage>()},
-            {L"MarqueeTextPage", winrt::xaml_typename<WinUI3Example::MarqueeTextPage>()}
+            {L"MarqueeTextPage", winrt::xaml_typename<WinUI3Example::MarqueeTextPage>()},
+            {L"GlphysPage", winrt::xaml_typename<WinUI3Example::GlyphsPage>()}
         };
     };
 }
