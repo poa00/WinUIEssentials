@@ -5,6 +5,7 @@
 #endif
 #include <fstream>
 #include <winrt/Windows.UI.StartScreen.h>
+#include <winrt/Windows.Data.Xml.Dom.h>
 
 namespace winrt::UWPExample::implementation
 {

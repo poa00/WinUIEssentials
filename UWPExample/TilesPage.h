@@ -2,11 +2,9 @@
 
 #include "TilesPage.g.h"
 #include <winrt/Windows.UI.Notifications.h>
-#include "TilesBuilder.hpp"
 
 namespace winrt::UWPExample::implementation
 {
-    using namespace TilesBuilder;
     struct TilesPage : TilesPageT<TilesPage>
     {
         TilesPage();
