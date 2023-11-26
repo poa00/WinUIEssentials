@@ -27,6 +27,8 @@
         <file src="include/BadgeGlyphs.hpp" target="build/native/include"/>
         <file src="include/Taskbar.hpp" target="build/native/include"/>
         <file src="include/TemplateControlHelper.hpp" target="build/native/include"/>
+        <file src="include/TileBuilder.hpp" target="build/native/include"/>
+        <file src="include/TileTemplates.hpp" target="build/native/include"/>
         <file src="WinUIEssential.WinUI3.targets" target="build/native"/>
         
         <!--lib/native(The last item in each group is control resource)-->

@@ -30,6 +30,8 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |BadgeGlyphs| :white_check_mark: | :white_check_mark: | Header only
 |ToastTemplates| :white_check_mark: | :white_check_mark: | Header only
 |ToastBuilder | :white_check_mark: | :white_check_mark: | Header only
+|TileTemplates| :white_check_mark: | :white_check_mark: | Header only
+|TileBuilder | :white_check_mark: | :white_check_mark: | Header only
 |CursorController | :white_check_mark: | :white_check_mark: | WinRT component
 |PropertyChangeHelper | :white_check_mark: | :white_check_mark: | Header only
 |NegateBoolConverter | :white_check_mark: | :white_check_mark: | WinRT component
@@ -190,6 +192,12 @@ Actions()
 	})
 )
 ```
+
+## TileTemplates --- *namespace `TileTemplates`*
+Similar to [ToastTemplates](#ToastHelper), but for strongly-typed tile templates.
+
+## TileBuilder --- *namespace `TileBuilder`*
+Similar to [ToastBuilder](#ToastHelper), but for building tiles.
 
 ## Glphys --- *namespace `Glyphs`*
 Font glyphs value for Segoe MDL2 Assets fonts. Usage:

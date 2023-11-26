@@ -1,0 +1,19 @@
+namespace UWPPackage
+{
+    [bindable]
+    [default_interface]
+    runtimeclass IconButton : Windows.UI.Xaml.Controls.ContentControl
+    {
+        IconButton();
+        Object Icon;
+        static Windows.UI.Xaml.DependencyProperty IconProperty{ get; };
+
+        event Windows.UI.Xaml.RoutedEventHandler Click;
+
+        void Collapse();
+        void Expand();
+
+        Boolean IsExpanded;
+        static Windows.UI.Xaml.DependencyProperty IsExpandedProperty{ get; };
+    }
+}

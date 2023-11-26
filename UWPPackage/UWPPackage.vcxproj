@@ -204,10 +204,16 @@
       <DependentUpon>GroupBox.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="IconButton.h">
+      <DependentUpon>IconButton.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="include\BadgeGlyphs.hpp" />
     <ClInclude Include="include\Glyphs.hpp" />
     <ClInclude Include="include\PropertyChangeHelper.hpp" />
     <ClInclude Include="include\TemplateControlHelper.hpp" />
+    <ClInclude Include="include\TileBuilder.hpp" />
+    <ClInclude Include="include\TileTemplates.hpp" />
     <ClInclude Include="include\ToastBuilder.hpp" />
     <ClInclude Include="include\ToastTemplates.hpp" />
     <ClInclude Include="include\WindowHelper.hpp" />
@@ -296,6 +302,10 @@
       <DependentUpon>GroupBox.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="IconButton.cpp">
+      <DependentUpon>IconButton.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="MarqueeText.cpp">
       <DependentUpon>MarqueeText.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -382,6 +392,9 @@
     <Midl Include="GroupBox.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="IconButton.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="MarqueeText.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -422,6 +435,9 @@
   <ItemGroup>
     <Page Include="Glyphs.xaml" />
     <Page Include="GroupBox_Resource.xaml" />
+    <Page Include="IconButton_Resource.xaml">
+      <DeploymentContent>true</DeploymentContent>
+    </Page>
     <Page Include="MarqueeText_Resource.xaml" />
     <Page Include="SettingsCard_Resource.xaml">
       <DeploymentContent>true</DeploymentContent>

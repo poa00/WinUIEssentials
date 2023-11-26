@@ -5,6 +5,7 @@
     xmlns:local="using:UWPExample"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:essential="using:UWPPackage"
     mc:Ignorable="d">
 
     <Grid>
@@ -96,6 +97,22 @@
             <x:String>TileTall150x310Image = 79</x:String>
         </ListView>
 
-        <TextBox Grid.Column="1" Text="{x:Bind GetXml(List.SelectedIndex), Mode=OneWay}" TextWrapping="Wrap"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox x:Name="XmlText" Text="{x:Bind GetXml(List.SelectedIndex), Mode=OneWay}" TextWrapping="Wrap"/>
+
+            <!--<essential:GroupBox Header="Parameters">
+                <ItemsControl ItemsSource="{x:Bind List.SelectedIndex, Mode=OneWay}"/>
+            </essential:GroupBox>-->
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Spacing="10">
+                <Button x:Name="SetMainTileButton" Click="SetMainTileButton_Click">Set main tile</Button>
+                <Button Click="ClickHandler">Set secondary tile</Button>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Page>

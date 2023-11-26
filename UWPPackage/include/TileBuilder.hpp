@@ -1,11 +1,66 @@
 #pragma once
-#include <ToastBuilder.hpp>
+#include <winrt/Windows.Data.Xml.Dom.h>
+#include <winrt/Windows.UI.Notifications.h>
 #include <vector>
-using ToastBuilder::PropertyValue;
+
 
 //https://learn.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/adaptive-tiles-schema
 namespace TilesBuilder
 {
+	template<typename ValueType>
+	struct PropertyValue
+	{
+		std::wstring_view name;
+		std::optional<ValueType> value;
+
+		template<typename T>
+		PropertyValue& operator=(T&& newValue)
+		{
+			value.emplace(std::move(newValue)); //don't use std::forward here because we are all using value semantics
+			return *this;
+		}
+
+		operator bool() const
+		{
+			return static_cast<bool>(value);
+		}
+	};
+
+	namespace internals
+	{
+		/**
+		 * @brief Create `XmlElement` for node that does not have children
+		 * @param name Name of this node
+		 * @param root The root `XmlDocument`
+		 * @param ...properties Properties of this node
+		 * @return XML representation of this toast node
+		*/
+		winrt::Windows::Data::Xml::Dom::XmlElement MakeElement(std::wstring_view name, winrt::Windows::Data::Xml::Dom::XmlDocument& root, auto&&... properties)
+		{
+			auto element = root.CreateElement(name);
+			(element << ... << properties);
+			return element;
+		}
+
+		/**
+		 * @brief Create `XmlElement` for node that does have children
+		 * @tparam Node Type of child nodes
+		 * @param name Name of this node
+		 * @param root The root `XmlDocument`
+		 * @param nodes vector of child nodes
+		 * @param ...properties Properties of this node
+		 * @return XML representation of this toast nodes with all its child nodes
+		*/
+		template<typename Node>
+		winrt::Windows::Data::Xml::Dom::XmlElement MakeElement(std::wstring_view name, winrt::Windows::Data::Xml::Dom::XmlDocument& root, std::vector<Node*>& nodes, auto&&... properties)
+		{
+			auto element = MakeElement(name, root, properties...);
+			for (auto node : nodes)
+				element.AppendChild(node->Get(root));
+			return element;
+		}
+	}
+
 	struct INodeBase
 	{
 		virtual winrt::Windows::Data::Xml::Dom::XmlElement Get(winrt::Windows::Data::Xml::Dom::XmlDocument& root) = 0;
@@ -35,7 +90,7 @@ namespace TilesBuilder
 		int m_value;
 	public:
 
-		LimitedInt(int value) : m_value{value}
+		LimitedInt(int value) : m_value{ value }
 		{
 			assert(value >= Min && value <= Max);
 		}
@@ -62,7 +117,7 @@ namespace TilesBuilder
 	}
 
 
-	class Tile; 
+	class Tile;
 	class Visual;
 	class Binding;
 	class Image;
@@ -182,87 +237,87 @@ namespace TilesBuilder
 		{
 			switch (*value.value)
 			{
-				case TileTemplateNameV3::TileMedium: element.SetAttribute(value.name, L"TileMedium"); break;
-				case TileTemplateNameV3::TileSmall: element.SetAttribute(value.name, L"TileSmall"); break;
-				case TileTemplateNameV3::TileWide: element.SetAttribute(value.name, L"TileWide"); break;
-				case TileTemplateNameV3::TileLarge: element.SetAttribute(value.name, L"TileLarge"); break;
-				case TileTemplateNameV3::TileSquare150x150Block: element.SetAttribute(value.name, L"TileSquare150x150Block"); break;
-				case TileTemplateNameV3::TileSquare150x150Image: element.SetAttribute(value.name, L"TileSquare150x150Image"); break;
-				case TileTemplateNameV3::TileSquare150x150PeekImageAndText01: element.SetAttribute(value.name, L"TileSquare150x150PeekImageAndText01"); break;
-				case TileTemplateNameV3::TileSquare150x150PeekImageAndText02: element.SetAttribute(value.name, L"TileSquare150x150PeekImageAndText02"); break;
-				case TileTemplateNameV3::TileSquare150x150PeekImageAndText03: element.SetAttribute(value.name, L"TileSquare150x150PeekImageAndText03"); break;
-				case TileTemplateNameV3::TileSquare150x150PeekImageAndText04: element.SetAttribute(value.name, L"TileSquare150x150PeekImageAndText04"); break;
-				case TileTemplateNameV3::TileSquare150x150Text01: element.SetAttribute(value.name, L"TileSquare150x150Text01"); break;
-				case TileTemplateNameV3::TileSquare150x150Text02: element.SetAttribute(value.name, L"TileSquare150x150Text02"); break;
-				case TileTemplateNameV3::TileSquare150x150Text03: element.SetAttribute(value.name, L"TileSquare150x150Text03"); break;
-				case TileTemplateNameV3::TileSquare150x150Text04: element.SetAttribute(value.name, L"TileSquare150x150Text04"); break;
-				case TileTemplateNameV3::TileSquare310x310BlockAndText01: element.SetAttribute(value.name, L"TileSquare310x310BlockAndText01"); break;
-				case TileTemplateNameV3::TileSquare310x310BlockAndText02: element.SetAttribute(value.name, L"TileSquare310x310BlockAndText02"); break;
-				case TileTemplateNameV3::TileSquare310x310Image: element.SetAttribute(value.name, L"TileSquare310x310Image"); break;
-				case TileTemplateNameV3::TileSquare310x310ImageAndText01: element.SetAttribute(value.name, L"TileSquare310x310ImageAndText01"); break;
-				case TileTemplateNameV3::TileSquare310x310ImageAndText02: element.SetAttribute(value.name, L"TileSquare310x310ImageAndText02"); break;
-				case TileTemplateNameV3::TileSquare310x310ImageAndTextOverlay01: element.SetAttribute(value.name, L"TileSquare310x310ImageAndTextOverlay01"); break;
-				case TileTemplateNameV3::TileSquare310x310ImageAndTextOverlay02: element.SetAttribute(value.name, L"TileSquare310x310ImageAndTextOverlay02"); break;
-				case TileTemplateNameV3::TileSquare310x310ImageAndTextOverlay03: element.SetAttribute(value.name, L"TileSquare310x310ImageAndTextOverlay03"); break;
-				case TileTemplateNameV3::TileSquare310x310ImageCollection: element.SetAttribute(value.name, L"TileSquare310x310ImageCollection"); break;
-				case TileTemplateNameV3::TileSquare310x310ImageCollectionAndText01: element.SetAttribute(value.name, L"TileSquare310x310ImageCollectionAndText01"); break;
-				case TileTemplateNameV3::TileSquare310x310ImageCollectionAndText02: element.SetAttribute(value.name, L"TileSquare310x310ImageCollectionAndText02"); break;
-				case TileTemplateNameV3::TileSquare310x310SmallImagesAndTextList01: element.SetAttribute(value.name, L"TileSquare310x310SmallImagesAndTextList01"); break;
-				case TileTemplateNameV3::TileSquare310x310SmallImagesAndTextList02: element.SetAttribute(value.name, L"TileSquare310x310SmallImagesAndTextList02"); break;
-				case TileTemplateNameV3::TileSquare310x310SmallImagesAndTextList03: element.SetAttribute(value.name, L"TileSquare310x310SmallImagesAndTextList03"); break;
-				case TileTemplateNameV3::TileSquare310x310SmallImagesAndTextList04: element.SetAttribute(value.name, L"TileSquare310x310SmallImagesAndTextList04"); break;
-				case TileTemplateNameV3::TileSquare310x310Text01: element.SetAttribute(value.name, L"TileSquare310x310Text01"); break;
-				case TileTemplateNameV3::TileSquare310x310Text02: element.SetAttribute(value.name, L"TileSquare310x310Text02"); break;
-				case TileTemplateNameV3::TileSquare310x310Text03: element.SetAttribute(value.name, L"TileSquare310x310Text03"); break;
-				case TileTemplateNameV3::TileSquare310x310Text04: element.SetAttribute(value.name, L"TileSquare310x310Text04"); break;
-				case TileTemplateNameV3::TileSquare310x310Text05: element.SetAttribute(value.name, L"TileSquare310x310Text05"); break;
-				case TileTemplateNameV3::TileSquare310x310Text06: element.SetAttribute(value.name, L"TileSquare310x310Text06"); break;
-				case TileTemplateNameV3::TileSquare310x310Text07: element.SetAttribute(value.name, L"TileSquare310x310Text07"); break;
-				case TileTemplateNameV3::TileSquare310x310Text08: element.SetAttribute(value.name, L"TileSquare310x310Text08"); break;
-				case TileTemplateNameV3::TileSquare310x310TextList01: element.SetAttribute(value.name, L"TileSquare310x310TextList01"); break;
-				case TileTemplateNameV3::TileSquare310x310TextList02: element.SetAttribute(value.name, L"TileSquare310x310TextList02"); break;
-				case TileTemplateNameV3::TileSquare310x310TextList03: element.SetAttribute(value.name, L"TileSquare310x310TextList03"); break;
-				case TileTemplateNameV3::TileWide310x150BlockAndText01: element.SetAttribute(value.name, L"TileWide310x150BlockAndText01"); break;
-				case TileTemplateNameV3::TileWide310x150BlockAndText02: element.SetAttribute(value.name, L"TileWide310x150BlockAndText02"); break;
-				case TileTemplateNameV3::TileWide310x150Image: element.SetAttribute(value.name, L"TileWide310x150Image"); break;
-				case TileTemplateNameV3::TileWide310x150ImageAndText01: element.SetAttribute(value.name, L"TileWide310x150ImageAndText01"); break;
-				case TileTemplateNameV3::TileWide310x150ImageAndText02: element.SetAttribute(value.name, L"TileWide310x150ImageAndText02"); break;
-				case TileTemplateNameV3::TileWide310x150ImageCollection: element.SetAttribute(value.name, L"TileWide310x150ImageCollection"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImage01: element.SetAttribute(value.name, L"TileWide310x150PeekImage01"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImage02: element.SetAttribute(value.name, L"TileWide310x150PeekImage02"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImage03: element.SetAttribute(value.name, L"TileWide310x150PeekImage03"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImage04: element.SetAttribute(value.name, L"TileWide310x150PeekImage04"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImage05: element.SetAttribute(value.name, L"TileWide310x150PeekImage05"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImage06: element.SetAttribute(value.name, L"TileWide310x150PeekImage06"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImageAndText01: element.SetAttribute(value.name, L"TileWide310x150PeekImageAndText01"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImageAndText02: element.SetAttribute(value.name, L"TileWide310x150PeekImageAndText02"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImageCollection01: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection01"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImageCollection02: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection02"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImageCollection03: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection03"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImageCollection04: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection04"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImageCollection05: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection05"); break;
-				case TileTemplateNameV3::TileWide310x150PeekImageCollection06: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection06"); break;
-				case TileTemplateNameV3::TileWide310x150SmallImageAndText01: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText01"); break;
-				case TileTemplateNameV3::TileWide310x150SmallImageAndText02: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText02"); break;
-				case TileTemplateNameV3::TileWide310x150SmallImageAndText03: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText03"); break;
-				case TileTemplateNameV3::TileWide310x150SmallImageAndText04: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText04"); break;
-				case TileTemplateNameV3::TileWide310x150SmallImageAndText05: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText05"); break;
-				case TileTemplateNameV3::TileWide310x150Text01: element.SetAttribute(value.name, L"TileWide310x150Text01"); break;
-				case TileTemplateNameV3::TileWide310x150Text02: element.SetAttribute(value.name, L"TileWide310x150Text02"); break;
-				case TileTemplateNameV3::TileWide310x150Text03: element.SetAttribute(value.name, L"TileWide310x150Text03"); break;
-				case TileTemplateNameV3::TileWide310x150Text04: element.SetAttribute(value.name, L"TileWide310x150Text04"); break;
-				case TileTemplateNameV3::TileWide310x150Text05: element.SetAttribute(value.name, L"TileWide310x150Text05"); break;
-				case TileTemplateNameV3::TileWide310x150Text06: element.SetAttribute(value.name, L"TileWide310x150Text06"); break;
-				case TileTemplateNameV3::TileWide310x150Text07: element.SetAttribute(value.name, L"TileWide310x150Text07"); break;
-				case TileTemplateNameV3::TileWide310x150Text08: element.SetAttribute(value.name, L"TileWide310x150Text08"); break;
-				case TileTemplateNameV3::TileWide310x150Text09: element.SetAttribute(value.name, L"TileWide310x150Text09"); break;
-				case TileTemplateNameV3::TileWide310x150Text10: element.SetAttribute(value.name, L"TileWide310x150Text10"); break;
-				case TileTemplateNameV3::TileWide310x150Text11: element.SetAttribute(value.name, L"TileWide310x150Text11"); break;
-				case TileTemplateNameV3::TileSquare71x71Image: element.SetAttribute(value.name, L"TileSquare71x71Image"); break;
-				case TileTemplateNameV3::TileSquare71x71IconWithBadge: element.SetAttribute(value.name, L"TileSquare71x71IconWithBadge"); break;
-				case TileTemplateNameV3::TileSquare150x150IconWithBadge: element.SetAttribute(value.name, L"TileSquare150x150IconWithBadge"); break;
-				case TileTemplateNameV3::TileWide310x150IconWithBadgeAndText: element.SetAttribute(value.name, L"TileWide310x150IconWithBadgeAndText"); break;
-				default: break;
+			case TileTemplateNameV3::TileMedium: element.SetAttribute(value.name, L"TileMedium"); break;
+			case TileTemplateNameV3::TileSmall: element.SetAttribute(value.name, L"TileSmall"); break;
+			case TileTemplateNameV3::TileWide: element.SetAttribute(value.name, L"TileWide"); break;
+			case TileTemplateNameV3::TileLarge: element.SetAttribute(value.name, L"TileLarge"); break;
+			case TileTemplateNameV3::TileSquare150x150Block: element.SetAttribute(value.name, L"TileSquare150x150Block"); break;
+			case TileTemplateNameV3::TileSquare150x150Image: element.SetAttribute(value.name, L"TileSquare150x150Image"); break;
+			case TileTemplateNameV3::TileSquare150x150PeekImageAndText01: element.SetAttribute(value.name, L"TileSquare150x150PeekImageAndText01"); break;
+			case TileTemplateNameV3::TileSquare150x150PeekImageAndText02: element.SetAttribute(value.name, L"TileSquare150x150PeekImageAndText02"); break;
+			case TileTemplateNameV3::TileSquare150x150PeekImageAndText03: element.SetAttribute(value.name, L"TileSquare150x150PeekImageAndText03"); break;
+			case TileTemplateNameV3::TileSquare150x150PeekImageAndText04: element.SetAttribute(value.name, L"TileSquare150x150PeekImageAndText04"); break;
+			case TileTemplateNameV3::TileSquare150x150Text01: element.SetAttribute(value.name, L"TileSquare150x150Text01"); break;
+			case TileTemplateNameV3::TileSquare150x150Text02: element.SetAttribute(value.name, L"TileSquare150x150Text02"); break;
+			case TileTemplateNameV3::TileSquare150x150Text03: element.SetAttribute(value.name, L"TileSquare150x150Text03"); break;
+			case TileTemplateNameV3::TileSquare150x150Text04: element.SetAttribute(value.name, L"TileSquare150x150Text04"); break;
+			case TileTemplateNameV3::TileSquare310x310BlockAndText01: element.SetAttribute(value.name, L"TileSquare310x310BlockAndText01"); break;
+			case TileTemplateNameV3::TileSquare310x310BlockAndText02: element.SetAttribute(value.name, L"TileSquare310x310BlockAndText02"); break;
+			case TileTemplateNameV3::TileSquare310x310Image: element.SetAttribute(value.name, L"TileSquare310x310Image"); break;
+			case TileTemplateNameV3::TileSquare310x310ImageAndText01: element.SetAttribute(value.name, L"TileSquare310x310ImageAndText01"); break;
+			case TileTemplateNameV3::TileSquare310x310ImageAndText02: element.SetAttribute(value.name, L"TileSquare310x310ImageAndText02"); break;
+			case TileTemplateNameV3::TileSquare310x310ImageAndTextOverlay01: element.SetAttribute(value.name, L"TileSquare310x310ImageAndTextOverlay01"); break;
+			case TileTemplateNameV3::TileSquare310x310ImageAndTextOverlay02: element.SetAttribute(value.name, L"TileSquare310x310ImageAndTextOverlay02"); break;
+			case TileTemplateNameV3::TileSquare310x310ImageAndTextOverlay03: element.SetAttribute(value.name, L"TileSquare310x310ImageAndTextOverlay03"); break;
+			case TileTemplateNameV3::TileSquare310x310ImageCollection: element.SetAttribute(value.name, L"TileSquare310x310ImageCollection"); break;
+			case TileTemplateNameV3::TileSquare310x310ImageCollectionAndText01: element.SetAttribute(value.name, L"TileSquare310x310ImageCollectionAndText01"); break;
+			case TileTemplateNameV3::TileSquare310x310ImageCollectionAndText02: element.SetAttribute(value.name, L"TileSquare310x310ImageCollectionAndText02"); break;
+			case TileTemplateNameV3::TileSquare310x310SmallImagesAndTextList01: element.SetAttribute(value.name, L"TileSquare310x310SmallImagesAndTextList01"); break;
+			case TileTemplateNameV3::TileSquare310x310SmallImagesAndTextList02: element.SetAttribute(value.name, L"TileSquare310x310SmallImagesAndTextList02"); break;
+			case TileTemplateNameV3::TileSquare310x310SmallImagesAndTextList03: element.SetAttribute(value.name, L"TileSquare310x310SmallImagesAndTextList03"); break;
+			case TileTemplateNameV3::TileSquare310x310SmallImagesAndTextList04: element.SetAttribute(value.name, L"TileSquare310x310SmallImagesAndTextList04"); break;
+			case TileTemplateNameV3::TileSquare310x310Text01: element.SetAttribute(value.name, L"TileSquare310x310Text01"); break;
+			case TileTemplateNameV3::TileSquare310x310Text02: element.SetAttribute(value.name, L"TileSquare310x310Text02"); break;
+			case TileTemplateNameV3::TileSquare310x310Text03: element.SetAttribute(value.name, L"TileSquare310x310Text03"); break;
+			case TileTemplateNameV3::TileSquare310x310Text04: element.SetAttribute(value.name, L"TileSquare310x310Text04"); break;
+			case TileTemplateNameV3::TileSquare310x310Text05: element.SetAttribute(value.name, L"TileSquare310x310Text05"); break;
+			case TileTemplateNameV3::TileSquare310x310Text06: element.SetAttribute(value.name, L"TileSquare310x310Text06"); break;
+			case TileTemplateNameV3::TileSquare310x310Text07: element.SetAttribute(value.name, L"TileSquare310x310Text07"); break;
+			case TileTemplateNameV3::TileSquare310x310Text08: element.SetAttribute(value.name, L"TileSquare310x310Text08"); break;
+			case TileTemplateNameV3::TileSquare310x310TextList01: element.SetAttribute(value.name, L"TileSquare310x310TextList01"); break;
+			case TileTemplateNameV3::TileSquare310x310TextList02: element.SetAttribute(value.name, L"TileSquare310x310TextList02"); break;
+			case TileTemplateNameV3::TileSquare310x310TextList03: element.SetAttribute(value.name, L"TileSquare310x310TextList03"); break;
+			case TileTemplateNameV3::TileWide310x150BlockAndText01: element.SetAttribute(value.name, L"TileWide310x150BlockAndText01"); break;
+			case TileTemplateNameV3::TileWide310x150BlockAndText02: element.SetAttribute(value.name, L"TileWide310x150BlockAndText02"); break;
+			case TileTemplateNameV3::TileWide310x150Image: element.SetAttribute(value.name, L"TileWide310x150Image"); break;
+			case TileTemplateNameV3::TileWide310x150ImageAndText01: element.SetAttribute(value.name, L"TileWide310x150ImageAndText01"); break;
+			case TileTemplateNameV3::TileWide310x150ImageAndText02: element.SetAttribute(value.name, L"TileWide310x150ImageAndText02"); break;
+			case TileTemplateNameV3::TileWide310x150ImageCollection: element.SetAttribute(value.name, L"TileWide310x150ImageCollection"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImage01: element.SetAttribute(value.name, L"TileWide310x150PeekImage01"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImage02: element.SetAttribute(value.name, L"TileWide310x150PeekImage02"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImage03: element.SetAttribute(value.name, L"TileWide310x150PeekImage03"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImage04: element.SetAttribute(value.name, L"TileWide310x150PeekImage04"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImage05: element.SetAttribute(value.name, L"TileWide310x150PeekImage05"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImage06: element.SetAttribute(value.name, L"TileWide310x150PeekImage06"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImageAndText01: element.SetAttribute(value.name, L"TileWide310x150PeekImageAndText01"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImageAndText02: element.SetAttribute(value.name, L"TileWide310x150PeekImageAndText02"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImageCollection01: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection01"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImageCollection02: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection02"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImageCollection03: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection03"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImageCollection04: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection04"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImageCollection05: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection05"); break;
+			case TileTemplateNameV3::TileWide310x150PeekImageCollection06: element.SetAttribute(value.name, L"TileWide310x150PeekImageCollection06"); break;
+			case TileTemplateNameV3::TileWide310x150SmallImageAndText01: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText01"); break;
+			case TileTemplateNameV3::TileWide310x150SmallImageAndText02: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText02"); break;
+			case TileTemplateNameV3::TileWide310x150SmallImageAndText03: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText03"); break;
+			case TileTemplateNameV3::TileWide310x150SmallImageAndText04: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText04"); break;
+			case TileTemplateNameV3::TileWide310x150SmallImageAndText05: element.SetAttribute(value.name, L"TileWide310x150SmallImageAndText05"); break;
+			case TileTemplateNameV3::TileWide310x150Text01: element.SetAttribute(value.name, L"TileWide310x150Text01"); break;
+			case TileTemplateNameV3::TileWide310x150Text02: element.SetAttribute(value.name, L"TileWide310x150Text02"); break;
+			case TileTemplateNameV3::TileWide310x150Text03: element.SetAttribute(value.name, L"TileWide310x150Text03"); break;
+			case TileTemplateNameV3::TileWide310x150Text04: element.SetAttribute(value.name, L"TileWide310x150Text04"); break;
+			case TileTemplateNameV3::TileWide310x150Text05: element.SetAttribute(value.name, L"TileWide310x150Text05"); break;
+			case TileTemplateNameV3::TileWide310x150Text06: element.SetAttribute(value.name, L"TileWide310x150Text06"); break;
+			case TileTemplateNameV3::TileWide310x150Text07: element.SetAttribute(value.name, L"TileWide310x150Text07"); break;
+			case TileTemplateNameV3::TileWide310x150Text08: element.SetAttribute(value.name, L"TileWide310x150Text08"); break;
+			case TileTemplateNameV3::TileWide310x150Text09: element.SetAttribute(value.name, L"TileWide310x150Text09"); break;
+			case TileTemplateNameV3::TileWide310x150Text10: element.SetAttribute(value.name, L"TileWide310x150Text10"); break;
+			case TileTemplateNameV3::TileWide310x150Text11: element.SetAttribute(value.name, L"TileWide310x150Text11"); break;
+			case TileTemplateNameV3::TileSquare71x71Image: element.SetAttribute(value.name, L"TileSquare71x71Image"); break;
+			case TileTemplateNameV3::TileSquare71x71IconWithBadge: element.SetAttribute(value.name, L"TileSquare71x71IconWithBadge"); break;
+			case TileTemplateNameV3::TileSquare150x150IconWithBadge: element.SetAttribute(value.name, L"TileSquare150x150IconWithBadge"); break;
+			case TileTemplateNameV3::TileWide310x150IconWithBadgeAndText: element.SetAttribute(value.name, L"TileWide310x150IconWithBadgeAndText"); break;
+			default: break;
 			}
 		}
 		return element;
@@ -501,7 +556,7 @@ namespace TilesBuilder
 		}
 		winrt::Windows::Data::Xml::Dom::XmlElement Get(winrt::Windows::Data::Xml::Dom::XmlDocument& root) override
 		{
-			return ToastBuilder::internals::MakeElement(L"visual", root, m_child, m_version, m_lang, m_baseUri, m_branding, m_addImageQuery, m_contentId, m_displayName);
+			return internals::MakeElement(L"visual", root, m_child, m_version, m_lang, m_baseUri, m_branding, m_addImageQuery, m_contentId, m_displayName);
 		}
 	};
 
@@ -564,7 +619,7 @@ namespace TilesBuilder
 		}
 		winrt::Windows::Data::Xml::Dom::XmlElement Get(winrt::Windows::Data::Xml::Dom::XmlDocument& root) override
 		{
-			return ToastBuilder::internals::MakeElement(L"binding", root, m_child, m_template, m_fallback, m_lang, m_baseUri, m_branding, m_addImageQuery, m_displayName, m_hintTextStacking, m_hintOverlay);
+			return internals::MakeElement(L"binding", root, m_child, m_template, m_fallback, m_lang, m_baseUri, m_branding, m_addImageQuery, m_displayName, m_hintTextStacking, m_hintOverlay);
 		}
 	};
 
@@ -615,7 +670,7 @@ namespace TilesBuilder
 		}
 		winrt::Windows::Data::Xml::Dom::XmlElement Get(winrt::Windows::Data::Xml::Dom::XmlDocument& root) override
 		{
-			return ToastBuilder::internals::MakeElement(L"image", root, m_src, m_placement, m_alt, m_addImageQuery, m_hintCrop, m_hintRemoveMargin, m_hintAlign);
+			return internals::MakeElement(L"image", root, m_src, m_placement, m_alt, m_addImageQuery, m_hintCrop, m_hintRemoveMargin, m_hintAlign);
 		}
 	};
 
@@ -667,7 +722,7 @@ namespace TilesBuilder
 
 		winrt::Windows::Data::Xml::Dom::XmlElement Get(winrt::Windows::Data::Xml::Dom::XmlDocument& root) override
 		{
-			auto element = ToastBuilder::internals::MakeElement(L"text", root, m_lang, m_hintStyle, m_hintWrap, m_hintMaxLines, m_hintMinLines, m_hintAlign);
+			auto element = internals::MakeElement(L"text", root, m_lang, m_hintStyle, m_hintWrap, m_hintMaxLines, m_hintMinLines, m_hintAlign);
 			element.InnerText(std::move(m_text));
 			return element;
 		}
@@ -678,7 +733,7 @@ namespace TilesBuilder
 	public:
 		winrt::Windows::Data::Xml::Dom::XmlElement Get(winrt::Windows::Data::Xml::Dom::XmlDocument& root) override
 		{
-			return ToastBuilder::internals::MakeElement(L"group", root, m_child);
+			return internals::MakeElement(L"group", root, m_child);
 		}
 
 	};
@@ -701,7 +756,7 @@ namespace TilesBuilder
 
 		winrt::Windows::Data::Xml::Dom::XmlElement Get(winrt::Windows::Data::Xml::Dom::XmlDocument& root) override
 		{
-			return ToastBuilder::internals::MakeElement(L"subgroup", root, m_child,
+			return internals::MakeElement(L"subgroup", root, m_child,
 				m_hintWeight, m_hintTextStacking);
 		}
 	};

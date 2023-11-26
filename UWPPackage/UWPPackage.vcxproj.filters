@@ -28,6 +28,9 @@
     <Filter Include="Controls\MarqueeText">
       <UniqueIdentifier>{f1a74a3a-dc24-4185-9aaa-86e8cdaf5c89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controls\IconButton">
+      <UniqueIdentifier>{01fd93c1-3039-4be8-9741-899f4271ffcf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -61,6 +64,12 @@
     </ClInclude>
     <ClInclude Include="Export.h" />
     <ClInclude Include="include\TemplateControlHelper.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TileTemplates.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TileBuilder.hpp">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -123,6 +132,9 @@
     <Midl Include="MarqueeText.idl">
       <Filter>Controls\MarqueeText</Filter>
     </Midl>
+    <Midl Include="IconButton.idl">
+      <Filter>Controls\IconButton</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">
@@ -139,6 +151,9 @@
     </Page>
     <Page Include="MarqueeText_Resource.xaml">
       <Filter>Controls\MarqueeText</Filter>
+    </Page>
+    <Page Include="IconButton_Resource.xaml">
+      <Filter>Controls\IconButton</Filter>
     </Page>
   </ItemGroup>
 </Project>

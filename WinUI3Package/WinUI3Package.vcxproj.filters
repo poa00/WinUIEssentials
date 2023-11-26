@@ -31,6 +31,12 @@
     <ClInclude Include="include\Taskbar.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\TileBuilder.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TileTemplates.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="WinUI3Package.def" />

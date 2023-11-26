@@ -9,23 +9,17 @@ namespace winrt::UWPExample::implementation
     using namespace TilesBuilder;
     struct TilesPage : TilesPageT<TilesPage>
     {
-        TilesPage() 
-        {
-            // Xaml objects should not call InitializeComponent during construction.
-            // See https://github.com/microsoft/cppwinrt/tree/master/nuget#initializecomponent
+        TilesPage();
 
-            m_updater.EnableNotificationQueue(true);
-        }
-
-        void ClickHandler(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
+        winrt::Windows::Foundation::IAsyncAction ClickHandler(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
     private:
         winrt::Windows::UI::Notifications::TileUpdater m_updater = winrt::Windows::UI::Notifications::TileUpdateManager::CreateTileUpdaterForApplication();
     public:
-        winrt::Windows::Foundation::IAsyncAction Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
 
 
         static winrt::hstring GetXml(int selection);
 
+        void SetMainTileButton_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
     };
 }
 

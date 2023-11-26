@@ -27,6 +27,8 @@
         <file src="include/BadgeGlyphs.hpp" target="build/native/include"/>
         <file src="include/TemplateControlHelper.hpp" target="build/native/include"/>
         <file src="include/WinUIIncludes.hpp" target="build/native/include"/>
+        <file src="include/TileBuilder.hpp" target="build/native/include"/>
+        <file src="include/TileTemplates.hpp" target="build/native/include"/>
         <file src="Export.h" target="build/native/include"/>
         <file src="include/WindowHelper.hpp" target="build/native/include"/>
         <file src="WinUIEssential.UWP.targets" target="build/native"/>
