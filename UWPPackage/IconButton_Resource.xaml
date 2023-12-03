@@ -7,28 +7,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:IconButton">
-                    <Button x:Name="RootButton">
-                        <StackPanel Orientation="Horizontal">
-                            <ContentPresenter x:Name="IconContent" Content="{TemplateBinding Icon}" FontSize="{TemplateBinding FontSize}"/>
-                            <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}"/>
-
-                        </StackPanel>
-                    </Button>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Name="ToggleIconButtonStyle" TargetType="local:IconButton">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:IconButton">
-                    <ToggleButton x:Name="RootButton">
-                        <StackPanel Orientation="Horizontal">
-                            <ContentPresenter x:Name="IconContent" Content="{TemplateBinding Icon}" FontSize="{TemplateBinding FontSize}"/>
-                            <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}"/>
-                        </StackPanel>
-                    </ToggleButton>
+                    <Grid x:Name="RootGrid"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

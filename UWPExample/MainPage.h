@@ -43,7 +43,8 @@ namespace winrt::UWPExample::implementation
             {L"DependentValuePage", winrt::xaml_typename<UWPExample::DependentValuePage>()},
             {L"MarqueeContainerPage", winrt::xaml_typename<UWPExample::MarqueeContainerPage>()},
             {L"GlyphsPage", winrt::xaml_typename<UWPExample::GlyphsPage>()},
-            {L"TilesPage", winrt::xaml_typename<UWPExample::TilesPage>()}
+            {L"TilesPage", winrt::xaml_typename<UWPExample::TilesPage>()},
+            {L"IconButtonPage", winrt::xaml_typename<UWPExample::IconButtonPage>()}
         };
     };
 }

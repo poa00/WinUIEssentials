@@ -11,12 +11,22 @@ namespace winrt::UWPPackage::implementation
 		winrt::Windows::UI::Xaml::DependencyProperty::Register(
 			L"Icon",
 			winrt::xaml_typename<winrt::Windows::Foundation::IInspectable>(),
-			winrt::xaml_typename<winrt::UWPPackage::IconButton>(),
+			winrt::xaml_typename<class_type>(),
 			nullptr
 		);
+	winrt::Windows::UI::Xaml::DependencyProperty IconButton::m_isExpandedProperty =
+		winrt::Windows::UI::Xaml::DependencyProperty::Register(
+			L"IsExpanded",
+			winrt::xaml_typename<bool>(),
+			winrt::xaml_typename<class_type>(),
+			winrt::Windows::UI::Xaml::PropertyMetadata{ winrt::box_value(false), &IconButton::isExpandedPropertyChanged }
+	);
+
 
 	IconButton::IconButton()
 	{
+		DefaultStyleKey(winrt::box_value(winrt::xaml_typename<class_type>()));
+
 		RegisterPropertyChangedCallback(winrt::Windows::UI::Xaml::Controls::ContentControl::ContentProperty(),
 			[this](auto...)
 			{
@@ -25,6 +35,20 @@ namespace winrt::UWPPackage::implementation
 				{
 					m_contentPresenter.Width(NAN);
 				}
+				if (!m_contentPresenter)
+					m_contentPresenter = {};
+				m_contentPresenter.Content(Content());
+			});
+
+		RegisterPropertyChangedCallback(winrt::Windows::UI::Xaml::Controls::Control::FontSizeProperty(),
+			[this](auto...)
+			{
+				if (!m_contentPresenter)
+					m_contentPresenter = {};
+				if (!m_iconContent)
+					m_iconContent = {};
+				m_contentPresenter.FontSize(FontSize());
+				m_iconContent.FontSize(FontSize());
 			});
 	}
 
@@ -32,52 +56,30 @@ namespace winrt::UWPPackage::implementation
 	{
 		base_type::OnApplyTemplate();
 
-		auto rootButton = GetTemplateChild(L"RootButton").as<winrt::Windows::UI::Xaml::Controls::Primitives::ButtonBase>();
+		if (!m_container)
+			m_container = winrt::Windows::UI::Xaml::Controls::Button{};
+		if (!m_iconContent)
+			m_iconContent = {};
+		if (!m_contentPresenter)
+			m_contentPresenter = {};
 
-		rootButton.PointerEntered([this](auto...)
-			{
-				//winrt::Windows::UI::Xaml::VisualStateManager::GoToState(*this, L"Enter", true);
-				if (!m_storyboard)
-				{
-					m_storyboard = {};
-					m_storyboard.Duration({ duration, winrt::Windows::UI::Xaml::DurationType::TimeSpan });
-					m_storyboard.Children().Append(m_widthAnimation);
+		auto rootButton = m_container;
+		winrt::Windows::UI::Xaml::Controls::StackPanel buttonContent;
+		buttonContent.Orientation(winrt::Windows::UI::Xaml::Controls::Orientation::Horizontal);
+		buttonContent.Children().Append(m_iconContent);
+		buttonContent.Children().Append(m_contentPresenter);
 
-					winrt::Windows::UI::Xaml::Media::Animation::DoubleAnimation opacityAnimation;
-					opacityAnimation.From(0.0);
-					opacityAnimation.To(1.0);
-					opacityAnimation.Duration({ duration, winrt::Windows::UI::Xaml::DurationType::TimeSpan });
-					winrt::Windows::UI::Xaml::Media::Animation::Storyboard::SetTarget(opacityAnimation, m_contentPresenter);
-					winrt::Windows::UI::Xaml::Media::Animation::Storyboard::SetTargetProperty(
-						opacityAnimation,
-						L"Opacity"
-					);
-					m_storyboard.Children().Append(opacityAnimation);
-				}
-				m_storyboard.AutoReverse(false);
-				m_contentPresenter.Visibility(winrt::Windows::UI::Xaml::Visibility::Visible);
-				m_storyboard.Begin();
-			});
-		rootButton.PointerExited([this](auto...)
-			{
-				//winrt::Windows::UI::Xaml::VisualStateManager::GoToState(*this, L"PointerExit", true);
-				if (!m_storyboard)
-					return;
+		rootButton.Content(buttonContent);
 
-				m_storyboard.AutoReverse(true);
-				m_storyboard.Begin();
-				//m_storyboard.Resume();
-				m_storyboard.Seek(duration);
-			});
-		rootButton.Click([this](auto sender, auto&&...args)
-			{
-				m_handlers(*this, args...);
-			});
+		auto rootPanel = GetTemplateChild(L"RootGrid").as<winrt::Windows::UI::Xaml::Controls::Grid>();
+		rootPanel.Children().Append(rootButton);
 
-		m_contentPresenter = GetTemplateChild(L"ContentPresenter").as<winrt::Windows::UI::Xaml::Controls::ContentPresenter>();
+
+		rootButton.PointerEntered([this](auto...) {Expand(); });
+		rootButton.PointerExited([this](auto...) {Collapse(); });
+
 
 		m_contentPresenter.Loaded([this](auto...) { m_loaded = true; });
-
 		m_contentPresenter.SizeChanged([this](auto, winrt::Windows::UI::Xaml::SizeChangedEventArgs const& args)
 			{
 				if (!m_widthAnimation)
@@ -122,37 +124,82 @@ namespace winrt::UWPPackage::implementation
 
 	void IconButton::Icon(winrt::Windows::Foundation::IInspectable value)
 	{
+		if (!m_iconContent)
+			m_iconContent = {};
+		m_iconContent.Content(value);
 		SetValue(m_iconProperty, value);
 	}
 
 	winrt::Windows::UI::Xaml::DependencyProperty IconButton::IconProperty()
 	{
-
 		return m_iconProperty;
 	}
-	winrt::event_token IconButton::Click(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler)
-	{
-		return m_handlers.add(handler);
-	}
-	void IconButton::Click(event_token const& cookie)
-	{
-		GetTemplateChild(L"RootButton").as<winrt::Windows::UI::Xaml::Controls::Primitives::ButtonBase>().Click(cookie);
-	}
+
 	void IconButton::Collapse()
 	{
+		//winrt::Windows::UI::Xaml::VisualStateManager::GoToState(*this, L"PointerExit", true);
+		if (!m_storyboard)
+			return;
+
+		m_storyboard.AutoReverse(true);
+		m_storyboard.Begin();
+		//m_storyboard.Resume();
+		m_storyboard.Seek(duration);
 	}
 	void IconButton::Expand()
 	{
+		if (!m_storyboard)
+		{
+			m_storyboard = {};
+			m_storyboard.Duration({ duration, winrt::Windows::UI::Xaml::DurationType::TimeSpan });
+			m_storyboard.Children().Append(m_widthAnimation);
+
+			winrt::Windows::UI::Xaml::Media::Animation::DoubleAnimation opacityAnimation;
+			opacityAnimation.From(0.0);
+			opacityAnimation.To(1.0);
+			opacityAnimation.Duration({ duration, winrt::Windows::UI::Xaml::DurationType::TimeSpan });
+			winrt::Windows::UI::Xaml::Media::Animation::Storyboard::SetTarget(opacityAnimation, m_contentPresenter);
+			winrt::Windows::UI::Xaml::Media::Animation::Storyboard::SetTargetProperty(
+				opacityAnimation,
+				L"Opacity"
+			);
+			m_storyboard.Children().Append(opacityAnimation);
+		}
+		m_storyboard.AutoReverse(false);
+		m_contentPresenter.Visibility(winrt::Windows::UI::Xaml::Visibility::Visible);
+		m_storyboard.Begin();
 	}
 	bool IconButton::IsExpanded()
 	{
-		return false;
+		return winrt::unbox_value<bool>(GetValue(m_isExpandedProperty));
 	}
 	void IconButton::IsExpanded(bool value)
 	{
+		SetValue(m_isExpandedProperty, winrt::box_value(value));
 	}
 	winrt::Windows::UI::Xaml::DependencyProperty IconButton::IsExpandedProperty()
 	{
 		return winrt::Windows::UI::Xaml::DependencyProperty{ nullptr };
+	}
+	winrt::Windows::UI::Xaml::Controls::Primitives::ButtonBase IconButton::Container()
+	{
+		return m_container;
+	}
+	void IconButton::Container(winrt::Windows::UI::Xaml::Controls::Primitives::ButtonBase value)
+	{
+		m_container = value;
+	}
+	void IconButton::isExpandedPropertyChanged(winrt::Windows::UI::Xaml::DependencyObject d, winrt::Windows::UI::Xaml::DependencyPropertyChangedEventArgs args)
+	{
+		auto newValue = winrt::unbox_value<bool>(args.NewValue());
+		auto const oldValue = !newValue;
+		if (newValue)
+		{
+			d.as<class_type>().Expand();
+		}
+		else
+		{
+			d.as<class_type>().Collapse();
+		}
 	}
 }
