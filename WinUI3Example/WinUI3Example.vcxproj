@@ -172,6 +172,14 @@
     <ClInclude Include="MainWindow.xaml.h">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="ProgressBarEx.h">
+      <DependentUpon>ProgressBarEx.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ProgressBarExPage.xaml.h">
+      <DependentUpon>ProgressBarExPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="SettingsCardPage.xaml.h">
       <DependentUpon>SettingsCardPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -230,6 +238,9 @@
     </Page>
     <Page Include="MainWindow.xaml" />
     <Page Include="MarqueeTextPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProgressBarExPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SettingsCardPage.xaml">
@@ -306,6 +317,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="ProgressBarEx.cpp">
+      <DependentUpon>ProgressBarEx.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ProgressBarExPage.xaml.cpp">
+      <DependentUpon>ProgressBarExPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="SettingsCardPage.xaml.cpp">
       <DependentUpon>SettingsCardPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -385,6 +404,13 @@
     </Midl>
     <Midl Include="MyDataModelTemplateSelector.idl">
       <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="ProgressBarEx.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="ProgressBarExPage.idl">
+      <DependentUpon>ProgressBarExPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Midl>
     <Midl Include="SettingsCardPage.idl">
       <DependentUpon>SettingsCardPage.xaml</DependentUpon>

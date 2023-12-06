@@ -46,6 +46,7 @@ namespace winrt::WinUI3Example::implementation
             {L"MarqueeTextPage", winrt::xaml_typename<WinUI3Example::MarqueeTextPage>()},
             {L"GlphysPage", winrt::xaml_typename<WinUI3Example::GlyphsPage>()},
             {L"TitleBarPage", winrt::xaml_typename<WinUI3Example::TitleBarPage>()},
+            {L"ProgressBarExPage", winrt::xaml_typename<WinUI3Example::ProgressBarExPage>()}
         };
     };
 }

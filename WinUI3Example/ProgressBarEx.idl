@@ -1,0 +1,15 @@
+namespace WinUI3Example
+{
+    [bindable]
+    [default_interface]
+    runtimeclass ProgressBarEx : Microsoft.UI.Xaml.Controls.ContentControl
+    {
+        ProgressBarEx();
+
+        Windows.UI.Color Color;
+        static Microsoft.UI.Xaml.DependencyProperty ColorProperty{ get; };
+
+        Double Percent;
+        static Microsoft.UI.Xaml.DependencyProperty PercentProperty{ get; };
+    }
+}

@@ -50,6 +50,9 @@
     <Page Include="CustomTitleBar.xaml">
       <Filter>Windows</Filter>
     </Page>
+    <Page Include="ProgressBarExPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -61,6 +64,7 @@
       <Filter>Pages\SettingsExpanderPage</Filter>
     </Midl>
     <Midl Include="WindowEx.idl" />
+    <Midl Include="ProgressBarEx.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

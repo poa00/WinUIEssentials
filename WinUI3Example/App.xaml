@@ -17,6 +17,17 @@
                 <ResourceDictionary Source="ms-appx:///WinUI3Package/MarqueeText_Resource.xaml"/>
                 
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="local:ProgressBarEx">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="local:ProgressBarEx">
+                            <Border x:Name="RootBorder" BorderThickness="1" BorderBrush="Red" Child="{TemplateBinding Content}">
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
