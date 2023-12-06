@@ -3,12 +3,15 @@
 
 #pragma once
 
+#include "WindowEx.h"
 #include "MainWindow.g.h"
 #include <ranges>
 
+#include <winrt/Microsoft.UI.Xaml.Markup.h>
+
 namespace winrt::WinUI3Example::implementation
 {
-    struct MainWindow : MainWindowT<MainWindow>
+    struct MainWindow : winrt::Microsoft::UI::Xaml::Markup::ComponentConnectorT<MainWindowT<MainWindow>>
     {
         MainWindow();
 
@@ -41,7 +44,8 @@ namespace winrt::WinUI3Example::implementation
             {L"SettingsExpanderPage", winrt::xaml_typename<WinUI3Example::SettingsExpanderPage>()},
             {L"DependentValuePage", winrt::xaml_typename<WinUI3Example::DependentValuePage>()},
             {L"MarqueeTextPage", winrt::xaml_typename<WinUI3Example::MarqueeTextPage>()},
-            {L"GlphysPage", winrt::xaml_typename<WinUI3Example::GlyphsPage>()}
+            {L"GlphysPage", winrt::xaml_typename<WinUI3Example::GlyphsPage>()},
+            {L"TitleBarPage", winrt::xaml_typename<WinUI3Example::TitleBarPage>()},
         };
     };
 }

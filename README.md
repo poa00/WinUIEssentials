@@ -2,6 +2,9 @@
 # WinUI Essentials
 A repo dedicated for simplifying C++ development with WinUI2 (Universal Windows Platform) and WinUI3 (Windows App SDK).
 
+![](https://img.shields.io/nuget/v/WinUIEssential.UWP?label=UWP)
+![](https://img.shields.io/nuget/v/WinUIEssential.WinUI3?label=winui3)
+
 ## Usage
 > [!WARNING]
 > Make sure to set your C++ language version to C++20 first!
@@ -47,6 +50,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |GroupBox | :white_check_mark: | :white_check_mark: | Control
 |SettingsCard | :white_check_mark: | :white_check_mark:* | Control
 |SettingsExpander | :white_check_mark: | :white_check_mark:* | Control
+|IconButton | :white_check_mark: | :x: | Control
 |FontIconExtension | :white_check_mark: | :white_check_mark: | WinRT component
 |DependentValue| :white_check_mark: | :white_check_mark: | WinRT component
 |Taskbar| :x: | :white_check_mark: | Header only
@@ -421,3 +425,8 @@ Taskbar::SetProgressValue(hwnd, 50); //a third optional parameter for total, def
 ## MarqueeText --- *namespace `MarqueeText`*
 Enhanced version of `MarqueeText` in the community toolkit.
 ![](assets/marquee-text.png)
+
+## IconButton --- *namespace `IconButton`*
+Expandable button, which shows an icon (actually anything) in its default state, and a content when you hover on it.
+
+![](assets/icon-button.gif)

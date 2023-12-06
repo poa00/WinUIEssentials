@@ -1,10 +1,11 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
+import "WindowEx.idl";
 
 namespace WinUI3Example
 {
     [default_interface]
-    runtimeclass MainWindow : Microsoft.UI.Xaml.Window
+    runtimeclass MainWindow : WinUI3Example.WindowEx, Microsoft.UI.Xaml.Markup.IComponentConnector
     {
         MainWindow();
         Windows.Foundation.Collections.IVector<Object> Pages{ get; };

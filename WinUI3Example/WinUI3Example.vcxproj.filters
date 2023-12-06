@@ -41,6 +41,15 @@
     <Page Include="GlyphsPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="TitleBarPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="Win32TitleBar.xaml">
+      <Filter>Windows</Filter>
+    </Page>
+    <Page Include="CustomTitleBar.xaml">
+      <Filter>Windows</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -51,6 +60,7 @@
     <Midl Include="MyDataModelTemplateSelector.idl">
       <Filter>Pages\SettingsExpanderPage</Filter>
     </Midl>
+    <Midl Include="WindowEx.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -226,6 +236,9 @@
     <Filter Include="Pages\SettingsExpanderPage">
       <UniqueIdentifier>{74b6dc55-d6d8-4db0-b6c4-38f4c301e3f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Windows">
+      <UniqueIdentifier>{ca3d30fe-7d2f-4512-9fca-ae1fbc9d1668}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="app.manifest" />
@@ -235,6 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="WinUI3Example_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />

@@ -6,6 +6,7 @@
 #if __has_include("MainWindow.g.cpp")
 #include "MainWindow.g.cpp"
 #endif
+#include "WindowEx.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -17,7 +18,7 @@ namespace winrt::WinUI3Example::implementation
 {
     MainWindow::MainWindow()
     {
-        InitializeComponent();
+        //InitializeComponent();
     }
 
 	void MainWindow::NavigationView_SelectionChanged(
