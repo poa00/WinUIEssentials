@@ -6,10 +6,23 @@ namespace WinUI3Example
     {
         ProgressBarEx();
 
-        Windows.UI.Color Color;
-        static Microsoft.UI.Xaml.DependencyProperty ColorProperty{ get; };
+        //HighColor for the highlight color
+        Windows.UI.Color HighColor;
+        static Microsoft.UI.Xaml.DependencyProperty HighColorProperty{ get; };
+
+        //Base for the rest of the progress background color
+        Windows.UI.Color BaseColor;
+        static Microsoft.UI.Xaml.DependencyProperty BaseColorProperty{ get; };
 
         Double Percent;
         static Microsoft.UI.Xaml.DependencyProperty PercentProperty{ get; };
+
+        /*
+            Nope, I don't want to support listening for GradientStop changes in XAML, wasting too much performance
+            because I have to listen for the VectorChange event and all the GradientStop property change event.
+            The most important thing is, it's hard for users to get the effect looked right
+        */
+        //Windows.Foundation.Collections.IObservableVector<Microsoft.UI.Xaml.Media.GradientStop> GradientStops;
+        //static Microsoft.UI.Xaml.DependencyProperty GradientStopsProperty{ get; };
     }
 }

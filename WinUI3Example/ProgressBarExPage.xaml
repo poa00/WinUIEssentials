@@ -8,5 +8,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <local:ProgressBarEx HorizontalAlignment="Stretch" Height="50" Percent="0.50"/>
+    <Grid RowSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Spacing="20">
+            <ColorPicker x:Name="HighColorPicker" IsAlphaEnabled="True" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True"/>
+            <ColorPicker x:Name="BaseColorPicker" IsAlphaEnabled="True" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True"/>
+        </StackPanel>
+
+
+        <local:ProgressBarEx Grid.Row="1" HorizontalAlignment="Stretch" Height="50" Percent="0.50" HighColor="{x:Bind HighColorPicker.Color, Mode=OneWay}"
+                             BaseColor="{x:Bind BaseColorPicker.Color, Mode=OneWay}"/>
+
+        <local:ProgressBarEx Grid.Row="2" HorizontalAlignment="Stretch" Height="50" Percent="0.50"/>
+    </Grid>
+
 </Page>

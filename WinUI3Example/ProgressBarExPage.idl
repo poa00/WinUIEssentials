@@ -4,5 +4,8 @@ namespace WinUI3Example
     runtimeclass ProgressBarExPage : Microsoft.UI.Xaml.Controls.Page
     {
         ProgressBarExPage();
+
+        Microsoft.UI.Xaml.Controls.ColorPicker HighColorPicker{ get; };
+        Microsoft.UI.Xaml.Controls.ColorPicker BaseColorPicker{ get; };
     }
 }
