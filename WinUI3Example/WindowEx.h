@@ -176,9 +176,8 @@ namespace winrt::WinUI3Example::implementation
 
         static bool isLightTheme();
         static winrt::Windows::Graphics::RectInt32 getRect(winrt::Windows::Foundation::Rect const& bound, double scale);
-        static inline std::unordered_map<winrt::Microsoft::UI::Xaml::FrameworkElement, winrt::event_token> s_sizeChangeHandlers;
+        static std::unordered_map<winrt::Microsoft::UI::Xaml::FrameworkElement, winrt::event_token> s_sizeChangeHandlers;
         
-        inline static WindowEx* s_instance{ nullptr };
         static WindowEx* getRootWindow(winrt::Microsoft::UI::Xaml::FrameworkElement& element);
 
     };

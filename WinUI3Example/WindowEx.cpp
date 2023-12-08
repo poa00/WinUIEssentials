@@ -73,6 +73,8 @@ static winrt::Microsoft::UI::Windowing::AppWindow GetAppWindow(HWND hwnd)
 
 namespace winrt::WinUI3Example::implementation
 {
+    std::unordered_map<winrt::Microsoft::UI::Xaml::FrameworkElement, winrt::event_token> WindowEx::s_sizeChangeHandlers;
+
     winrt::Microsoft::UI::Xaml::DependencyProperty WindowEx::s_isInteractiveProperty =
         winrt::Microsoft::UI::Xaml::DependencyProperty::RegisterAttached(
             L"IsInteractive",
@@ -94,6 +96,11 @@ namespace winrt::WinUI3Example::implementation
                                 {
                                     rootWindow->updateDragRegion();
                                 }
+                            });
+                        element.Unloaded([](auto const& sender, auto...)
+                            {
+                                auto element = sender.as<winrt::Microsoft::UI::Xaml::FrameworkElement>();
+                                s_sizeChangeHandlers.erase(element);
                             });
                     }
                     else
@@ -122,7 +129,6 @@ namespace winrt::WinUI3Example::implementation
         m_appWindowTitleBar{m_appWindow.TitleBar()}
     {
         Title(winrt::Windows::ApplicationModel::Package::Current().DisplayName());
-        s_instance = this;
     }
 
     int WindowEx::MinWidth()
@@ -347,22 +353,19 @@ namespace winrt::WinUI3Example::implementation
         }
         {
             winrt::Microsoft::UI::Xaml::Controls::Grid titleBarGrid;
-            titleBarGrid.Background(winrt::Microsoft::UI::Xaml::Media::SolidColorBrush{ winrt::Windows::UI::Colors::Red() });
-            //titleBarGrid.Height(32);
             titleBarGrid.Children().Append(value);
             titleBarGrid.VerticalAlignment(winrt::Microsoft::UI::Xaml::VerticalAlignment::Top);
             titleBarGrid.SizeChanged([this](auto...) {updateDragRegion(); });
 
             rootGrid.Children().Append(titleBarGrid);
+            rootGrid.Loaded([this](auto...) { rootGrid.UpdateLayout(); updateDragRegion(); });
             SetTitleBar(titleBarGrid);
             if(oldContent) rootGrid.Children().Append(oldContent);
         }
 
         ExtendsContentIntoTitleBar(true);
         Content(rootGrid);
-
         SizeChanged([this](auto...) {updateDragRegion(); });
-        OutputDebugString(L"has element");
     }
 
     winrt::Microsoft::UI::Windowing::AppWindow WindowEx::AppWindow()
@@ -511,7 +514,7 @@ namespace winrt::WinUI3Example::implementation
         
         for (auto [element, _] : s_sizeChangeHandlers)
         {
-            auto transform = element.TransformToVisual(nullptr);
+            auto transform = element.TransformToVisual(rootGrid);
             auto rect = transform.TransformBounds(winrt::Windows::Foundation::Rect{ 
                 0.f, 
                 0.f, 
