@@ -61,7 +61,10 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <TargetPath>WinUI3Package/MarqueeText_Resource.xbf</TargetPath>
         </ContentWithTargetPath>
-
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\WinUI3Package\ProgressBarEx_Resource.xbf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>WinUI3Package/ProgressBarEx_Resource.xbf</TargetPath>
+        </ContentWithTargetPath>
     </ItemGroup>
 
 </Project>

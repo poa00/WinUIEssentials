@@ -55,6 +55,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |DependentValue| :white_check_mark: | :white_check_mark: | WinRT component
 |Taskbar| :x: | :white_check_mark: | Header only
 |MarqueeText | :white_check_mark: | :white_check_mark: | Control
+|ProgressBarEx | :white_check_mark: | :white_check_mark: | Control
 
 *means additional settings required, see the sections for info
 
@@ -211,15 +212,26 @@ FontIcon().Glyph(Glyphs::GlobalNavButton);
 ```
 
 There is also a `Glyph` xaml resource dictionary, so you can use name instead of glyph. Usage:
-1. First add a reference to your `App.xaml` `MergedDictionaries`
+1. Add this to your `App.xaml` (UWP)
 ```xml
 <Application.Resources>
     <controls:XamlControlsResources>
         <controls:XamlControlsResources.MergedDictionaries>
-            <ResourceDictionary Source="ms-appx:///Glyphs.xaml"/>
+            <ResourceDictionary Source="ms-appx:///UWPPackage/Glyphs.xaml"/>
             ...
         </controls:XamlControlsResources.MergedDictionaries>
     </controls:XamlControlsResources>
+</Application.Resources>
+```
+Add this to your `App.xaml` (WinUI3)
+```xml
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///WinUI3Package/Glyphs.xaml"/>
+            ...
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
 </Application.Resources>
 ```
 2. Then use `StaticResource` with name to reference the glyph
@@ -317,6 +329,17 @@ See the same class in [Community Tookit](https://github.com/CommunityToolkit/Win
     </controls:XamlControlsResources>
 </Application.Resources>
 ```
+- Add this to `App.xaml` (WinUI3)
+```xml
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///WinUI3Package/SettingsCard_Resource.xaml"/>
+            ...
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
+```
 
 > [!NOTE]
 > For WinUI3, add `#include #include <winrt/Microsoft.UI.Xaml.Controls.AnimatedVisuals.h>` to your `pch.h`
@@ -324,7 +347,7 @@ See the same class in [Community Tookit](https://github.com/CommunityToolkit/Win
 ## SettingsExpander --- *namespace `SettingsExpander`*
 See the same class in [Community Tookit](https://github.com/CommunityToolkit/Windows) for documentation.
 ![](assets/settings-expander.png)
-Add this to `App.xaml`
+Add this to `App.xaml` (UWP)
 ```xml
 <Application.Resources>
     <controls:XamlControlsResources>
@@ -334,6 +357,18 @@ Add this to `App.xaml`
             ...
         </controls:XamlControlsResources.MergedDictionaries>
     </controls:XamlControlsResources>
+</Application.Resources>
+```
+Add this to `App.xaml` (WinUI3)
+```xml
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///WinUI3Package/SettingsCard_Resource.xaml"/>
+            <ResourceDictionary Source="ms-appx:///WinUI3Package/SettingsExpander_Resource.xaml"/>
+            ...
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
 </Application.Resources>
 ```
 
@@ -430,3 +465,30 @@ Enhanced version of `MarqueeText` in the community toolkit.
 Expandable button, which shows an icon (actually anything) in its default state, and a content when you hover on it.
 
 ![](assets/icon-button.gif)
+
+## ProgressBarEx --- *namespace `ProgressBarEx`*
+A progress bar with animated highlight colors. Default to vista-like styles but also allows you to customize its color.
+
+![](assets/progressbarex.gif)
+Add this to `App.xaml` (UWP)
+```xml
+<Application.Resources>
+    <controls:XamlControlsResources>
+        <controls:XamlControlsResources.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///Glyphs.xaml"/>
+            ...
+        </controls:XamlControlsResources.MergedDictionaries>
+    </controls:XamlControlsResources>
+</Application.Resources>
+```
+Add this to `App.xaml` (WinUI3)
+```
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///WinUI3Package/ProgressBarEx_Resource.xaml"/>
+            ...
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
+```

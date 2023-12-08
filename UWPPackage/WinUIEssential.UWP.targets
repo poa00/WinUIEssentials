@@ -34,6 +34,7 @@
         <None Update="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsCard_Resource.xbf" CopyToOutputDirectory="PreserveNewest"></None>
         <None Update="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\SettingsExpander_Resource.xbf" CopyToOutputDirectory="PreserveNewest"></None>
         <None Update="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\MarqueeText_Resource.xbf" CopyToOutputDirectory="PreserveNewest"></None>
+        <None Update="$(MSBuildThisFileDirectory)..\..\lib\native\Release\x64\ProgressBarEx_Resource.xbf" CopyToOutputDirectory="PreserveNewest"></None>
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -47,6 +48,7 @@
         <None Update="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsCard_Resource.xbf" CopyToOutputDirectory="PreserveNewest"></None>
         <None Update="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\SettingsExpander_Resource.xbf" CopyToOutputDirectory="PreserveNewest"></None>
         <None Update="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\MarqueeText_Resource.xbf" CopyToOutputDirectory="PreserveNewest"></None>
+        <None Update="$(MSBuildThisFileDirectory)..\..\lib\native\Debug\x64\ProgressBarEx_Resource.xbf" CopyToOutputDirectory="PreserveNewest"></None>
 
 
         <!--This is unable to build when uploaded to nuget.org. It seems to copy the whole 'package' folder into the output directory-->

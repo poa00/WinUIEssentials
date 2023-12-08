@@ -4,7 +4,7 @@
 #include "ProgressBarEx.g.cpp"
 #endif
 #include <winrt/Microsoft.UI.Xaml.Hosting.h>
-namespace winrt::WinUI3Example::implementation
+namespace winrt::WinUI3Package::implementation
 {
     winrt::Microsoft::UI::Xaml::DependencyProperty ProgressBarEx::s_highColorProperty = winrt::Microsoft::UI::Xaml::DependencyProperty::Register(
         L"HighColor",
@@ -20,7 +20,7 @@ namespace winrt::WinUI3Example::implementation
                 auto highColor = winrt::unbox_value<winrt::Windows::UI::Color>(e.NewValue());
                 self->m_gradients[1].Color(highColor);
                 self->m_gradients[2].Color(highColor);
-            } 
+            }
         }
     );
 
@@ -38,7 +38,7 @@ namespace winrt::WinUI3Example::implementation
                 auto baseColor = winrt::unbox_value<winrt::Windows::UI::Color>(e.NewValue());
                 self->m_gradients[0].Color(baseColor);
                 self->m_gradients[3].Color(baseColor);
-            } 
+            }
         }
     );
 
@@ -46,7 +46,7 @@ namespace winrt::WinUI3Example::implementation
         L"Percent",
         winrt::xaml_typename<double>(),
         winrt::xaml_typename<class_type>(),
-        winrt::Microsoft::UI::Xaml::PropertyMetadata{ winrt::box_value(0.0), &ProgressBarEx::onPercentPropertyChanged}
+        winrt::Microsoft::UI::Xaml::PropertyMetadata{ winrt::box_value(0.0), &ProgressBarEx::onPercentPropertyChanged }
     );
 
     void ProgressBarEx::OnApplyTemplate()
@@ -60,8 +60,8 @@ namespace winrt::WinUI3Example::implementation
 
         auto const highColor = HighColor();
         auto const baseColor = BaseColor();
-        
-        for(int i = 0; i < std::size(gradientStop); ++i)
+
+        for (int i = 0; i < std::size(gradientStop); ++i)
         {
             m_gradients[i] = m_compositor.CreateColorGradientStop(gradientStop[i], i == 0 || i == std::size(gradientStop) - 1 ? baseColor : highColor);
             brushColorStop.Append(m_gradients[i]);
@@ -114,7 +114,7 @@ namespace winrt::WinUI3Example::implementation
     {
         return s_baseColorProperty;
     }
-  
+
     double ProgressBarEx::Percent()
     {
         return winrt::unbox_value<double>(GetValue(s_percentProperty));
@@ -136,7 +136,14 @@ namespace winrt::WinUI3Example::implementation
 
     void ProgressBarEx::setSpriteSize()
     {
-        if(m_compositor && m_spriteVisual)
-            m_spriteVisual.Size({ static_cast<float>(ActualWidth() * Percent()), static_cast<float>(ActualHeight()) });
+        if (m_compositor && m_spriteVisual)
+        {
+            auto animation = m_compositor.CreateVector2KeyFrameAnimation();
+            auto easing = winrt::Microsoft::UI::Composition::CompositionEasingFunction::CreateCircleEasingFunction(m_compositor, winrt::Microsoft::UI::Composition::CompositionEasingFunctionMode::InOut);
+            animation.InsertKeyFrame(1.0, { static_cast<float>(ActualWidth() * Percent()), static_cast<float>(ActualHeight()) }, easing);
+            //the default duration already looks good
+            //animation.Duration(std::chrono::seconds{ 1 });
+            m_spriteVisual.StartAnimation(L"Size", animation);
+        }
     }
 }

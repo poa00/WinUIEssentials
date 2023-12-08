@@ -47,6 +47,9 @@
     <Page Include="IconButtonPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="ProgressBarExPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -239,6 +242,7 @@
   <ItemGroup>
     <None Include="PropertySheet.props" />
     <None Include="packages.config" />
+    <None Include="licenses\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />

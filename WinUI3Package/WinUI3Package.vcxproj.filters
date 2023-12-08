@@ -71,6 +71,9 @@
     <Filter Include="Controls\MarqueeText">
       <UniqueIdentifier>{342a38f3-e345-43bb-8be2-ad8634e7b7bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controls\ProgressBarEx">
+      <UniqueIdentifier>{ead65dbf-1731-4bcd-a3a9-962f5b192067}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Placeholder.idl" />
@@ -121,6 +124,9 @@
     <Midl Include="MarqueeText.idl">
       <Filter>Controls\MarqueeText</Filter>
     </Midl>
+    <Midl Include="ProgressBarEx.idl">
+      <Filter>Controls\ProgressBarEx</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">
@@ -137,6 +143,9 @@
     </Page>
     <Page Include="MarqueeText_Resource.xaml">
       <Filter>Controls\MarqueeText</Filter>
+    </Page>
+    <Page Include="ProgressBarEx_Resource.xaml">
+      <Filter>Controls\ProgressBarEx</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>

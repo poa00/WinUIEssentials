@@ -1,10 +1,10 @@
 ﻿#pragma once
 
 #include "ProgressBarEx.g.h"
-#include "TemplateControlHelper.hpp"
+#include <include/TemplateControlHelper.hpp>
 #include <winrt/Microsoft.UI.Composition.h>
 
-namespace winrt::WinUI3Example::implementation
+namespace winrt::WinUI3Package::implementation
 {
     struct ProgressBarEx : ProgressBarExT<ProgressBarEx>, TemplateControlHelper<ProgressBarEx>
     {
@@ -50,7 +50,7 @@ namespace winrt::WinUI3Example::implementation
     };
 }
 
-namespace winrt::WinUI3Example::factory_implementation
+namespace winrt::WinUI3Package::factory_implementation
 {
     struct ProgressBarEx : ProgressBarExT<ProgressBarEx, implementation::ProgressBarEx>
     {

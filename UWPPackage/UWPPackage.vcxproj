@@ -234,6 +234,10 @@
       <DependentUpon>Placeholder.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="ProgressBarEx.h">
+      <DependentUpon>ProgressBarEx.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ReferenceToBoolConverter.h">
       <DependentUpon>ReferenceToBoolConverter.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -325,6 +329,10 @@
       <DependentUpon>Placeholder.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="ProgressBarEx.cpp">
+      <DependentUpon>ProgressBarEx.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="ReferenceToBoolConverter.cpp">
       <DependentUpon>ReferenceToBoolConverter.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -407,6 +415,9 @@
     <Midl Include="Placeholder.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="ProgressBarEx.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="ReferenceToBoolConverter.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -442,6 +453,7 @@
       <DeploymentContent>true</DeploymentContent>
     </Page>
     <Page Include="MarqueeText_Resource.xaml" />
+    <Page Include="ProgressBarEx_Resource.xaml" />
     <Page Include="SettingsCard_Resource.xaml">
       <DeploymentContent>true</DeploymentContent>
     </Page>

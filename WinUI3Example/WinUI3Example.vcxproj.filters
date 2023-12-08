@@ -64,7 +64,6 @@
       <Filter>Pages\SettingsExpanderPage</Filter>
     </Midl>
     <Midl Include="WindowEx.idl" />
-    <Midl Include="ProgressBarEx.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
