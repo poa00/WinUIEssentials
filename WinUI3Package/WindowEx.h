@@ -5,7 +5,7 @@
 #include <winrt/Windows.UI.ViewManagement.h>
 #include <unordered_map>
 
-namespace winrt::WinUI3Example::implementation
+namespace winrt::WinUI3Package::implementation
 {
     struct WindowEx : WindowExT<WindowEx>
     {
@@ -188,7 +188,7 @@ namespace winrt::WinUI3Example::implementation
     };
 }
 
-namespace winrt::WinUI3Example::factory_implementation
+namespace winrt::WinUI3Package::factory_implementation
 {
     struct WindowEx : WindowExT<WindowEx, implementation::WindowEx>
     {

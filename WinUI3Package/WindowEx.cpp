@@ -7,9 +7,12 @@
 #include <winrt/Microsoft.UI.Interop.h>
 #include <winrt/Windows.ApplicationModel.h>
 #include <winrt/Microsoft.UI.Input.h>
+#include <winrt/Microsoft.UI.Xaml.Media.h>
+
+#pragma comment(lib, "user32.lib")
+
 #include <CommCtrl.h>
 #pragma comment(lib, "Comctl32.lib")
-
 #include <dwmapi.h>
 #pragma comment (lib, "dwmapi.lib")
 // Compiles with -lntdll
@@ -17,7 +20,6 @@
 #ifndef __RTL_VERSION_H__
 #define __RTL_VERSION_H__
 
-#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 #include <windows.h>
 
 #ifdef _MSC_VER
@@ -71,7 +73,7 @@ static winrt::Microsoft::UI::Windowing::AppWindow GetAppWindow(HWND hwnd)
 }
 
 
-namespace winrt::WinUI3Example::implementation
+namespace winrt::WinUI3Package::implementation
 {
     std::unordered_map<winrt::Microsoft::UI::Xaml::FrameworkElement, winrt::event_token> WindowEx::s_sizeChangeHandlers;
 

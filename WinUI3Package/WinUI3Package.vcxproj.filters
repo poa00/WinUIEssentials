@@ -127,6 +127,7 @@
     <Midl Include="ProgressBarEx.idl">
       <Filter>Controls\ProgressBarEx</Filter>
     </Midl>
+    <Midl Include="WindowEx.idl" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">

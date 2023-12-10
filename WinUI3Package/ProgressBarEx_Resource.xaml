@@ -9,7 +9,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:ProgressBarEx">
                     <Grid CornerRadius="{TemplateBinding CornerRadius}">
-                        <Border x:Name="RootBorder" Background="{TemplateBinding Background}"/>
+                        <Border x:Name="RootBorder" Background="{TemplateBinding Background}" />
                         <ContentPresenter Content="{TemplateBinding Content}"/>
                     </Grid>
                 </ControlTemplate>

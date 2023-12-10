@@ -24,6 +24,10 @@ namespace winrt::WinUI3Package::implementation
         double Percent();
         void Percent(double value);
         static winrt::Microsoft::UI::Xaml::DependencyProperty PercentProperty();
+
+        double Value();
+        void Value(double value);
+        static winrt::Microsoft::UI::Xaml::DependencyProperty ValueProperty();
     private:
         static void onPercentPropertyChanged(
             winrt::Microsoft::UI::Xaml::DependencyObject const& d,
@@ -37,6 +41,7 @@ namespace winrt::WinUI3Package::implementation
         static winrt::Microsoft::UI::Xaml::DependencyProperty s_highColorProperty;
         static winrt::Microsoft::UI::Xaml::DependencyProperty s_baseColorProperty;
         static winrt::Microsoft::UI::Xaml::DependencyProperty s_percentProperty;
+        static winrt::Microsoft::UI::Xaml::DependencyProperty s_valueProperty;
 
         static constexpr winrt::Windows::UI::Color DefaultHighColor{ 255, 0, 255, 0 };
         static constexpr winrt::Windows::UI::Color DefaultBaseColor{ 100, 0, 255, 0 };

@@ -49,6 +49,13 @@ namespace winrt::WinUI3Package::implementation
         winrt::Microsoft::UI::Xaml::PropertyMetadata{ winrt::box_value(0.0), &ProgressBarEx::onPercentPropertyChanged }
     );
 
+    winrt::Microsoft::UI::Xaml::DependencyProperty ProgressBarEx::s_valueProperty = winrt::Microsoft::UI::Xaml::DependencyProperty::Register(
+        L"Value",
+        winrt::xaml_typename<double>(),
+        winrt::xaml_typename<class_type>(),
+        nullptr
+    );
+
     void ProgressBarEx::OnApplyTemplate()
     {
         auto border = GetTemplateChild(L"RootBorder").as<winrt::Microsoft::UI::Xaml::Controls::Border>();
@@ -121,13 +128,27 @@ namespace winrt::WinUI3Package::implementation
     }
     void ProgressBarEx::Percent(double value)
     {
-        SetValue(s_percentProperty, winrt::box_value(std::clamp(value, 0.0, 1.0)));
+        SetValue(s_percentProperty, winrt::box_value(std::clamp(value, 0.0, 100.0)));
     }
     winrt::Microsoft::UI::Xaml::DependencyProperty ProgressBarEx::PercentProperty()
     {
         return s_percentProperty;
     }
 
+    double ProgressBarEx::Value()
+    {
+        return Percent() / 100.0;
+    }
+
+    void ProgressBarEx::Value(double value)
+    {
+        Percent(value * 100.0);
+    }
+
+    winrt::Microsoft::UI::Xaml::DependencyProperty ProgressBarEx::ValueProperty()
+    {
+        return s_valueProperty;
+    }
 
     void ProgressBarEx::onPercentPropertyChanged(winrt::Microsoft::UI::Xaml::DependencyObject const& d, winrt::Microsoft::UI::Xaml::DependencyPropertyChangedEventArgs const& e)
     {
@@ -140,7 +161,7 @@ namespace winrt::WinUI3Package::implementation
         {
             auto animation = m_compositor.CreateVector2KeyFrameAnimation();
             auto easing = winrt::Microsoft::UI::Composition::CompositionEasingFunction::CreateCircleEasingFunction(m_compositor, winrt::Microsoft::UI::Composition::CompositionEasingFunctionMode::InOut);
-            animation.InsertKeyFrame(1.0, { static_cast<float>(ActualWidth() * Percent()), static_cast<float>(ActualHeight()) }, easing);
+            animation.InsertKeyFrame(1.0, { static_cast<float>(ActualWidth() * Value()), static_cast<float>(ActualHeight()) }, easing);
             //the default duration already looks good
             //animation.Duration(std::chrono::seconds{ 1 });
             m_spriteVisual.StartAnimation(L"Size", animation);

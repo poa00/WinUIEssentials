@@ -467,7 +467,15 @@ Expandable button, which shows an icon (actually anything) in its default state,
 ![](assets/icon-button.gif)
 
 ## ProgressBarEx --- *namespace `ProgressBarEx`*
-A progress bar with animated highlight colors. Default to vista-like styles but also allows you to customize its color.
+A progress bar with animated highlight colors (and animated progress). Default to vista-like styles but also allows you to customize its color.
+
+|Property| DependencyProperty? | Description
+|---|---|---|
+|HighColor | :white_check_mark: | the shimmer highlight color
+|BaseColor | :white_check_mark: | the base background color of the finish part
+|Background | :white_check_mark: | the color of the rest part
+|Percent | :white_check_mark: | range: 0~100 
+|Value | :white_check_mark: | normalized percent, range: 0.0~1.0
 
 ![](assets/progressbarex.gif)
 Add this to `App.xaml` (UWP)
