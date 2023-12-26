@@ -10,6 +10,7 @@
 #include <winrt/Microsoft.UI.Xaml.Media.h>
 
 #pragma comment(lib, "user32.lib")
+#pragma comment(lib, "gdi32.lib")
 
 #include <CommCtrl.h>
 #pragma comment(lib, "Comctl32.lib")
@@ -76,6 +77,7 @@ static winrt::Microsoft::UI::Windowing::AppWindow GetAppWindow(HWND hwnd)
 namespace winrt::WinUI3Package::implementation
 {
     std::unordered_map<winrt::Microsoft::UI::Xaml::FrameworkElement, winrt::event_token> WindowEx::s_sizeChangeHandlers;
+    std::unordered_map<HWND, winrt::weak_ref<WindowEx>> WindowEx::s_allWindows;
 
     winrt::Microsoft::UI::Xaml::DependencyProperty WindowEx::s_isInteractiveProperty =
         winrt::Microsoft::UI::Xaml::DependencyProperty::RegisterAttached(
@@ -132,6 +134,7 @@ namespace winrt::WinUI3Package::implementation
     {
         Title(winrt::Windows::ApplicationModel::Package::Current().DisplayName());
         std::hash<winrt::Microsoft::UI::Xaml::FrameworkElement> hasher;
+        s_allWindows[m_hwnd] = get_weak();
     }
 
     int WindowEx::MinWidth()
@@ -411,6 +414,17 @@ namespace winrt::WinUI3Package::implementation
         //TODO:
     }
 
+    void WindowEx::Transparent(bool value)
+    {
+        if (value)
+        {
+            setSubClassIfNeeded();
+            MARGINS margin{};
+            DwmExtendFrameIntoClientArea(m_hwnd, &margin);
+        }
+        m_transparent = value;
+    }
+
     void WindowEx::SetIsInteractive(winrt::Microsoft::UI::Xaml::Controls::Control element, bool value)
     {
         element.SetValue(s_isInteractiveProperty, winrt::box_value(value));
@@ -419,6 +433,11 @@ namespace winrt::WinUI3Package::implementation
     bool WindowEx::GetIsInteractive(winrt::Microsoft::UI::Xaml::Controls::Control element)
     {
         return winrt::unbox_value<bool>(element.GetValue(s_isInteractiveProperty));
+    }
+
+    winrt::weak_ref<WindowEx> WindowEx::GetByHwnd(HWND hwnd)
+    {
+        return s_allWindows[hwnd];
     }
 
     int WindowEx::scaleForDpi(int value, int dpi)
@@ -457,6 +476,10 @@ namespace winrt::WinUI3Package::implementation
         auto ptr = reinterpret_cast<WindowEx*>(dwRefData);
         switch (msg)
         {
+        case WM_ERASEBKGND:
+            if (ptr->clearBackground(hwnd, reinterpret_cast<HDC>(wparam)))
+                return 1;
+            break;
         case WM_SETTINGCHANGE:
             ptr->onSettingChange();
             break;
@@ -557,6 +580,18 @@ namespace winrt::WinUI3Package::implementation
     bool WindowEx::extendsContentIntoTitleBar()
     {
         return m_extendContents;
+    }
+
+    bool WindowEx::clearBackground(HWND hwnd, HDC hdc)
+    {
+        RECT rect{};
+        if (GetClientRect(hwnd, &rect))
+        {
+            auto brush = CreateSolidBrush({});
+            FillRect(hdc, &rect, brush);
+            return true;
+        }
+        return true;
     }
 
     WindowEx* WindowEx::getRootWindow(winrt::Microsoft::UI::Xaml::FrameworkElement& element)

@@ -1,11 +1,11 @@
 #pragma once
-#include "WindowEx.h"
 #include "CustomTitleBar.g.h"
 
 
 namespace winrt::WinUI3Example::implementation
 {
-    struct CustomTitleBar : winrt::Microsoft::UI::Xaml::Markup::ComponentConnectorT<CustomTitleBarT<CustomTitleBar>>
+    //If WindowEx is used within the same project you need winrt::Microsoft::UI::Xaml::Markup::ComponentConnectorT<CustomTitleBarT<CustomTitleBar>>
+    struct CustomTitleBar : CustomTitleBarT<CustomTitleBar>
     {
         CustomTitleBar()
         {

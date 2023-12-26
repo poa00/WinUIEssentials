@@ -1,8 +1,7 @@
-import "WindowEx.idl";
 namespace WinUI3Example
 {
     [default_interface]
-    runtimeclass CustomTitleBar : WinUI3Example.WindowEx, Microsoft.UI.Xaml.Markup.IComponentConnector
+    runtimeclass CustomTitleBar : WinUI3Package.WindowEx
     {
         CustomTitleBar();
         Int32 MyProperty;

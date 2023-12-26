@@ -53,6 +53,13 @@
     <Page Include="ProgressBarExPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="LineGraphPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="LineGraphControl.xaml" />
+    <Page Include="WindowExPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -63,7 +70,7 @@
     <Midl Include="MyDataModelTemplateSelector.idl">
       <Filter>Pages\SettingsExpanderPage</Filter>
     </Midl>
-    <Midl Include="WindowEx.idl" />
+    <Midl Include="LineGraph.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

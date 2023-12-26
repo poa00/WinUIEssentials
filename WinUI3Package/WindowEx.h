@@ -92,12 +92,18 @@ namespace winrt::WinUI3Package::implementation
         winrt::Microsoft::UI::Xaml::UIElement WindowContent();
         void WindowContent(winrt::Microsoft::UI::Xaml::UIElement value);
 
+        /*For transparent backdrop*/
+        void Transparent(bool value);
+
         static winrt::Microsoft::UI::Xaml::DependencyProperty IsInteractiveProperty() { return nullptr; }
         static void SetIsInteractive(winrt::Microsoft::UI::Xaml::Controls::Control element, bool value);
         static bool GetIsInteractive(winrt::Microsoft::UI::Xaml::Controls::Control element);
+
+        static winrt::weak_ref<WindowEx> GetByHwnd(HWND hwnd);
     private:
         static winrt::Microsoft::UI::Xaml::DependencyProperty s_isInteractiveProperty;
         static winrt::Microsoft::UI::Xaml::DependencyProperty s_rootWindowProperty;
+        static std::unordered_map<HWND, winrt::weak_ref<WindowEx>> s_allWindows;
 
         template<typename T, T Sentinel>
         class Optional
@@ -135,6 +141,7 @@ namespace winrt::WinUI3Package::implementation
         bool m_titleBarAutoDarkMode{};
         bool m_registered{};
         bool m_extendContents{};
+        bool m_transparent{};
 
 
         static int scaleForDpi(int value, int dpi);
@@ -176,6 +183,7 @@ namespace winrt::WinUI3Package::implementation
         void updateDragRegion();
         void extendsContentIntoTitleBar(bool value);
         bool extendsContentIntoTitleBar();
+        bool clearBackground(HWND hwnd, HDC hdc);
 
         static bool isLightTheme();
         static winrt::Windows::Graphics::RectInt32 scaleRect(winrt::Windows::Foundation::Rect const& bound, double scale);

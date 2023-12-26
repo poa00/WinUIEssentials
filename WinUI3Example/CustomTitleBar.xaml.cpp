@@ -3,7 +3,6 @@
 #if __has_include("CustomTitleBar.g.cpp")
 #include "CustomTitleBar.g.cpp"
 #endif
-#include "WindowEx.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -31,11 +30,6 @@ namespace winrt::WinUI3Example::implementation
 
 void winrt::WinUI3Example::implementation::CustomTitleBar::AppTitleBar_Loaded(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
 {
-    LeftPaddingColumn().Width(winrt::Microsoft::UI::Xaml::GridLength{ 
-        .Value = static_cast<double>(LeftInset()), 
-        .GridUnitType = winrt::Microsoft::UI::Xaml::GridUnitType::Pixel 
-    });
-
     RightPaddingColumn().Width(winrt::Microsoft::UI::Xaml::GridLength{ 
         .Value = static_cast<double>(RightInset()),
         .GridUnitType = winrt::Microsoft::UI::Xaml::GridUnitType::Pixel

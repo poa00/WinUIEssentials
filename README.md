@@ -56,6 +56,8 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |Taskbar| :x: | :white_check_mark: | Header only
 |MarqueeText | :white_check_mark: | :white_check_mark: | Control
 |ProgressBarEx | :white_check_mark: | :white_check_mark: | Control
+|WindowEx | :x: | :white_check_mark: | Window
+|TransparentBackdrop | :x: | :white_check_mark: | SystemBackdrop
 
 *means additional settings required, see the sections for info
 
@@ -490,7 +492,7 @@ Add this to `App.xaml` (UWP)
 </Application.Resources>
 ```
 Add this to `App.xaml` (WinUI3)
-```
+```xml
 <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
@@ -500,3 +502,67 @@ Add this to `App.xaml` (WinUI3)
     </ResourceDictionary>
 </Application.Resources>
 ```
+
+## WindowEx --- *namespace `WindowEx`*
+### Basic Property
+|name|Description
+|---|---|
+|Int32 MinWidth;|Minimum width in DIP
+|Int32 MaxWidth;|Maximum width in DIP
+|Int32 MinHeight;|...
+|Int32 MaxHeight;|...
+|Int32 Width;|...
+|Int32 Height;|...
+|Int32 RawWidth;|Actual width in pixel
+|Int32 RawHeight;|Actual height in pixel
+|UInt32 Dpi{ get; };|Current window dpi
+|Boolean IsMinimizable;|...
+|Boolean IsMaximizable;|...
+|Boolean HasBorder;|...
+|Boolean HasTitleBar;|...
+|Boolean IsResizable;|...
+|Boolean IsAlwaysOnTop;|...
+|Boolean IsShownInSwitcher;|...
+|Boolean TitleBarDarkMode;| Set win32 titlebar to dark mode (support down to Windows 10 17763)
+|Boolean TitleBarAutoDarkMode;| Enable automatic titlebar dark mode (support down to Windows 10 17763), works regardless of `ExtendContentIntoTitleBar`
+|Microsoft.UI.Xaml.UIElement TitleBar;| Custom title bar, if set, automatically calls `ExtendContentIntoTitleBar` for you
+|String Icon;| Set `.ico` icon used for win32 titlebar
+### Extensions
+`WindowEx.IsInteractive`: used when customizing a title bar, automatically calculate and update `InputNonClientPointerSource` for you
+Usage:
+```xml
+<essential:WindowEx.TitleBar>
+    <Grid x:Name="AppTitleBar" Height="48" Loaded="AppTitleBar_Loaded">
+        <Grid.ColumnDefinitions>
+            ...
+        </Grid.ColumnDefinitions>
+
+        <AutoSuggestBox x:Name="TitleBarSearchBox" 
+                Grid.Column="4" 
+                QueryIcon="Find"
+                PlaceholderText="Search"
+                VerticalAlignment="Center"
+                MaxWidth="600"
+                essential:WindowEx.IsInteractive="True"/>
+        <PersonPicture x:Name="PersonPic" 
+               Grid.Column="6" 
+               Height="32" Margin="0,0,16,0"
+               essential:WindowEx.IsInteractive="True"/>
+    </Grid>
+</essential:WindowEx.TitleBar>
+```
+
+## TransparentBackdrop --- *namespace `TransparentBackdrop*
+Make your `WindowEx` fully transparent.
+```xml
+<essential:WindowEx
+    ...
+    <essential:WindowEx.SystemBackdrop>
+        <essential:TransparentBackdrop/>
+    <essential:WindowEx.SystemBackdrop>
+</essential:WindowEx>
+```
+![](assets/transparent-window.png)
+
+- left: ExtendContentIntoTitleBar
+- right: Win32 Titlebar

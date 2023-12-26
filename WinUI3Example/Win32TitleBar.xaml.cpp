@@ -3,8 +3,6 @@
 #if __has_include("Win32TitleBar.g.cpp")
 #include "Win32TitleBar.g.cpp"
 #endif
-#include "WindowEx.h"
-
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 
@@ -25,6 +23,6 @@ namespace winrt::WinUI3Example::implementation
 
     void Win32TitleBar::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
-        myButton().Content(box_value(L"Clicked"));
+        //myButton().Content(box_value(L"Clicked"));
     }
 }

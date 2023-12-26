@@ -128,6 +128,7 @@
       <Filter>Controls\ProgressBarEx</Filter>
     </Midl>
     <Midl Include="WindowEx.idl" />
+    <Midl Include="TransparentBackdrop.idl" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">

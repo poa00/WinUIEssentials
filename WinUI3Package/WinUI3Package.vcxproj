@@ -216,6 +216,10 @@
       <DependentUpon>StringToBoolConverter.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="TransparentBackdrop.h">
+      <DependentUpon>TransparentBackdrop.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="WindowEx.h">
       <DependentUpon>WindowEx.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -302,6 +306,10 @@
       <DependentUpon>StringToBoolConverter.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="TransparentBackdrop.cpp">
+      <DependentUpon>TransparentBackdrop.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="WindowEx.cpp">
       <DependentUpon>WindowEx.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -368,6 +376,9 @@
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="StringToBoolConverter.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="TransparentBackdrop.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="WindowEx.idl">

@@ -1,12 +1,11 @@
 #pragma once
 
-#include "WindowEx.h"
 #include "Win32TitleBar.g.h"
-
+#include <dwmapi.h>
 
 namespace winrt::WinUI3Example::implementation
 {
-    struct Win32TitleBar : winrt::Microsoft::UI::Xaml::Markup::ComponentConnectorT<Win32TitleBarT<Win32TitleBar>>
+    struct Win32TitleBar : Win32TitleBarT<Win32TitleBar>
     {
         Win32TitleBar()
         {
