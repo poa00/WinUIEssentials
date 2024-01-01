@@ -7,6 +7,18 @@
 
 namespace winrt::WinUI3Package::implementation
 {
+    //Prevent order of setter causing invalid combination
+    struct TitleBarAndBorderSetting
+    {
+        struct DefaultValue
+        {
+            constexpr static auto HasTitleBar = true;
+            constexpr static auto HasBorder = true;
+        };
+
+        std::optional<bool> m_hasTitleBar;
+        std::optional<bool> m_hasBorder;
+    };
     struct WindowEx : WindowExT<WindowEx>
     {
         WindowEx();
@@ -142,6 +154,7 @@ namespace winrt::WinUI3Package::implementation
         bool m_registered{};
         bool m_extendContents{};
         bool m_transparent{};
+        TitleBarAndBorderSetting m_titleBarBorderSetting;
 
 
         static int scaleForDpi(int value, int dpi);

@@ -284,19 +284,28 @@ namespace winrt::WinUI3Package::implementation
     }
     bool WindowEx::HasBorder()
     {
-        return m_overlappedPresenter.HasBorder();
+        return m_titleBarBorderSetting.m_hasBorder.value_or(TitleBarAndBorderSetting::DefaultValue::HasBorder);
     }
     void WindowEx::HasBorder(bool value)
     {
-        m_overlappedPresenter.SetBorderAndTitleBar(value, HasTitleBar());
+        m_titleBarBorderSetting.m_hasBorder = value;
+        
+        auto hasTitleBarValue = HasTitleBar();
+        if (!value && hasTitleBarValue)
+            hasTitleBarValue = false;
+        m_overlappedPresenter.SetBorderAndTitleBar(value, hasTitleBarValue);
     }
     bool WindowEx::HasTitleBar()
     {
-        return m_overlappedPresenter.HasTitleBar();
+        return m_titleBarBorderSetting.m_hasTitleBar.value_or(TitleBarAndBorderSetting::DefaultValue::HasTitleBar);
     }
     void WindowEx::HasTitleBar(bool value)
     {
-        m_overlappedPresenter.SetBorderAndTitleBar(HasBorder(), value);
+        m_titleBarBorderSetting.m_hasTitleBar = value;
+        auto hasBorderValue = HasBorder();
+        if (value && !hasBorderValue)
+            hasBorderValue = true;
+        m_overlappedPresenter.SetBorderAndTitleBar(hasBorderValue, value);
     }
     bool WindowEx::TitleBarDarkMode()
     {
