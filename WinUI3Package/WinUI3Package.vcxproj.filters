@@ -129,6 +129,9 @@
     </Midl>
     <Midl Include="WindowEx.idl" />
     <Midl Include="TransparentBackdrop.idl" />
+    <Midl Include="UIElementExtension.idl">
+      <Filter>Controls</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">

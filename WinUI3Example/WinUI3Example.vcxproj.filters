@@ -60,6 +60,9 @@
     <Page Include="WindowExPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="UIElementExtensionPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

@@ -566,3 +566,13 @@ Make your `WindowEx` fully transparent.
 
 - left: ExtendContentIntoTitleBar
 - right: Win32 Titlebar
+
+## UIElementExtension --- *namespace `UIElementExtension`*
+See the same class in [Community Toolkit](https://github.com/CommunityToolkit/Windows) for documentation.
+Usage:
+```xml
+<Grid Width="148"
+    Height="148"
+    essential:UIElementExtension.ClipToBounds="True"
+    .../>
+```

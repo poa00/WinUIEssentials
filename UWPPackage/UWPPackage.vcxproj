@@ -275,6 +275,10 @@
       <DependentUpon>Triggers\IsNullOrEmptyStateTrigger.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="UIElementExtension.h">
+      <DependentUpon>UIElementExtension.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoolToVisibilityConverter.cpp">
@@ -369,6 +373,10 @@
       <DependentUpon>Triggers\IsNullOrEmptyStateTrigger.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="UIElementExtension.cpp">
+      <DependentUpon>UIElementExtension.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".nuspec" />
@@ -443,6 +451,9 @@
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="Triggers\IsNullOrEmptyStateTrigger.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="UIElementExtension.idl">
       <SubType>Designer</SubType>
     </Midl>
   </ItemGroup>
