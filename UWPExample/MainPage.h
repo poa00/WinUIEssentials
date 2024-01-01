@@ -45,7 +45,8 @@ namespace winrt::UWPExample::implementation
             {L"GlyphsPage", winrt::xaml_typename<UWPExample::GlyphsPage>()},
             {L"TilesPage", winrt::xaml_typename<UWPExample::TilesPage>()},
             {L"IconButtonPage", winrt::xaml_typename<UWPExample::IconButtonPage>()},
-            {L"ProgressBarExPage", winrt::xaml_typename<UWPExample::ProgressBarExPage>()}
+            {L"ProgressBarExPage", winrt::xaml_typename<UWPExample::ProgressBarExPage>()},
+            {L"UIElementExtensionPage", winrt::xaml_typename<UWPExample::UIElementExtensionsPage>()}
         };
     };
 }

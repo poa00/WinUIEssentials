@@ -220,6 +220,10 @@
       <DependentUpon>TransparentBackdrop.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="UIElementExtension.h">
+      <DependentUpon>UIElementExtension.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="WindowEx.h">
       <DependentUpon>WindowEx.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -310,6 +314,10 @@
       <DependentUpon>TransparentBackdrop.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="UIElementExtension.cpp">
+      <DependentUpon>UIElementExtension.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="WindowEx.cpp">
       <DependentUpon>WindowEx.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -379,6 +387,9 @@
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="TransparentBackdrop.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="UIElementExtension.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="WindowEx.idl">

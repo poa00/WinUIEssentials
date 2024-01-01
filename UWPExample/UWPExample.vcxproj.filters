@@ -50,6 +50,9 @@
     <Page Include="ProgressBarExPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="UIElementExtensionsPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
