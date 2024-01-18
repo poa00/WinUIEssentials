@@ -106,6 +106,14 @@ namespace TilesBuilder
 			return m_value;
 		}
 	};
+	inline winrt::Windows::Data::Xml::Dom::XmlElement& operator<<(winrt::Windows::Data::Xml::Dom::XmlElement& element, PropertyValue<int> const& value)
+	{
+		if (value)
+		{
+			element.SetAttribute(value.name, winrt::to_hstring(*value.value));
+		}
+		return element;
+	}
 	template<int Min, int Max>
 	inline winrt::Windows::Data::Xml::Dom::XmlElement& operator<<(winrt::Windows::Data::Xml::Dom::XmlElement& element, PropertyValue<LimitedInt<Min, Max>> const& value)
 	{
@@ -502,6 +510,21 @@ namespace TilesBuilder
 	}
 
 	using String = std::wstring;
+	inline winrt::Windows::Data::Xml::Dom::XmlElement& operator<<(winrt::Windows::Data::Xml::Dom::XmlElement& element, PropertyValue<String> const& value)
+	{
+		if (value)
+		{
+			element.SetAttribute(value.name, *value.value);
+		}
+		return element;
+	}
+	inline winrt::Windows::Data::Xml::Dom::XmlElement& operator<<(winrt::Windows::Data::Xml::Dom::XmlElement& element, PropertyValue<bool> const& value)
+	{
+		if (value)
+			element.SetAttribute(value.name, *value.value ? L"true" : L"false");
+		return element;
+	}
+
 
 	class Visual : public INodeBase, public ISupportChild<Visual, Binding>
 	{
