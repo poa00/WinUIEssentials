@@ -148,6 +148,10 @@
       <DependentUpon>CursorController.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="EqualPanel.h">
+      <DependentUpon>EqualPanel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="FontIconExtension.h">
       <DependentUpon>FontIconExtension.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -200,6 +204,22 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="ReverseConverterBase.hpp" />
+    <ClInclude Include="Segmented.h">
+      <DependentUpon>Segmented.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="SegmentedItem.h">
+      <DependentUpon>SegmentedItem.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="SegmentedItemCornerRadiusConverter.h">
+      <DependentUpon>SegmentedItemCornerRadiusConverter.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="SegmentedMarginConverter.h">
+      <DependentUpon>SegmentedMarginConverter.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="SettingsCard.h">
       <DependentUpon>SettingsCard.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -250,6 +270,10 @@
       <DependentUpon>CursorController.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="EqualPanel.cpp">
+      <DependentUpon>EqualPanel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="FontIconExtension.cpp">
       <DependentUpon>FontIconExtension.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -292,6 +316,22 @@
     </ClCompile>
     <ClCompile Include="ReferenceToBoolConverter.cpp">
       <DependentUpon>ReferenceToBoolConverter.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="Segmented.cpp">
+      <DependentUpon>Segmented.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="SegmentedItem.cpp">
+      <DependentUpon>SegmentedItem.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="SegmentedItemCornerRadiusConverter.cpp">
+      <DependentUpon>SegmentedItemCornerRadiusConverter.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="SegmentedMarginConverter.cpp">
+      <DependentUpon>SegmentedMarginConverter.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="SettingsCard.cpp">
@@ -344,6 +384,9 @@
     <Midl Include="CursorController.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="EqualPanel.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="FontIconExtension.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -374,6 +417,18 @@
     <Midl Include="ReferenceToBoolConverter.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="Segmented.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="SegmentedItem.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="SegmentedItemCornerRadiusConverter.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="SegmentedMarginConverter.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="SettingsCard.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -401,6 +456,7 @@
     <Page Include="GroupBox_Resource.xaml" />
     <Page Include="MarqueeText_Resource.xaml" />
     <Page Include="ProgressBarEx_Resource.xaml" />
+    <Page Include="Segmented_Resource.xaml" />
     <Page Include="SettingsCard_Resource.xaml" />
     <Page Include="SettingsExpander_Resource.xaml" />
   </ItemGroup>

@@ -34,6 +34,9 @@
     <Filter Include="Controls\ProgressBarEx">
       <UniqueIdentifier>{cfc76919-eddb-46ef-9741-eaffdc4667bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controls\Segmented">
+      <UniqueIdentifier>{37121013-2205-49ac-aff0-8d7f90a69296}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -144,6 +147,21 @@
     <Midl Include="UIElementExtension.idl">
       <Filter>Controls</Filter>
     </Midl>
+    <Midl Include="EqualPanel.idl">
+      <Filter>Controls\Segmented</Filter>
+    </Midl>
+    <Midl Include="Segmented.idl">
+      <Filter>Controls\Segmented</Filter>
+    </Midl>
+    <Midl Include="SegmentedItem.idl">
+      <Filter>Controls\Segmented</Filter>
+    </Midl>
+    <Midl Include="SegmentedItemCornerRadiusConverter.idl">
+      <Filter>Controls\Segmented</Filter>
+    </Midl>
+    <Midl Include="SegmentedMarginConverter.idl">
+      <Filter>Controls\Segmented</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">
@@ -166,6 +184,9 @@
     </Page>
     <Page Include="ProgressBarEx_Resource.xaml">
       <Filter>Controls\ProgressBarEx</Filter>
+    </Page>
+    <Page Include="Segmented_Resource.xaml">
+      <Filter>Controls\Segmented</Filter>
     </Page>
   </ItemGroup>
 </Project>

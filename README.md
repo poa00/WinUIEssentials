@@ -58,6 +58,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |ProgressBarEx | :white_check_mark: | :white_check_mark: | Control
 |WindowEx | :x: | :white_check_mark: | Window
 |TransparentBackdrop | :x: | :white_check_mark: | SystemBackdrop
+|Segmented | :white_check_mark: | :white_check_mark: | Control
 
 *means additional settings required, see the sections for info
 
@@ -575,4 +576,106 @@ Usage:
     Height="148"
     essential:UIElementExtension.ClipToBounds="True"
     .../>
+```
+
+## Segmented --- *namespace `Segmented`*
+Almost like the `Segmented` control in [Community Toolkit](https://github.com/CommunityToolkit/Windows) but with more customizations.
+
+- Animated selected-item transition
+![](assets/segmented-item-animation.gif)
+- Does not limited to `Icon + Text`. Use any UIElement
+```xml
+<essential:SegmentedItem>
+    <StackPanel Orientation="Horizontal">
+        <FontIcon Glyph="&#xE8C0;"/>
+        <TextBlock Text="Week"/>
+    </StackPanel>
+</essential:SegmentedItem>
+```
+- Button style has 0 size margin
+```xml
+<essential:Segmented Style="{StaticResource ButtonSegmentedStyle}">
+    <essential:SegmentedItem>
+        <StackPanel Orientation="Horizontal" Spacing="4">
+            <FontIcon Glyph="&#xE8BF;"/>
+            <TextBlock Text="Day"/>
+        </StackPanel>
+    </essential:SegmentedItem>
+    <essential:SegmentedItem>
+        <StackPanel Orientation="Horizontal" Spacing="4">
+            <FontIcon Glyph="&#xE8C0;"/>
+            <TextBlock Text="Week"/>
+        </StackPanel>
+    </essential:SegmentedItem>
+    <essential:SegmentedItem>
+        <StackPanel Orientation="Horizontal" Spacing="4}">
+            <FontIcon Glyph="&#xE787;"/>
+            <TextBlock Text="Month"/>
+        </StackPanel>
+    </essential:SegmentedItem>
+</essential:Segmented>
+```
+![](assets/button-style-segmented.png)
+- Support vertical layout
+```xml
+<essential:Segmented>
+    <essential:SegmentedItem>
+        <StackPanel Orientation="Horizontal" Spacing="7">
+            <SymbolIcon Symbol="Accept"/>
+            <TextBlock Text="Content1"/>
+        </StackPanel>
+    </essential:SegmentedItem>
+
+    <essential:SegmentedItem>
+        <StackPanel Orientation="Horizontal" Spacing="7">
+            <SymbolIcon Symbol="Add"/>
+            <TextBlock Text="Content2"/>
+        </StackPanel>
+    </essential:SegmentedItem>
+
+    <essential:SegmentedItem>
+        <StackPanel Orientation="Horizontal" Spacing="7">
+            <SymbolIcon Symbol="Admin"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Content longerrrrrrrrrr"/>
+                <TextBlock Text="Content 2nd line"/>
+            </StackPanel>
+        </StackPanel>
+    </essential:SegmentedItem>
+
+    <essential:Segmented.ItemsPanel>
+        <ItemsPanelTemplate>
+            <StackPanel Orientation="Vertical"/>
+        </ItemsPanelTemplate>
+    </essential:Segmented.ItemsPanel>
+</essential:Segmented>
+```
+- Allow reordering items
+```xml
+<essential:Segmented CanReorderItems="True" AllowDrop="True"
+    ...
+```
+
+Usage:
+- Add this to `App.xaml` (UWP)
+```xml
+<Application.Resources>
+    <controls:XamlControlsResources>
+        <controls:XamlControlsResources.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///UWPPackage/Segmented_Resource.xaml"/>
+            ...
+        </controls:XamlControlsResources.MergedDictionaries>
+    </controls:XamlControlsResources>
+</Application.Resources>
+```
+- Add this to `App.xaml` (WinUI3)
+```xml
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="ms-appx:///WinUI3Package/Segmented_Resource.xaml"/>
+            ...
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
 ```

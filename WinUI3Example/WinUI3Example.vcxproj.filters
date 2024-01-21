@@ -63,6 +63,9 @@
     <Page Include="UIElementExtensionPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="SegmentedPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
