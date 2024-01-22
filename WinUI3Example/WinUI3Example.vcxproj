@@ -153,6 +153,10 @@
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="IconButtonPage.xaml.h">
+      <DependentUpon>IconButtonPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="LineGraph.h">
       <DependentUpon>LineGraph.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -252,6 +256,9 @@
     <Page Include="GroupBoxPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="IconButtonPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="LineGraphControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -324,6 +331,10 @@
     </ClCompile>
     <ClCompile Include="GroupBoxPage.xaml.cpp">
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="IconButtonPage.xaml.cpp">
+      <DependentUpon>IconButtonPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="LineGraph.cpp">
@@ -436,6 +447,10 @@
     </Midl>
     <Midl Include="GroupBoxPage.idl">
       <DependentUpon>GroupBoxPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="IconButtonPage.idl">
+      <DependentUpon>IconButtonPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="LineGraph.idl">
@@ -589,7 +604,7 @@
     <Import Project="..\packages\Microsoft.WindowsAppSDK.1.4.231115000\build\native\Microsoft.WindowsAppSDK.targets" Condition="Exists('..\packages\Microsoft.WindowsAppSDK.1.4.231115000\build\native\Microsoft.WindowsAppSDK.targets')" />
     <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.230706.1\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.230706.1\build\native\Microsoft.Windows.CppWinRT.targets')" />
     <Import Project="..\packages\Microsoft.Graphics.Win2D.1.1.1\build\native\Microsoft.Graphics.Win2D.targets" Condition="Exists('..\packages\Microsoft.Graphics.Win2D.1.1.1\build\native\Microsoft.Graphics.Win2D.targets')" />
-    <Import Project="..\packages\WinUIEssential.WinUI3.1.1.23\build\native\WinUIEssential.WinUI3.targets" Condition="Exists('..\packages\WinUIEssential.WinUI3.1.1.23\build\native\WinUIEssential.WinUI3.targets')" />
+    <Import Project="..\packages\WinUIEssential.WinUI3.1.1.24\build\native\WinUIEssential.WinUI3.targets" Condition="Exists('..\packages\WinUIEssential.WinUI3.1.1.24\build\native\WinUIEssential.WinUI3.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -603,7 +618,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.230706.1\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.230706.1\build\native\Microsoft.Windows.CppWinRT.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.230706.1\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.230706.1\build\native\Microsoft.Windows.CppWinRT.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Graphics.Win2D.1.1.1\build\native\Microsoft.Graphics.Win2D.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Graphics.Win2D.1.1.1\build\native\Microsoft.Graphics.Win2D.targets'))" />
-    <Error Condition="!Exists('..\packages\WinUIEssential.WinUI3.1.1.23\build\native\WinUIEssential.WinUI3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinUIEssential.WinUI3.1.1.23\build\native\WinUIEssential.WinUI3.targets'))" />
+    <Error Condition="!Exists('..\packages\WinUIEssential.WinUI3.1.1.24\build\native\WinUIEssential.WinUI3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinUIEssential.WinUI3.1.1.24\build\native\WinUIEssential.WinUI3.targets'))" />
   </Target>
   <ItemGroup>
     <Page Update="C:\Users\Peter\Desktop\WinUIEssentials\packages\WinUIEssential.WinUI3.1.0.7\build\native\..\..\lib\native\SettingsCard_Resource.xaml">

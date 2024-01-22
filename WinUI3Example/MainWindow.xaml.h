@@ -48,7 +48,8 @@ namespace winrt::WinUI3Example::implementation
             {L"LineGraphPage", winrt::xaml_typename<WinUI3Example::LineGraphPage>()},
             {L"WindowExPage", winrt::xaml_typename<WinUI3Example::WindowExPage>()},
             {L"UIElementExtensionPage", winrt::xaml_typename<WinUI3Example::UIElementExtensionPage>()},
-            {L"SegmentedPage", winrt::xaml_typename<WinUI3Example::SegmentedPage>()}
+            {L"SegmentedPage", winrt::xaml_typename<WinUI3Example::SegmentedPage>()},
+            {L"IconButtonPage", winrt::xaml_typename<WinUI3Example::IconButtonPage>()}
         };
     };
 }

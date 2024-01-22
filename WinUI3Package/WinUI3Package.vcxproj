@@ -160,6 +160,10 @@
       <DependentUpon>GroupBox.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="IconButton.h">
+      <DependentUpon>IconButton.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="include\BadgeGlyphs.hpp" />
     <ClInclude Include="include\DependentValue.h">
       <DependentUpon>include\DependentValue.idl</DependentUpon>
@@ -282,6 +286,10 @@
       <DependentUpon>GroupBox.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="IconButton.cpp">
+      <DependentUpon>IconButton.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="include\DependentValue.cpp">
       <DependentUpon>include\DependentValue.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -393,6 +401,9 @@
     <Midl Include="GroupBox.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="IconButton.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="include\DependentValue.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -454,6 +465,7 @@
   <ItemGroup>
     <Page Include="Glyphs.xaml" />
     <Page Include="GroupBox_Resource.xaml" />
+    <Page Include="IconButton_Resource.xaml" />
     <Page Include="MarqueeText_Resource.xaml" />
     <Page Include="ProgressBarEx_Resource.xaml" />
     <Page Include="Segmented_Resource.xaml" />

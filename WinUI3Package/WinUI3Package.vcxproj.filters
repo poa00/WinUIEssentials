@@ -77,6 +77,9 @@
     <Filter Include="Controls\Segmented">
       <UniqueIdentifier>{c3d7f26b-3a72-4fcd-9785-dc79e19e3fff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controls\IconButton">
+      <UniqueIdentifier>{64a19f1a-af66-42a0-8ae4-dc93200c018f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Placeholder.idl" />
@@ -150,6 +153,9 @@
     <Midl Include="SegmentedMarginConverter.idl">
       <Filter>Controls\Segmented</Filter>
     </Midl>
+    <Midl Include="IconButton.idl">
+      <Filter>Controls\IconButton</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupBox_Resource.xaml">
@@ -172,6 +178,9 @@
     </Page>
     <Page Include="Segmented_Resource.xaml">
       <Filter>Controls\Segmented</Filter>
+    </Page>
+    <Page Include="IconButton_Resource.xaml">
+      <Filter>Controls\IconButton</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>

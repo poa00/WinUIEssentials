@@ -66,6 +66,9 @@
     <Page Include="SegmentedPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="IconButtonPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
