@@ -16,6 +16,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinUI3Example", "WinUI3Exam
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinUI3Package", "WinUI3Package\WinUI3Package.vcxproj", "{E006BDA6-4CC1-4EC4-A1CF-807E16BCBF58}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{148D80C3-02AE-4AB5-8D25-739612D033BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{A89EF308-E098-4300-A6A8-5E3D9BF7A9BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -111,6 +115,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E40EA1B-F85D-42F9-B0AF-8C50C08DD498} = {148D80C3-02AE-4AB5-8D25-739612D033BE}
+		{01C8AED1-9F5B-40E9-A3DD-02548A79EB3C} = {A89EF308-E098-4300-A6A8-5E3D9BF7A9BF}
+		{68226A70-C3CD-4205-93AA-95F3EBB8BE34} = {A89EF308-E098-4300-A6A8-5E3D9BF7A9BF}
+		{E006BDA6-4CC1-4EC4-A1CF-807E16BCBF58} = {148D80C3-02AE-4AB5-8D25-739612D033BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC8F22E0-09E5-4965-B6EC-E23350D9A02E}
