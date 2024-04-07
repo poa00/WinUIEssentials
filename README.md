@@ -43,7 +43,7 @@ It should be useful until the [community toolkit](https://github.com/CommunityTo
 |StringToBoolConverter | :white_check_mark: | :white_check_mark: | WinRT component
 |ReferenceToBoolConverter | :white_check_mark: | :white_check_mark: | WinRT component
 |ConverterGroup | :white_check_mark: | :white_check_mark: | WinRT component
-|IsEqualStateTrigger| :white_check_mark: | :white_check_mark: | WinRT component
+|IsEqualStringTrigger| :white_check_mark: | :white_check_mark: | WinRT component
 |IsNullOrEmptyStateTrigger | :white_check_mark: | :white_check_mark: | WinRT component
 |ControlSizeTrigger | :white_check_mark: | :white_check_mark: | WinRT component
 |CharmBar | :white_check_mark: | :x: | WinRT component
@@ -316,7 +316,8 @@ winrt::Windows::UI::Notifications::BadgeUpdateManager::CreateBadgeUpdaterForAppl
 ## Triggers
 See the same class in [Community Toolkit](https://github.com/CommunityToolkit/Windows) for documentation.
 ### ControlSizeTrigger --- *namespace `ControlSizeTrigger`*
-### IsEqualStateTrigger --- *namespace `IsEqualStateTrigger`*
+### IsEqualStringTrigger --- *namespace `IsEqualStringTrigger`*
+Note: For the reason of lacking reflection, we cannot implement `IsEqualStateTrigger
 ### IsNullOrEmptyStateTrigger --- *namespace `IsNullOrEmptyStateTrigger`*
 
 ## SettingsCard --- *namespace `SettingsCard`*

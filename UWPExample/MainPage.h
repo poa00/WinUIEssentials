@@ -47,7 +47,8 @@ namespace winrt::UWPExample::implementation
             {L"IconButtonPage", winrt::xaml_typename<UWPExample::IconButtonPage>()},
             {L"ProgressBarExPage", winrt::xaml_typename<UWPExample::ProgressBarExPage>()},
             {L"UIElementExtensionPage", winrt::xaml_typename<UWPExample::UIElementExtensionsPage>()},
-            {L"SegmentedPage", winrt::xaml_typename<UWPExample::SegmentedPage>()}
+            {L"SegmentedPage", winrt::xaml_typename<UWPExample::SegmentedPage>()},
+            {L"UriPage", winrt::xaml_typename<UWPExample::UriPage>()}
         };
     };
 }

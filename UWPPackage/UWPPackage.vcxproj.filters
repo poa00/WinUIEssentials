@@ -78,6 +78,9 @@
     <ClInclude Include="include\TileBuilder.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\BuiltInUris.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="UWPPackage.def" />

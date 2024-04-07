@@ -56,6 +56,9 @@
     <Page Include="SegmentedPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="UriPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -65,6 +68,12 @@
     </Midl>
     <Midl Include="MyDataModelTemplateSelector.idl">
       <Filter>Pages\SettingsExpanderPage</Filter>
+    </Midl>
+    <Midl Include="UriModel.idl">
+      <Filter>Pages</Filter>
+    </Midl>
+    <Midl Include="UriGroup.idl">
+      <Filter>Pages</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>
