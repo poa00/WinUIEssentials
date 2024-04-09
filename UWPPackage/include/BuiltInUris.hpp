@@ -23,7 +23,7 @@ namespace BuiltInUris
             constexpr static inline UriBase Provisioning{ L"ms-settings:workplace-provisioning" };
             constexpr static inline UriBase RepairToken{ L"ms-settings:workplace-repairtoken" };
             constexpr Workplace(std::wstring_view uri) : UriBase{ uri } { }
-        }Workplace{ L"ms-settings:workplace" };
+        }; constexpr Workplace Workplace{ L"ms-settings:workplace" };
         constexpr UriBase EmailAndAccounts{ L"ms-settings:emailandaccounts" };
         constexpr UriBase OtherUsers{ L"ms-settings:otherusers" };
         constexpr UriBase AssignedAccess{ L"ms-settings:assignedaccess" };
@@ -34,7 +34,7 @@ namespace BuiltInUris
             constexpr static inline UriBase LaunchFingerprintEnrollment{ L"ms-settings:signinoptions-launchfingerprintenrollment" };
             constexpr static inline UriBase LanchSecurityKeyEnrollment{ L"ms-settings:signinoptions-launchsecuritykeyenrollment" };
             constexpr SignInOptions(std::wstring_view uri) : UriBase{ uri } {}
-        }SignInOptions{ L"ms-settings:signinoptions" };
+        }; constexpr SignInOptions SignInOptions{ L"ms-settings:signinoptions" };
         constexpr UriBase Sync{ L"ms-settings:sync" };
         constexpr UriBase YourInfo{ L"ms-settings:yourinfo" };
         #pragma endregion
@@ -72,8 +72,11 @@ namespace BuiltInUris
             }
         };
         constexpr UriBase DefaultApps{ L"ms-settings:defaultapps" };
-        constexpr UriBase AppsFeatures{ L"ms-settings:appsfeatures" };
-        constexpr UriBase AppsFeaturesApp{ L"ms-settings:appsfeatures-app" };
+        struct AppsFeatures : UriBase
+        { 
+            constexpr static inline UriBase App{ L"ms-settings:appsfeatures-app" };
+            constexpr AppsFeatures(std::wstring_view uri) : UriBase{ uri } {}
+        }; constexpr AppsFeatures AppsFeatures{ L"ms-settings:appsfeatures" };
         constexpr UriBase AppsForWebsites{ L"ms-settings:appsforwebsites" };
         constexpr UriBase DefaultBrowserSettings{ L"ms-settings:defaultbrowsersettings" };
         constexpr UriBase OptionalFeatures{ L"ms-settings:optionalfeatures" };
@@ -81,7 +84,7 @@ namespace BuiltInUris
         {
             constexpr static inline UriBase DownloadMaps{ L"ms-settings:maps-downloadmaps" };
             constexpr Maps(std::wstring_view uri) : UriBase{ uri } {}
-        } Maps{ L"ms-settings:maps" };
+        }; constexpr Maps Maps{ L"ms-settings:maps" };
         constexpr UriBase StartupApps{ L"ms-settints:startupapps" };
         constexpr UriBase VideoPlayback{ L"ms-setttings:videoplayback" };
         #pragma endregion
@@ -100,7 +103,7 @@ namespace BuiltInUris
             constexpr static inline UriBase CortanaLanguage{ L"ms-settings:cortana-language" };
             constexpr static inline UriBase CortanaTalkToCortana{ L"ms-settings:cortana-talktocortana" };
             constexpr Cortana(std::wstring_view uri) : UriBase{ uri } {}
-        } Cortana{ L"ms-settings:cortana" };
+        }; constexpr Cortana Cortana{ L"ms-settings:cortana" };
         #pragma endregion
 
         #pragma region Devices
@@ -202,7 +205,7 @@ namespace BuiltInUris
         }
         #pragma endregion
 
-        #pragma region Personlization
+        #pragma region Personalization
         struct Personalization : UriBase
         {
             constexpr static inline UriBase Background{ L"ms-settings:personalization-background" };
@@ -213,7 +216,7 @@ namespace BuiltInUris
             constexpr static inline UriBase NavBar{ L"ms-settings:personlization-navbar" };
             constexpr static inline UriBase TouchKeyboard{ L"ms-settings:personalization-touchkeyboard" };
             constexpr Personalization(std::wstring_view uri) : UriBase{ uri } {}
-        } Personalization{ L"ms-settings:personalization" };
+        }; constexpr Personalization Personalization{ L"ms-settings:personalization" };
         constexpr UriBase Colors{ L"ms-settings:colors" };
         constexpr UriBase Lockscreen{ L"ms-settings:lockscreen" };
         constexpr UriBase Themes{ L"ms-settings:themes" };
@@ -229,7 +232,7 @@ namespace BuiltInUris
             } AddPhone{ L"ms-settings:mobile-devices-addphone" };
 
             constexpr MobileDevices(std::wstring_view uri) : UriBase{ uri } {}
-        } MobileDevices{ L"ms-settings:mobile-devices" };
+        }; constexpr MobileDevices MobileDevices{ L"ms-settings:mobile-devices" };
         constexpr UriBase DeviceUsage{ L"ms-settings:deviceusage" };
         #pragma endregion
 
@@ -274,7 +277,7 @@ namespace BuiltInUris
             constexpr static inline UriBase VoiceActivation{ L"ms-settings:privacy-voiceactivation" };
             constexpr static inline UriBase HolographicEnvironment{ L"ms-settings:privacy-holographic-environment" };
             constexpr Privacy(std::wstring_view uri) : UriBase{ uri } {}
-        } Privacy{ L"ms-settings:privacy" };
+        }; constexpr Privacy Privacy{ L"ms-settings:privacy" };
         #pragma endregion
 
         #pragma region Search
@@ -283,7 +286,7 @@ namespace BuiltInUris
             constexpr static inline UriBase MoreDetails{ L"ms-settings:search-moredetails" };
             constexpr static inline UriBase Permissions{ L"ms-settings:permissions" };
             constexpr Search(std::wstring_view uri) : UriBase{ uri } {}
-        } Search{ L"ms-settings:search" };
+        }; constexpr Search Search{ L"ms-settings:search" };
         #pragma endregion
 
         #pragma region SurfaceHub
@@ -308,7 +311,7 @@ namespace BuiltInUris
                 constexpr AdvancedGraphics(std::wstring_view uri) : UriBase{ uri } {}
             } AdvancedGraphics{ L"ms-settings:display-advancedgraphics" };
             constexpr Display(std::wstring_view uri) : UriBase{ uri } {}
-        } Display{ L"ms-settings:display" };
+        }; constexpr Display Display{ L"ms-settings:display" };
         namespace Apps
         {
             constexpr UriBase Volume{ L"ms-settings:apps-volume" };
@@ -318,7 +321,7 @@ namespace BuiltInUris
             constexpr static inline UriBase Settings{ L"ms-settings:batterysaver-settings" };
             constexpr static inline UriBase UsageDetails{ L"ms-settings:batterysaver-usagedetails" };
             constexpr BatterySaver(std::wstring_view uri) : UriBase{ uri } {}
-        } BatterySaver{ L"ms-settings:batterysaver" };
+        }; constexpr BatterySaver BatterySaver{ L"ms-settings:batterysaver" };
         constexpr UriBase Clipboard{ L"ms-settings:clipboard" };
         constexpr UriBase SaveLocations{ L"ms-settings:savelocations" };
         constexpr UriBase ScreenRotation{ L"ms-settings:screenrotation" };
@@ -331,7 +334,7 @@ namespace BuiltInUris
         {
             constexpr static inline UriBase SgUpdate{ L"ms-settings:multitasking-sgupdate" };
             constexpr MultiTasking(std::wstring_view uri) : UriBase{ uri } {}
-        } MultiTasking{ L"ms-settings:multitasking" };
+        }; constexpr MultiTasking MultiTasking{ L"ms-settings:multitasking" };
         constexpr UriBase NightLight{ L"ms-settings:nightlight" };
         constexpr UriBase Project{ L"ms-settings:project" };
         constexpr UriBase CrossDevice{ L"ms-settings:crossdevice" };
@@ -346,7 +349,7 @@ namespace BuiltInUris
         {
             constexpr static inline UriBase Devices{ L"ms-settings:sound-devices" };
             constexpr Sound(std::wstring_view uri) : UriBase{ uri } {}
-        } Sound{ L"ms-settings:sound" };
+        }; constexpr Sound Sound{ L"ms-settings:sound" };
         constexpr UriBase Storage{ L"ms-settings:storage" };
         constexpr UriBase StoragePolicies{ L"ms-settings:storagepolicies" };
         constexpr UriBase StorageRecommendations{ L"ms-settings:storagerecommendations" };
@@ -360,7 +363,7 @@ namespace BuiltInUris
         {
             constexpr static inline UriBase Advanced{ L"ms-settings:keyboard-advanced" };
             constexpr Keyboard(std::wstring_view uri) : UriBase{ uri } {}
-        } Keyboard{ L"ms-settings:keyboard" };
+        }; constexpr Keyboard Keyboard{ L"ms-settings:keyboard" };
         struct RegionLanguage : public UriBase
         {
             constexpr static inline UriBase JpnIME{ L"ms-settings:regionlanguage-jpnime" };
@@ -386,7 +389,7 @@ namespace BuiltInUris
             constexpr static inline UriBase LanguageOptions{ L"ms-settings:regionlangauge-languageoptions" };
             constexpr static inline UriBase SetDisplayLangauge{ L"ms-settings:regionlanguage-setdisplaylanguage" };
             constexpr RegionLanguage(std::wstring_view uri) : UriBase{ uri } {}
-        } RegionLanguage{ L"ms-settings:regionlanguage" };
+        }; constexpr RegionLanguage RegionLanguage{ L"ms-settings:regionlanguage" };
         #pragma endregion
 
         #pragma region UpdateAndSecurity
@@ -397,7 +400,7 @@ namespace BuiltInUris
             constexpr static inline UriBase Activity{ L"ms-settings:delivery-optimization-activity" };
             constexpr static inline UriBase Advanced{ L"ms-settings:delivery-optimization-advanced" };
             constexpr DeliveryOptimization(std::wstring_view uri) : UriBase{ uri } {}
-        } DeliveryOptimization{ L"ms-settings:delivery-optimization" };
+        }; constexpr DeliveryOptimization DeliveryOptimization{ L"ms-settings:delivery-optimization" };
         constexpr UriBase FindMyDevice{ L"ms-settings:findmydevice" };
         constexpr UriBase Developers{ L"ms-settings:developers" };
         constexpr UriBase Recovery{ L"ms-settings:recovery" };
@@ -407,7 +410,7 @@ namespace BuiltInUris
         {
             constexpr static inline UriBase Optin{ L"ms-settings:windowsinsider-optin" };
             constexpr WindowsInsider(std::wstring_view uri) : UriBase{ uri } {}
-        } WindowsInsider{ L"ms-settings:windowsinsider" };
+        }; constexpr WindowsInsider WindowsInsider{ L"ms-settings:windowsinsider" };
         struct WindowsUpdate : public UriBase
         {
             constexpr static inline UriBase Action{ L"ms-settings:windowsupdate-action" };
@@ -418,7 +421,7 @@ namespace BuiltInUris
             constexpr static inline UriBase SeekerOnDemand{ L"ms-settings:windowsupdate-seekderondemand" };
             constexpr static inline UriBase History{ L"ms-settings:windowsupdate-history" };
             constexpr WindowsUpdate(std::wstring_view uri) : UriBase{ uri } {}
-        } WindowsUpdate{ L"ms-settings:windowsupdate" };
+        }; constexpr WindowsUpdate WindowsUpdate{ L"ms-settings:windowsupdate" };
         #pragma endregion
 
         #pragma region UserAccount

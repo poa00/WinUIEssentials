@@ -8,7 +8,19 @@
     xmlns:essential="using:UWPPackage"
     mc:Ignorable="d">
 
-    <essential:GroupBox Header="Me">
-        <!--<Button>Button inside GroupBox</Button>-->
-    </essential:GroupBox>
+    <StackPanel Margin="30">
+        <essential:GroupBox FontSize="12" Header="Remote Assistance" Padding="10">
+            <StackPanel Spacing="10">
+                <CheckBox FontSize="12" Content="Allow Remote Assistance connections to this computer"/>
+                <RichTextBlock FontSize="12">
+                    <Paragraph>
+                        <Hyperlink>What happens when I enable Remote Assistance?</Hyperlink>
+                    </Paragraph>
+                </RichTextBlock>
+                <Button CornerRadius="0" FontSize="12" HorizontalAlignment="Right">Advanced...</Button>
+            </StackPanel>
+
+        </essential:GroupBox>
+    </StackPanel>
+
 </Page>

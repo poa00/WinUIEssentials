@@ -57,7 +57,7 @@
       <Filter>Pages</Filter>
     </Page>
     <Page Include="UriPage.xaml">
-      <Filter>Pages</Filter>
+      <Filter>Pages\UriPage</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -69,11 +69,11 @@
     <Midl Include="MyDataModelTemplateSelector.idl">
       <Filter>Pages\SettingsExpanderPage</Filter>
     </Midl>
-    <Midl Include="UriModel.idl">
-      <Filter>Pages</Filter>
-    </Midl>
     <Midl Include="UriGroup.idl">
-      <Filter>Pages</Filter>
+      <Filter>Pages\UriPage</Filter>
+    </Midl>
+    <Midl Include="UriModel.idl">
+      <Filter>Pages\UriPage</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>
@@ -253,11 +253,13 @@
     <Filter Include="Pages\SettingsExpanderPage">
       <UniqueIdentifier>{659a379c-9ddf-4c1d-8eb8-843aa8acd39c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\UriPage">
+      <UniqueIdentifier>{b4be7c7d-c2f3-4cbf-8dee-06dcdc772a72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="PropertySheet.props" />
     <None Include="packages.config" />
-    <None Include="licenses\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
