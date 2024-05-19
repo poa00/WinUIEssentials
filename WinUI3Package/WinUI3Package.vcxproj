@@ -165,6 +165,7 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="include\BadgeGlyphs.hpp" />
+    <ClInclude Include="include\BuiltInUris.hpp" />
     <ClInclude Include="include\DependentValue.h">
       <DependentUpon>include\DependentValue.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -178,6 +179,9 @@
     <ClInclude Include="include\TileTemplates.hpp" />
     <ClInclude Include="include\ToastBuilder.hpp" />
     <ClInclude Include="include\ToastTemplates.hpp" />
+    <ClInclude Include="include\WASDK headers\Microsoft.Graphics.Canvas.hpp" />
+    <ClInclude Include="include\WASDK headers\Microsoft.UI.hpp" />
+    <ClInclude Include="include\WASDK headers\Microsoft.Windows.Widgets.hpp" />
     <ClInclude Include="IsEqualStateTrigger.h">
       <DependentUpon>IsEqualStateTrigger.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -190,6 +194,7 @@
       <DependentUpon>MarqueeText.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Microsoft.UI.hpp" />
     <ClInclude Include="NegateBoolConverter.h">
       <DependentUpon>NegateBoolConverter.idl</DependentUpon>
       <SubType>Code</SubType>

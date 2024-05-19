@@ -37,6 +37,19 @@
     <ClInclude Include="include\TileTemplates.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\BuiltInUris.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft.UI.hpp" />
+    <ClInclude Include="include\WASDK headers\Microsoft.UI.hpp">
+      <Filter>include\WASDK headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WASDK headers\Microsoft.Windows.Widgets.hpp">
+      <Filter>include\WASDK headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WASDK headers\Microsoft.Graphics.Canvas.hpp">
+      <Filter>include\WASDK headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="WinUI3Package.def" />
@@ -79,6 +92,9 @@
     </Filter>
     <Filter Include="Controls\IconButton">
       <UniqueIdentifier>{64a19f1a-af66-42a0-8ae4-dc93200c018f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WASDK headers">
+      <UniqueIdentifier>{da85204c-5ff8-479c-856f-025dae56a4b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
